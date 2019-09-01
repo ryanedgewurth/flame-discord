@@ -15,7 +15,7 @@ async def on_message(message):
         msg = 'Hello {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
     
-    if message.content.startswith('&test'):
+    if message.content.startswith('&info'):
         msg = 'Flame Bot is developed by ``Ryan In The Horizon#1827``. Join the Support Discord at https://discord.gg/HUZEd63!'.format(message)
         await client.send_message(message.channel, msg)
 
