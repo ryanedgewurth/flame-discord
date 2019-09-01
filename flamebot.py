@@ -18,6 +18,22 @@ async def on_message(message):
     if message.content.startswith('&info'):
         msg = 'Flame Bot is developed by ``Ryan In The Horizon#1827``. Join the Support Discord at https://discord.gg/HUZEd63!'.format(message)
         await client.send_message(message.channel, msg)
+        
+#Kick Command
+@bot.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+@commands.bot_has_permissions(administrator=True)
+async def kick(ctx, user: discord.User):
+    await client.kick(user)
+    await client.say(("{} was successfully kicked.").format(user))
+
+#Ban Command
+@bot.command(pass_context = True)
+@commands.has_permissions(ban_members=True)
+@commands.bot_has_permissions(ban_members=True)
+async def ban(ctx, user: discord.User):
+    await client.ban(user)
+    await client.say(("{} was successfully banned.").format(user))
 
 @client.event
 async def on_ready():
