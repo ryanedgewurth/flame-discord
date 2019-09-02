@@ -1,6 +1,6 @@
 # Work with Python 3.6
 import discord
-from discord.ext.commands import Bot
+from discord.ext import commands
 
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 bot = commands.Bot(command_prefix='$')
@@ -25,8 +25,8 @@ async def on_message(message):
 
 
 
-@bot.command()
+@commands.Bot.command()
 async def test(context, arg):
     await context.send(arg)
     
-bot.add_command(test)
+commands.Bot.add_command(test)
