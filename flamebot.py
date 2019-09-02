@@ -35,6 +35,6 @@ client.run(TOKEN)
 @client.command()
 async def newtest(ctx):
     msg = 'Hello {0.author.mention}'.format(message)
-    await client.send_message(message.channel, msg)
+    await ctx.send(msg)
     
 bot.add_command(newtest)
