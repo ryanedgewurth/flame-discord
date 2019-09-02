@@ -1,6 +1,6 @@
 # Work with Python 3.6
 import discord
-
+from discord.ext.commands import Bot
 
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 bot = commands.Bot(command_prefix='$')
