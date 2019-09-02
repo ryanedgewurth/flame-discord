@@ -4,7 +4,7 @@ from discord import Game
 from discord.ext import commands
 
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
-bot = commands.Bot(command_prefix='&')
+bot = commands.Bot(command_prefix='$')
 client = discord.Client()
 
 @client.event
@@ -13,7 +13,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('&test'):
+    if message.content.startswith('&test2'):
         msg = 'Hello {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
     
@@ -33,8 +33,7 @@ async def on_ready():
 client.run(TOKEN)
 
 @bot.command()
-async def newtest(ctx):
-    msg = 'Hello {0.author.mention}'.format(message)
-    await ctx.send(msg)
+async def test(ctx, arg):
+    await ctx.send(arg)
     
-bot.add_command(newtest)
+bot.add_command(test)
