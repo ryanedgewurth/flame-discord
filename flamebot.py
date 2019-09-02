@@ -33,5 +33,5 @@ async def on_ready():
 client.run(TOKEN)
 
 @client.command()
-async def newtest():
+async def newtest(ctx):
     await ctx.send("Test")
