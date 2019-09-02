@@ -1,10 +1,7 @@
 # Work with Python 3.6
 import discord
-from discord.ext import commands
-from discord.ext.commands import Bot
 
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
-bot = commands.Bot(command_prefix='$')
 client = discord.Client()
 
 
@@ -21,13 +18,3 @@ async def on_message(message):
     if message.content.startswith('&info'):
         msg = 'Flame Bot is developed by ``Ryan In The Horizon#1827``. Join the Support Discord at https://discord.gg/HUZEd63!'.format(message)
         await client.send_message(message.channel, msg)
-        
-        
-
-
-
-@Bot.command()
-async def test(context, arg):
-    await context.send(arg)
-    
-commands.Bot.add_command(test)
