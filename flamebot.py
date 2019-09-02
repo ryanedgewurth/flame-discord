@@ -32,7 +32,7 @@ async def on_ready():
 
 client.run(TOKEN)
 
-@client.command()
+@bot.command()
 async def newtest(ctx):
     msg = 'Hello {0.author.mention}'.format(message)
     await ctx.send(msg)
