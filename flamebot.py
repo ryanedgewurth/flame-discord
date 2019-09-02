@@ -1,8 +1,10 @@
 # Work with Python 3.6
 import discord
+from discord import Game
+from discord.ext.commands import Bot
 
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
-
+bot = commands.Bot(command_prefix='&')
 client = discord.Client()
 
 @client.event
@@ -19,6 +21,7 @@ async def on_message(message):
         msg = 'Flame Bot is developed by ``Ryan In The Horizon#1827``. Join the Support Discord at https://discord.gg/HUZEd63!'.format(message)
         await client.send_message(message.channel, msg)
         
+        
 
 @client.event
 async def on_ready():
@@ -28,3 +31,7 @@ async def on_ready():
     print('------')
 
 client.run(TOKEN)
+
+@client.command()
+async def newtest():
+    await ctx.send("Test")
