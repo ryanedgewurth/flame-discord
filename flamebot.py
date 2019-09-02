@@ -6,14 +6,6 @@ from discord.ext import commands
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 bot = commands.Bot(command_prefix='$')
 client = discord.Client()
-@client.event
-async def on_ready():
-    print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
-    print('------')
-
-client.run(TOKEN)
 
 
 @client.event
@@ -35,7 +27,7 @@ async def on_message(message):
 
 
 @bot.command()
-async def test(ctx, arg):
-    await ctx.send(arg)
+async def test(context, arg):
+    await context.send(arg)
     
 bot.add_command(test)
