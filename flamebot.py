@@ -1,6 +1,5 @@
 import discord
 import os
-import random
 from discord.ext import commands, tasks
 from itertools import cycle
 
@@ -28,11 +27,6 @@ async def change_status():
 async def clear(ctx, amount=1):
     await ctx.channel.purge(limit=amount+1)
 
-@client.command()
-async def coin(ctx):
-    choices=['Heads','Tails']
-    value=random.choice(choices) 
-    await ctx.send(value)
 
 @client.command()
 @commands.has_role('Pukka Moderator')
