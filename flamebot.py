@@ -148,4 +148,4 @@ async def verify(ctx):
 
 
 
-client.run('TOKEN')
+client.run(TOKEN)
