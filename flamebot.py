@@ -1,26 +1,19 @@
 import discord
-import os
-from discord.ext import commands, tasks
-from itertools import cycle
+from discord.ext import commands
 
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = commands.Bot(command_prefix = '.')
 client.remove_command('help')
 
 
-status = cycle(['Pukka Network!', 'Games!'])
 
 
 @client.event
 async def on_ready():
-    change_status.start()
     print("general Bot is ready.")
     print('Logged on as {0}!'.format(client.user))
 
 
-@tasks.loop(seconds=10)
-async def change_status():
-    await client.change_presence(activity=discord.Game(next(status)))
 
 @client.command()
 @commands.has_role('Pukka Moderator')
