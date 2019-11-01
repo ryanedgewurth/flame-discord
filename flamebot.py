@@ -10,17 +10,13 @@ async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
-
-    if message.content.startswith('&hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
-    
+    # About Command
     if message.content.startswith('&about'):
         msg = 'Hello. My bot name is Flame Bot and I am created by ``Edgewurth#1827``. My support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
         await client.send_message(message.channel, msg)
-    
+    # Help Command
     if message.content.startswith('&help'):
-        msg = 'I have sent of an message with the commands to help you.'
+        msg = ':incoming_envelope: I have sent an message with the commands to help you.'
         pmsg = 'List of **FlameBot** commands\n__***:question: Bot Information :question:***__\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&help`` - Show this Command List'
         await client.send_message(message.channel, msg)
         await client.send_message(message.author, pmsg)
