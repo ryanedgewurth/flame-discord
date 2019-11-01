@@ -16,8 +16,14 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     
     if message.content.startswith('&about'):
-        msg = 'Hello. My bot name is Flame Bot and I am created by ``Edgewurth#1827``. My support discord is at https://discord.gg/Xb5asjm - join it if you need help'
+        msg = 'Hello. My bot name is Flame Bot and I am created by ``Edgewurth#1827``. My support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
         await client.send_message(message.channel, msg)
+    
+    if message.content.startswith('&help'):
+        msg = 'I have sent of an message with the commands to help you.'
+        pmsg = 'List of **FlameBot** commands\n__***:question: Bot Information :question:***__\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&help`` - Show this Command List'
+        await client.send_message(message.channel, msg)
+        await client.send_message(message.author, pmsg)
 
 @client.event
 async def on_ready():
