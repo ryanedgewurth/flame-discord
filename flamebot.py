@@ -28,10 +28,12 @@ async def on_message(message):
     # Leave VC Command
     if message.content.startswith('&leave'):
         msg = ':door: Disconnected from the Voice Channel'
-        await client.send_message(message.channel, msg)
-        guild = client.message.guild
-        voice_client = guild.voice_client
-        await voice_client.disconnect()
+        voice = get(client.voice_clients, guild=context.guild)
+        
+        if voice and voice.is_connected():
+            await voice.disconnect()
+            await client.send_message(message.channel, msg)
+        
     
 
 @client.event
