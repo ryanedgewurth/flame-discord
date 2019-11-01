@@ -87,8 +87,8 @@ async def count(ctx):
         count+=1
         await ctx.send(count)
         
-@client.command()  
-async def count(ctx):
+@bot.command()  
+async def test(ctx):
     await ctx.send("Test Submitted")
 
 @client.command()
