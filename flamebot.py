@@ -86,6 +86,10 @@ async def count(ctx):
     while True:
         count+=1
         await ctx.send(count)
+        
+@client.command()  
+async def count(ctx):
+    await ctx.send("Test Submitted")
 
 @client.command()
 async def help(ctx):
