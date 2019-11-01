@@ -23,7 +23,7 @@ async def on_message(message):
         await client.send_message(message.author, pmsg)
     # Ping Command
     if message.content.startswith('&ping'):
-        msg = 'Pong! The latency is', {round(bot.latency * 1000)},'ms'
+        msg = 'Pong! The latency is ' client.latency, 'ms'
         await client.send_message(message.channel, msg)
     
 @client.event
