@@ -21,16 +21,11 @@ async def on_message(message):
         pmsg = 'List of **Flame** commands\n__***:question: Bot Information :question:***__\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&help`` - Show this Command List'
         await client.send_message(message.channel, msg)
         await client.send_message(message.author, pmsg)
-    if message.content.startswith('&joke'):
-        msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-        pmsg = ''
+    # Ping Command
+    if message.content.startswith('&ping'):
+        msg = 'Pong! The latency is {round(client.latency * 1000)}ms'
         await client.send_message(message.channel, msg)
-        await client.send_message(message.channel, pmsg)
     
-@bot.command()
-async def ping(ctx):
-    await ctx.send('Pong!')
-
 @client.event
 async def on_ready():
     print('Logged in as')
