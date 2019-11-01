@@ -3,6 +3,8 @@ import discord
 from discord.ext import commands
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
+client = discord.Client()
+
 @client.event
 async def on_message(message):
     # we do not want the bot to reply to itself
