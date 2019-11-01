@@ -15,7 +15,7 @@ async def on_message(message):
         msg = 'Hello {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
     
-    if message.content.startwith('&about'):
+    if message.content.startswith('&about'):
         msg = 'Hello. My bot name is Flame Bot and I am created by ``Edgewurth#1827``. My support discord is at https://discord.gg/Xb5asjm - join it if you need help'
         await client.send_message(message.channel, msg)
 
