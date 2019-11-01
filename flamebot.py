@@ -37,7 +37,7 @@ async def on_message(message):
 #            await client.send_message(message.channel, msg)     
 
 @bot.command(name='timer')
-async def _timer(arg):
+async def _timer(context, arg):
     await client.send_message(message.channel, arg)
 
 @client.event
