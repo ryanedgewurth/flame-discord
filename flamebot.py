@@ -1,11 +1,9 @@
 # Imports
 import discord
 from discord.ext import commands
-import time
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
-bot = commands.Bot(command_prefix='&')
 
 @client.event
 async def on_message(message):
@@ -23,22 +21,17 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
         await client.send_message(message.author, pmsg)
     # Join VC Command
-#    if message.content.startswith('&join'):
-#        msg = ':musical_note: Joined the Voice Channel you are currently in!'
-#        await client.send_message(message.channel, msg)
-#        await client.join_voice_channel(message.author.voice.voice_channel)
-#    # Leave VC Command
-#    if message.content.startswith('&leave'):
-#        msg = ':door: Disconnected from the Voice Channel'
-#        voice = get(client.voice_clients, guild=context.guild)
-#        
-#        if voice and voice.is_connected():
-#            await voice.disconnect()
-#            await client.send_message(message.channel, msg)     
-
-@bot.command()
-async def timer(ctx, arg):
-    await client.send_message(message.channel, arg)
+    if message.content.startswith('&join'):
+        msg = ':musical_note: Joined the Voice Channel you are currently in!'
+        await client.send_message(message.channel, msg)
+        await client.join_voice_channel(message.author.voice.voice_channel)
+    # Leave VC Command
+    if message.content.startswith('&leave'):
+        msg = ':door: Disconnected from the Voice Channel'
+        await client.send_message(message.channel, msg)
+        voice_client = client.voice_client_in(guild)
+        await guild.voice_client.disconnect()
+    
 
 @client.event
 async def on_ready():
