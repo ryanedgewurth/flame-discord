@@ -29,7 +29,7 @@ async def on_message(message):
     if message.content.startswith('&leave'):
         msg = ':door: Disconnected from the Voice Channel'
         await client.send_message(message.channel, msg)
-        guild = ctx.message.guild
+        guild = client.message.guild
         voice_client = guild.voice_client
         await voice_client.disconnect()
     
