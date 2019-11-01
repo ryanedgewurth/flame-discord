@@ -36,8 +36,8 @@ async def on_message(message):
 #            await voice.disconnect()
 #            await client.send_message(message.channel, msg)     
 
-@bot.command(name='timer')
-async def _timer(ctx, arg):
+@bot.command()
+async def timer(ctx, arg):
     await client.send_message(message.channel, arg)
 
 @client.event
