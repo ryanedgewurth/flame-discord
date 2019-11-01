@@ -20,17 +20,6 @@ async def on_message(message):
         pmsg = 'List of **Flame** commands\n__***:question: Bot Information :question:***__\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&help`` - Show this Command List'
         await client.send_message(message.channel, msg)
         await client.send_message(message.author, pmsg)
-    # Join VC Command
-    if message.content.startswith('&join'):
-        msg = ':musical_note: Joined the Voice Channel you are currently in!'
-        await client.send_message(message.channel, msg)
-        await client.join_voice_channel(message.author.voice.voice_channel)
-    # Leave VC Command
-    if message.content.startswith('&leave'):
-        msg = ':door: Disconnected from the Voice Channel'
-        await client.send_message(message.channel, msg)
-        voice_client = client.voice_client_in(guild)
-        await guild.voice_client.disconnect()
     
 
 @client.event
