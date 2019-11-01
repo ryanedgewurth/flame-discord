@@ -1,9 +1,11 @@
 # Imports
 import discord
 from discord.ext import commands
+import time
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
+bot = commands.Bot(command_prefix='&')
 
 @client.event
 async def on_message(message):
@@ -32,8 +34,11 @@ async def on_message(message):
 #        
 #        if voice and voice.is_connected():
 #            await voice.disconnect()
-#            await client.send_message(message.channel, msg)        
-    
+#            await client.send_message(message.channel, msg)     
+
+@bot.command(name='timer')
+async def _timer(arg):
+    await client.send_message(message.channel, arg)
 
 @client.event
 async def on_ready():
