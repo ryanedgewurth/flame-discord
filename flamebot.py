@@ -49,7 +49,7 @@ async def on_message(message):
     # FUN COMMANDS
     #------------------
     # RND Command
-    if message.content.startswith('&rnd'):
+    if message.content.startswith('&rng'):
         args = message.content.split(" ")
         msg = random.randint(int(args[1]), int(args[2]))
         await client.send_message(message.channel, msg)
