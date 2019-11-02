@@ -23,18 +23,22 @@ async def on_message(message):
     
     # About Command
     if message.content.startswith('&about'):
+        print("[FLAME] About Command Sent by ", message.author)
         msg = 'Hello. My bot name is Flame and I am created by ``Edgewurth#1827``. My support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
         await client.send_message(message.channel, msg)
     # Help Command
     if message.content.startswith('&help'):
+        print("[FLAME] Help Command Sent by ", message.author)
         msg = ':incoming_envelope: I have sent an message with the commands to help you.'
         pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency (ALPHA! ONLY RESPONDS WITH PONG!)\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&help`` - Show this Command List'
         await client.send_message(message.channel, msg)
         await client.send_message(message.author, pmsg)
     # Ping Command
     if message.content.startswith('&ping'):
+        print("[FLAME] Ping Command Sent by ", message.author)
         msg = 'Pong!'
         await client.send_message(message.channel, msg)
+    
     
     #----------------------------
     # DEBUG COMMANDS
@@ -42,6 +46,7 @@ async def on_message(message):
     
     # Argument Command Test
     if message.content.startswith('&argtest'):
+        print("[FLAME] Argtest Command Sent by ", message.author)
         clearcount = message.content.split(" ")
         msg = clearcount
         await client.send_message(message.channel, 'Command Contents:')
@@ -55,11 +60,13 @@ async def on_message(message):
     #------------------
     # Current Time Command
     if message.content.startswith('&clock'):
+        print("[FLAME] Clock Command Sent by ", message.author)
         msg = time.asctime()
         await client.send_message(message.channel, msg)
             
     # Countdown Command
     if message.content.startswith('&countdown'):
+        print("[FLAME] Countdown Command Sent by ", message.author)
         args = message.content.split(" ")
         times = args[1]
         format = args[2]
@@ -130,11 +137,13 @@ async def on_message(message):
     #------------------
     # RND Command
     if message.content.startswith('&rng'):
+        print("[FLAME] RNG Command Sent by " message.author)
         args = message.content.split(" ")
         msg = random.randint(int(args[1]), int(args[2]))
         await client.send_message(message.channel, msg)
     # 8-Ball Command Command
     if message.content.startswith('&8ball'):
+        print("[FLAME] 8Ball Command Sent by ", message.author)
         possible_responses = [
         'It is certain.',
         'It is decidedly so.',
@@ -161,5 +170,5 @@ async def on_message(message):
         await client.send_message(message.channel, random.choice(possible_responses))
 @client.event
 async def on_ready():
-    print('Session has Begun')
+    print("[FLAME]", client.user.name, client.name.id, " - Bot Signed In and Started!")
 client.run(TOKEN)
