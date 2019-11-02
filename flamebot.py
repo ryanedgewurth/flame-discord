@@ -170,5 +170,5 @@ async def on_message(message):
         await client.send_message(message.channel, random.choice(possible_responses))
 @client.event
 async def on_ready():
-    print("[FLAME]", client.user.name, client.name.id, " - Bot Signed In and Started!")
+    print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
