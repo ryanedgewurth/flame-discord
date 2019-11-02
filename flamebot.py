@@ -80,9 +80,9 @@ async def on_message(message):
             times = times * 60
             # Secs = Mins * 60
             times = times * 60
-        elif format == 'm':
-            # Month = D * 30
-            times = times * 30
+        elif format == 'mo':
+            # Month = D * 28
+            times = times * 28
             # Day = H * 24
             times = times * 24
             # Mins = H * 60
