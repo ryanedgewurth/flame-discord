@@ -152,7 +152,7 @@ async def on_message(message):
                 await client.send_message(message.channel, msg)
             else:
                 msg = 'Warned ' + user + ' for ' + reason
-                pmsg = 'You have been warned in ' + discord.message.guild + '!\n**Reason: ' + reason
+                pmsg = 'You have been warned in ' + discord.guild.name + '!\n**Reason: ' + reason
                 await client.send_message(message.channel, msg)
                 await client.send_message(user, pmsg)
         else:
