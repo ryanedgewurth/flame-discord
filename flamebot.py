@@ -26,10 +26,14 @@ async def on_message(message):
     if message.content.startswith('&ping'):
         msg = 'Pong!'
         await client.send_message(message.channel, msg)
-    # Clear Command
-    if message.content.startswith('&clear'):
+    # Argument Command
+    if message.content.startswith('&argtest'):
         clearcount = message.content.split(" ")
         msg = clearcount
+        await client.send_message(message.channel, 'Command Contents:')
+        await client.send_message(message.channel, msg)
+        msg = clearcount[1]
+        await client.send_message(message.channel, 'First Argument (Second Array item)')
         await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
