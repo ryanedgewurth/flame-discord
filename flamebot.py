@@ -8,7 +8,7 @@ import time
 from time import sleep
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
-client = discord.Client()
+client = discord.Client(activity=discord.Game("&help))
 # bot = commands.Bot(command_prefix='!')
 
 @client.event
@@ -186,8 +186,4 @@ async def on_message(message):
 @client.event
 async def on_ready():
     print("[FLAME] Bot Signed In and Started!")
-    try:
-        await client.change_presence(activity=discord.Game(name='&help'))
-    except:
-        await client.send_message(discord.ClientUser.id, 'An error occurred, please see logs for more detail')
 client.run(TOKEN)
