@@ -51,9 +51,8 @@ async def on_message(message):
     # RND Command
     if message.content.startswith('&rng'):
         args = message.content.split(" ")
-        msg = random.randint(int(args[1]), int(args[2]))
         
-        await client.send_message(message.channel, msg)    
+        await client.send_message(message.channel, random.randint(int(args[1]), int(args[2]))    
         
         
     # 8-Ball Command Command
