@@ -54,7 +54,7 @@ async def on_message(message):
     # TIME COMMANDS
     #------------------
     # Current Time Command
-    if message.content.startswith('&time'):
+    if message.content.startswith('&clock'):
         msg = time.asctime()
         await client.send_message(message.channel, msg)
             
