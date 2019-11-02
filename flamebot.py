@@ -31,7 +31,7 @@ async def on_message(message):
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
-
+# CTX Test
 @bot.command()
     async def ryan(ctx, amount=1):
         await ctx.channel.purge(limit=amount + 1)
