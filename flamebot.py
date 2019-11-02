@@ -30,7 +30,7 @@ async def on_message(message):
     if message.content.startswith('&help'):
         print("[FLAME] Help Command Sent")
         args = message.content.split(" ")
-        usetxtc = arg[1]
+        usetxtc = args[1]
         msg = ':incoming_envelope: I have sent an message with the commands to help you.'
         pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency (ALPHA! ONLY RESPONDS WITH PONG!)\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
         if usetxtc == sendhere:
