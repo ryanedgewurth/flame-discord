@@ -30,7 +30,7 @@ async def on_message(message):
     if message.content.startswith('&help'):
         print("[FLAME] Help Command Sent")
         msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-        pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency (ALPHA! ONLY RESPONDS WITH PONG!)\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&help`` - Show this Command List'
+        pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency (ALPHA! ONLY RESPONDS WITH PONG!)\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
         await client.send_message(message.channel, msg)
         await client.send_message(message.author, pmsg)
     # Ping Command
@@ -40,7 +40,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
-        msg = '__***FLAME***___\nVersion v132 \nRunning Python 3.6.8\nHosted on Heroku'
+        msg = '__***FLAME***___\nVersion v133 \nRunning Python 3.6.8\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     
     
@@ -136,6 +136,25 @@ async def on_message(message):
             time = times - 1
         msg = 'TIME\'S UP {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
+        
+    #------------------
+    # ADMIN COMMANDS
+    #------------------
+    if message.content.startswith('&warn'):
+        if message.author.roles.has("FBMod"):
+            args = message.content.split(" ")
+            user = args[1]
+            reason = args[2]
+            if reason == None:
+                reason = 'No Reason Specified'
+            if user == None:
+                msg = 'Please specifiy a User'
+                await client.send_message(message.channel, msg)
+            else:
+                msg = 'Warned ' + user + ' for ' + reason
+                pmsg = 'You have been warned in ' + discord.message.guild + '!\n**Reason: ' + reason
+                await client.send_message(message.channel, msg)
+                await client.send_message(user, pmsg)
     #------------------
     # FUN COMMANDS
     #------------------
