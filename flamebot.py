@@ -5,7 +5,7 @@ import random
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
-bot = commands.Bot(command_prefix='&')
+bot = commands.Bot(command_prefix='!')
 
 @client.event
 async def on_message(message):
