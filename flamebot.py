@@ -159,7 +159,7 @@ async def on_message(message):
     # FUN COMMANDS
     #------------------
     # RND Command
-    if message.content.startswith('&rng'):
+    if message.content.startswith('&rng' or '&randomnogenerator' or '&randomnumber' or '&randomnumbergenerator'):
         print("[FLAME] RNG Command Sent")
         args = message.content.split(" ")
         msg = random.randint(int(args[1]), int(args[2]))
