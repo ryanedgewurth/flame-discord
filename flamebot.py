@@ -49,7 +49,7 @@ async def on_message(message):
     #----------------------------
     
     # Debug Commands
-    if message.context.startswith('&debug')
+    if message.context.startswith('&debug'):
         print("[FLAME] Debug Command Sent")
         if message.author.id == "354512960250576896":
             args = message.content.split(" ")
