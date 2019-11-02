@@ -40,7 +40,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
-        msg = '__***FLAME***___\nVersion v138 \nRunning Python 3.6.8\nHosted on Heroku'
+        msg = '__***FLAME***___\nVersion v140 \nRunning Python 3.6.8\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     
     
@@ -152,7 +152,7 @@ async def on_message(message):
                 await client.send_message(message.channel, msg)
             else:
                 msg = 'Warned ' + user + ' for ' + reason
-                pmsg = 'You have been warned in ' + discord.guild.name + '!\n**Reason: ' + reason
+                pmsg = 'You have been warned in ' + discord.Guild.name + '!\n**Reason: ' + reason
                 await client.send_message(message.channel, msg)
                 await client.send_message(user, pmsg)
         else:
