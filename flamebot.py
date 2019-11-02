@@ -105,7 +105,7 @@ async def on_message(message):
             elif time == 30:
                 msg = '30 Seconds Left'
                 await client.send_message(message.channel, msg)
-            time.sleep(1)
+            time.sleep(1.0)
             time - 1
     #------------------
     # FUN COMMANDS
