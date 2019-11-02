@@ -29,7 +29,7 @@ async def on_message(message):
     # Clear Command
     if message.content.startswith('&clear'):
         clearcount = message.content.split(" ")
-        msg = 'Cleared ' & clearcount & 'messages.'
+        msg = 'Cleared {clearcount} messages.'
         await client.send_message(message.channel, msg)
         await ctx.channel.purge(limit=clearcount + 1)
 @client.event
