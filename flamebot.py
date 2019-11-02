@@ -67,12 +67,28 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
         if format == 'm':
             # Secs = Mins * 60
-            times = time * 60
+            times = times * 60
         elif format == 'h':
             # Mins = H * 60
-            times = time * 60
+            times = times * 60
             # Secs = Mins * 60
-            times = time * 60
+            times = times * 60
+        elif format == 'd':
+            # Day = H * 24
+            times = times * 24
+            # Mins = H * 60
+            times = times * 60
+            # Secs = Mins * 60
+            times = times * 60
+        elif format == 'm':
+            # Month = D * 30
+            times = times * 30
+            # Day = H * 24
+            times = times * 24
+            # Mins = H * 60
+            times = times * 60
+            # Secs = Mins * 60
+            times = times * 60
         times = int(timea)
         while times >= 0:
             if times == 7200:
