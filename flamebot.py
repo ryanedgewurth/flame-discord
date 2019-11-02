@@ -4,6 +4,7 @@ from discord.ext import commands
 import random
 import sys
 import string
+import time
 from time import sleep
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
