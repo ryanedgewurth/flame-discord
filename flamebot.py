@@ -57,7 +57,7 @@ async def on_message(message):
         else:
             if args[2] == "":
                 msg = ':warning: Highest Possible Number Value ``max`` cannot be empty!'
-            else
+            else:
             msg = random.randint(int(args[1]), int(args[2]))
         
         await client.send_message(message.channel, msg)    
