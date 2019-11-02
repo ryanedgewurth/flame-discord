@@ -51,8 +51,18 @@ async def on_message(message):
     # RND Command
     if message.content.startswith('&rnd'):
         args = message.content.split(" ")
-        msg = random.randint(int(args[1]), int(args[2]))
-        await client.send_message(message.channel, msg)
+        if args[1] == "":
+            msg = ':warning: Lowest Possible Number Value ``min`` cannot be empty!'
+            
+        else:
+            if args[2] == "":
+                msg = ':warning: Highest Possible Number Value ``max`` cannot be empty!'
+            else
+            msg = random.randint(int(args[1]), int(args[2]))
+        
+        await client.send_message(message.channel, msg)    
+        
+        
     # 8-Ball Command Command
     if message.content.startswith('&8ball'):
         possible_responses = [
