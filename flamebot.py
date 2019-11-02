@@ -42,7 +42,10 @@ async def on_message(message):
     if message.content.startswith('&ping'):
         timestampbef = datetime.datetime.now().timestamp()
         print("[FLAME] Ping Command Sent by ", message.author)
-        latency = timestampbef - message.createdTimestamp
+        msg = 'Pinging... Please Wait...'
+        await client.send_message(message.channel, msg)
+        timestampaft = datetime.datetime.now().timestamp()
+        latency = timestampaft - timestampbef
         msg = 'Pong! The latency is ' + latency + 'ms'
         await client.send_message(message.channel, msg)
     # Version Command
