@@ -189,5 +189,5 @@ async def on_ready():
     try:
         await client.change_presence(activity=discord.Game(name='&help'))
     except:
-        await client.send_message('Edgewurth#1827', 'An error occurred, please see logs for more detail')
+        await client.send_message(discord.ClientUser.id, 'An error occurred, please see logs for more detail')
 client.run(TOKEN)
