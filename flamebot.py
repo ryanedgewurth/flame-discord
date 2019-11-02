@@ -31,7 +31,7 @@ async def on_message(message):
         clearcount = message.content.split(" ")
         msg = 'Cleared {clearcount} messages.'
         await client.send_message(message.channel, msg)
-        await ctx.channel.purge(limit=clearcount + 1)
+        await message.channel.purge(limit=clearcount + 1)
 @client.event
 async def on_ready():
     print('Session has Begun')
