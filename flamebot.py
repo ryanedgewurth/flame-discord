@@ -26,6 +26,13 @@ async def on_message(message):
         msg = 'Pong!'
         await client.send_message(message.channel, msg)
     
+
+@commands.command()
+async def test(ctx):
+    pass
+
+bot.add_command(test)
+
 @client.event
 async def on_ready():
     print('Session has Begun')
