@@ -29,10 +29,8 @@ async def on_message(message):
     # Clear Command
     if message.content.startswith('&clear'):
         clearcount = message.content.split(" ")
-        msg = 'Cleared {clearcount} messages.'
+        msg = clearcount
         await client.send_message(message.channel, msg)
-        async for msg in client.logs_from(message.channel):
-            await client.delete_message(msg)
 @client.event
 async def on_ready():
     print('Session has Begun')
