@@ -44,28 +44,6 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     
     
-    #----------------------------
-    # DEBUG COMMANDS
-    #----------------------------
-    
-    # Debug Commands
-    if message.context.startswith('&debug'):
-        print("[FLAME] Debug Command Sent")
-        if message.author.id == "354512960250576896":
-            args = message.content.split(" ")
-            command = args[1]
-            if command == 'getbotname':
-                pmsg = client.user.name
-                await client.send_message(message.author, pmsg)
-            elif command == 'getbotid':
-                pmsg = client.user.id
-                await client.send_message(message.author, pmsg)
-            elif command == 'gettoken':
-                pmsg = TOKEN
-                await client.send_message(message.author, pmsg)
-            elif command == 'argstest':
-                pmsg = 'All Arguments = ' + args
-                await client.send_message(message.author, pmsg)
     #------------------
     # TIME COMMANDS
     #------------------
