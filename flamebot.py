@@ -40,7 +40,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
-        msg = '__***FLAME***___\nVersion v133 \nRunning Python 3.6.8\nHosted on Heroku'
+        msg = '__***FLAME***___\nVersion v134 \nRunning Python 3.6.8\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     
     
@@ -141,7 +141,7 @@ async def on_message(message):
     # ADMIN COMMANDS
     #------------------
     if message.content.startswith('&warn'):
-        if message.author.roles.has("FBMod"):
+        if message.author.roles("FBMod"):
             args = message.content.split(" ")
             user = args[1]
             reason = args[2]
