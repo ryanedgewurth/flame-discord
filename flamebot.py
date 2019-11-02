@@ -24,7 +24,7 @@ async def on_message(message):
     # Help Command
     if message.content.startswith('&help'):
         msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-        pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [min num] [max num]`` - Randomly generates number between 2 values\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency (ALPHA! ONLY RESPONDS WITH PONG!)\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&help`` - Show this Command List'
+        pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency (ALPHA! ONLY RESPONDS WITH PONG!)\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&help`` - Show this Command List'
         await client.send_message(message.channel, msg)
         await client.send_message(message.author, pmsg)
     # Ping Command
@@ -49,12 +49,10 @@ async def on_message(message):
     # FUN COMMANDS
     #------------------
     # RND Command
-    if message.content.startswith('&rng'):
+    if message.content.startswith('&rnd'):
         args = message.content.split(" ")
-        
-        await client.send_message(message.channel, random.randint(int(args[1]), int(args[2]))    
-        
-        
+        msg = random.randint(int(args[1]), int(args[2]))
+        await client.send_message(message.channel, msg)
     # 8-Ball Command Command
     if message.content.startswith('&8ball'):
         possible_responses = [
