@@ -174,7 +174,7 @@ async def on_message(message):
         args = message.content.split(" ")
         msg = random.randint(int(args[1]), int(args[2]))
         await client.send_message(message.channel, msg)
-    # 8-Ball Command Command
+    # 8-Ball Command Command x
     if message.content.startswith('&8ball'):
         print("[FLAME] 8Ball Command Sent")
         possible_responses = [
