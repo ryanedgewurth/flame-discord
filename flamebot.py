@@ -45,7 +45,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg2)
         pingtime = message.createdTimestamp
         print(pingtime)
-        msg = 'Pong! The latency is ' + 
+        msg = 'Pong! The latency is '
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
