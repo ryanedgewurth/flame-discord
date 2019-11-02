@@ -6,6 +6,7 @@ import sys
 import string
 import time
 from time import sleep
+import datetime
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
@@ -39,8 +40,10 @@ async def on_message(message):
         
     # Ping Command
     if message.content.startswith('&ping'):
+        timestampbef = datetime.datetime.now().timestamp()
         print("[FLAME] Ping Command Sent by ", message.author)
-        msg = 'Pong!'
+        latency = timestampbef - message.createdTimestamp
+        msg = 'Pong! The latency is ' + latency + 'ms'
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
