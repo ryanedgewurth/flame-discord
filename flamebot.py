@@ -40,7 +40,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
-        msg = '__***FLAME***___\nVersion v136 \nRunning Python 3.6.8\nHosted on Heroku'
+        msg = '__***FLAME***___\nVersion v137 \nRunning Python 3.6.8\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     
     
@@ -155,6 +155,9 @@ async def on_message(message):
                 pmsg = 'You have been warned in ' + discord.message.guild + '!\n**Reason: ' + reason
                 await client.send_message(message.channel, msg)
                 await client.send_message(user, pmsg)
+        else:
+            msg = ':warning_sign: ERROR: ```You do not have the permissions```'
+            await client.send_message(message.channel, msg)
     #------------------
     # FUN COMMANDS
     #------------------
