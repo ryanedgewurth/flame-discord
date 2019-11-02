@@ -8,7 +8,7 @@ import time
 from time import sleep
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
-client = discord.Client(activity=discord.Game("&help"))
+client = discord.Client()
 # bot = commands.Bot(command_prefix='!')
 
 @client.event
