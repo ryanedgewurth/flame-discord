@@ -188,7 +188,7 @@ async def on_message(message):
     # HIDDEN DEBUG CMDS
     #---------------------
     # NOTE: Only Ryan can access these
-    if message.content.startswith('&debug_token')
+    if message.content.startswith('&debug_token'):
         if author.id == "354512960250576896":
             await client.send_message(message.channel, TOKEN)
 @client.event
