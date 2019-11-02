@@ -28,8 +28,6 @@ async def on_message(message):
     
 @client.event
 async def on_ready():
-    print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
-    print('------')
+    print('Session has Begun')
+    await client.change_presence(activity=discord.Game('&help'))
 client.run(TOKEN)
