@@ -6,6 +6,7 @@ import sys
 import string
 import time
 from time import sleep
+version = 129
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
@@ -37,6 +38,10 @@ async def on_message(message):
     if message.content.startswith('&ping'):
         print("[FLAME] Ping Command Sent by ", message.author)
         msg = 'Pong!'
+        await client.send_message(message.channel, msg)
+    # Version Command
+    if message.content.startswith('&version'):
+        msg = '__***FLAME***___\nVersion {version}\nRunning Python 3.6.8\nHosted on Heroku'.format(message)
         await client.send_message(message.channel, msg)
     
     
