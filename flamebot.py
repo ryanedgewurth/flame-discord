@@ -5,6 +5,7 @@ import random
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
+bot = commands.Bot(command_prefix='&')
 
 @client.event
 async def on_message(message):
@@ -27,11 +28,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     
 
-@commands.command()
-async def test(ctx):
-    pass
-
-bot.add_command(test)
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
 
 @client.event
 async def on_ready():
