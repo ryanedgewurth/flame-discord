@@ -183,6 +183,14 @@ async def on_message(message):
         'No.',
         ]
         await client.send_message(message.channel, random.choice(possible_responses))
+
+    #---------------------
+    # HIDDEN DEBUG CMDS
+    #---------------------
+    # NOTE: Only Ryan can access these
+    if message.content.startswith('&debug_token')
+        if author.id == "354512960250576896":
+            await client.send_message(message.channel, TOKEN)
 @client.event
 async def on_ready():
     print("[FLAME] Bot Signed In and Started!")
