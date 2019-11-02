@@ -89,7 +89,7 @@ async def on_message(message):
             times = times * 60
             # Secs = Mins * 60
             times = times * 60
-        times = int(timea)
+        times = int(times)
         while times >= 0:
             if times == 7200:
                 msg = '2 Hours Left'
