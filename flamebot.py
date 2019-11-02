@@ -51,14 +51,7 @@ async def on_message(message):
     # RND Command
     if message.content.startswith('&rnd'):
         args = message.content.split(" ")
-        if args[1] == "":
-            msg = ':warning: Lowest Possible Number Value ``min`` cannot be empty!'
-            
-        else:
-            if args[2] == "":
-                msg = ':warning: Highest Possible Number Value ``max`` cannot be empty!'
-            else:
-                msg = random.randint(int(args[1]), int(args[2]))
+        msg = random.randint(int(args[1]), int(args[2]))
         
         await client.send_message(message.channel, msg)    
         
