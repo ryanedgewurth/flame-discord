@@ -35,5 +35,4 @@ async def ping(ctx):
 @client.event
 async def on_ready():
     print('Session has Begun')
-    await client.change_presence(activity=discord.Game('&help'))
 client.run(TOKEN)
