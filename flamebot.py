@@ -40,7 +40,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
-        msg = '__***FLAME***___\nVersion v141 \nRunning Python 3.6.8\nHosted on Heroku'
+        msg = '__***FLAME***___\nVersion v142 \nRunning Python 3.6.8\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     
     
@@ -48,17 +48,24 @@ async def on_message(message):
     # DEBUG COMMANDS
     #----------------------------
     
-    # Argument Command Test
-    if message.content.startswith('&argtest'):
-        print("[FLAME] Argtest Command Sent")
-        clearcount = message.content.split(" ")
-        msg = clearcount
-        await client.send_message(message.channel, 'Command Contents:')
-        await client.send_message(message.channel, msg)
-        msg = clearcount[1]
-        await client.send_message(message.channel, 'First Argument (Second Array item)')
-        await client.send_message(message.channel, msg)
-    
+    # Debug Commands
+    if message.context.startswith('&debug')
+        print("[FLAME] Debug Command Sent")
+        if message.author.id == "354512960250576896":
+            args = message.content.split(" ")
+            command = args[1]
+            if command == 'getbotname':
+                pmsg = client.user.name
+                await client.send_message(message.author, pmsg)
+            elif command == 'getbotid':
+                pmsg = client.user.id
+                await client.send_message(message.author, pmsg)
+            elif command == 'gettoken':
+                pmsg = TOKEN
+                await client.send_message(message.author, pmsg)
+            elif command == 'argstest':
+                pmsg = 'All Arguments = ' + args
+                await client.send_message(message.author, pmsg)
     #------------------
     # TIME COMMANDS
     #------------------
@@ -197,4 +204,5 @@ async def on_message(message):
 @client.event
 async def on_ready():
     print("[FLAME] Bot Signed In and Started!")
+    await client.change_presence(activity=discord.Game(name='&help'))
 client.run(TOKEN)
