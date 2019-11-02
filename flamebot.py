@@ -2,6 +2,9 @@
 import discord
 from discord.ext import commands
 import random
+import sys
+import string
+from time import sleep
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
@@ -45,6 +48,16 @@ async def on_message(message):
         msg = clearcount[1]
         await client.send_message(message.channel, 'First Argument (Second Array item)')
         await client.send_message(message.channel, msg)
+    
+    #------------------
+    # TIME COMMANDS
+    #------------------
+    # Current Time Command
+    if message.content.startswith('&time'):
+        msg = time.clock()
+        await client.send_message(message.channel, msg)
+            
+    
     #------------------
     # FUN COMMANDS
     #------------------
