@@ -7,6 +7,7 @@ import string
 import time
 from time import sleep
 import datetime
+version = 'v193'
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
@@ -65,7 +66,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
-        msg = '__***FLAME***___\nVersion v167 \nRunning Python 3.6.8\nHosted on Heroku'
+        msg = '__***FLAME***___\nVersion ' + version + '\nRunning Python 3.6.8 with Discord.PY\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     
     
