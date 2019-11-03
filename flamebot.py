@@ -214,7 +214,7 @@ async def on_message(message):
             await client.send_message(discord.Object(id='609681917331243048'), msg)
     if message.content.startswith('&debug_getuserid'):
         args   = message.content.split(" ")
-        userId = UserToFind[1]
+        userId = args[1]
         username = self.get_user_info(userId)
         msg = 'An name is ' + username
         await client.send_message(message.channel, msg)
