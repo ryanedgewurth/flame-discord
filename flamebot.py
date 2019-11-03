@@ -96,7 +96,7 @@ async def on_message(message):
         if message.author.server_permissions.kick_members:
             args = message.content.split(" ")
             user = args[1]
-            reason = args[2]
+            reason = args[<2]
             if reason == None:
                 reason = 'No Reason Specified'
             if user == None:
