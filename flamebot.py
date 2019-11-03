@@ -70,6 +70,7 @@ async def on_message(message):
         times = args[1]
         format = args[2]
         msg = 'Started a Timer of ' + times + format
+        time.sleep(0.25)
         await client.send_message(message.channel, msg)
         if format == 'm':
             # Secs = Mins * 60
