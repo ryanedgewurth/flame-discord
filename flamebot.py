@@ -95,7 +95,7 @@ async def on_message(message):
     if message.content.startswith('&warn'):
         if message.author.server_permissions.kick_members:
             args = message.content.split(" ")
-            user = args[1]
+            user = args[1].format
             reason = args[2]
             del args[1]
             del args[0]
@@ -108,7 +108,7 @@ async def on_message(message):
                 msg = 'Warned ' + user + ' for ' + str(args)
                 pmsg = 'You have been warned!\n**Reason: ' + str(args)
                 await client.send_message(message.channel, msg)
-                await client.send_message(User(user), pmsg)
+                await client.send_message(user.format(user), pmsg)
         else:
             msg = ':warning_sign: ERROR: ``You do not have the permissions``'
             await client.send_message(message.channel, msg)
