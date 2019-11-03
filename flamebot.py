@@ -48,7 +48,7 @@ async def on_message(message):
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
+            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:hammer: Moderation :hammer:***__\n``&clear [value]`` - Clears an specified amount of messages.\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&perms`` - Get Permissions for commands which require permissions.\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
@@ -112,16 +112,24 @@ async def on_message(message):
     # Clear
     if message.content.startswith('&clear'):
         if message.author.server_permissions.manage_messages:
-            msgs = []
-            args = message.content.split(" ")
-            amount = args[1]
-            async for message in client.logs_from(message.channel, limit=int(amount) + 1):
-                msgs.append(message)
-            await client.delete_messages(msgs)
-            await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
+           try:
+                msgs = []
+                args = message.content.split(" ")
+                amount = args[1]
+                async for message in client.logs_from(message.channel, limit=int(amount) + 1):
+                    msgs.append(message)
+                    await client.delete_messages(msgs)
+                    await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
+            except IndexError:            
+                msg = ':warning: ERROR: ``Value \'amount\' needs to be filled!``'
+                await client.send_message(message.channel, msg)
+            except:
+                msg = ':warning: ERROR: ``Unknown Error``'
+                await client.send_message(message.channel, msg) 
         else:
             msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
             await client.send_message(message.channel, msg)
+        
     # Kick
     if message.content.startswith('&kick'):
         if message.author.server_permissions.kick_members:
