@@ -216,7 +216,7 @@ async def on_message(message):
         args   = message.content.split(" ")
         userId = args[1]
         username = client.get_user_info(userId)
-        msg = 'An name is ' + username
+        msg = 'An name is ' + str(username)
         await client.send_message(message.channel, msg)
 @client.event
 async def countdown_command(times, format):
