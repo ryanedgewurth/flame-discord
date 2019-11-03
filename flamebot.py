@@ -158,7 +158,7 @@ async def on_message(message):
     # UTILITIES
     #------------------
     # CALC Command
-    if message.content.startswith('&calc')
+    if message.content.startswith('&calc'):
         args   = message.content.split(" ")
         no1    = int(args[1])
         action = args[2]
