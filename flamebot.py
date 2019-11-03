@@ -102,7 +102,7 @@ async def on_message(message):
             await client.send_message(message.channel, msg)
             await client.send_message(discord.User(user), pmsg)
         else:
-            msg = ':warning: ERROR: ``You do not have the permissions``'
+            msg = ':warning: ERROR: ``You do not have the permission "Kick Members"``'
             await client.send_message(message.channel, msg)
         #------------------ 
     if message.content.startswith('&clear'):
@@ -115,7 +115,7 @@ async def on_message(message):
             await client.delete_messages(msgs)
             await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
         else:
-            msg = ':warning_sign: ERROR: ``You do not have the permissions``'
+            msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
             await client.send_message(message.channel, msg)
     #------------------
     # UTILITIES
