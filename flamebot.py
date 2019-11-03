@@ -101,7 +101,6 @@ async def on_message(message):
             msg = 'Warned ' + user + ' for ' + str(reason)
             pmsg = 'You have been warned!\n**Reason: ' + reason
             await client.send_message(message.channel, msg)
-            await client.send_message(discord., pmsg)
         else:
             msg = ':warning: ERROR: ``You do not have the permission "Kick Members"``'
             await client.send_message(message.channel, msg)
