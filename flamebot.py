@@ -126,7 +126,7 @@ async def on_message(message):
             username = client.get_user_info(userId)
             await client.kick(username)
             msg = 'Kicked ' + args[1]
-            await client.send_message(message.channel, msg)
+            await client.send_message(userId, msg)
         else:
             msg = ':warning: ERROR: ``You do not have the permission "Kick Members"``'
             await client.send_message(message.channel, msg)
