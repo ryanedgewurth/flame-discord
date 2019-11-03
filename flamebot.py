@@ -97,11 +97,10 @@ async def on_message(message):
             args = message.content.split(" ")
             user = args[1]
             reason = args[2]
-            else:
-                msg = 'Warned ' + user + ' for ' + str(reason)
-                pmsg = 'You have been warned!\n**Reason: ' + reason
-                await client.send_message(message.channel, msg)
-                await client.send_message(discord.User(user), pmsg)
+            msg = 'Warned ' + user + ' for ' + str(reason)
+            pmsg = 'You have been warned!\n**Reason: ' + reason
+            await client.send_message(message.channel, msg)
+            await client.send_message(discord.User(user), pmsg)
         else:
             msg = ':warning: ERROR: ``You do not have the permissions``'
             await client.send_message(message.channel, msg)
