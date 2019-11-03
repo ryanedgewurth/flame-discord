@@ -27,13 +27,28 @@ async def on_message(message):
         print("[FLAME] About Command Sent")
         msg = 'Hello. My bot name is Flame and I am created by ``Edgewurth#1827``. My support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
         await client.send_message(message.channel, msg)
-    # Help Command
+    # Help Commands
+    if message.content.startswith('&nodm-help'):
+        print("[FLAME] Help Command Sent")
+        try:
+            args = message.content.split(" ")
+            msg = ':incoming_envelope: I have sent an message with the commands to help you.'
+            pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
+            await client.send_message(message.channel, pmsg)
+        except:
+            msg = ':warning: ERROR: ``Unknown Error``'
+            await client.send_message(message.channel, msg)
     if message.content.startswith('&help'):
         print("[FLAME] Help Command Sent")
-        args = message.content.split(" ")
-        msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-        pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
-        await client.send_message(message.channel, pmsg)
+        try:
+            args = message.content.split(" ")
+            msg = ':incoming_envelope: I have sent an message with the commands to help you.'
+            pmsg = 'List of **Flame** commands\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
+            await client.send_message(message.author, pmsg)
+            await client.send_message(message.channel, msg)
+        except:
+            msg = ':warning: ERROR: ``Unable to DM you the command list. Try using \'&nodm-help\'``'
+            await client.send_message(message.channel, msg)
             
             
         
