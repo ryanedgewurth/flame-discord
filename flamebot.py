@@ -121,9 +121,10 @@ async def on_message(message):
     # Kick
     if message.content.startswith('&kick'):
         if message.author.server_permissions.kick_members:
-            args = message.content.split(" ")
-            username = args[1]
-            await client.kick(discord.User(username).id)
+            args   = message.content.split(" ")
+            userId = args[1]
+            username = client.get_user_info(userI
+            await client.kick(username)
             msg = 'Kicked ' + args[1]
             await client.send_message(message.channel, msg)
         else:
