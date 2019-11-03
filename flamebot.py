@@ -60,7 +60,7 @@ async def on_message(message):
     # Current Time Command
     if message.content.startswith('&clock'):
         print("[FLAME] Clock Command Sent")
-        msg = time.asctime()
+        msg = datetime.datetime.now()
         await client.send_message(message.channel, msg)
             
     # Countdown Command
