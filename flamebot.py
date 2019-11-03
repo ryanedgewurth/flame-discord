@@ -151,8 +151,31 @@ async def on_message(message):
                 await client.send_message(message.channel, msg)
                 await client.send_message(user, pmsg)
         else:
-            msg = ':warning_sign: ERROR: ```You do not have the permissions```'
+            msg = ':warning_sign: ERROR: ``You do not have the permissions``'
             await client.send_message(message.channel, msg)
+    
+    #------------------
+    # UTILITIES
+    #------------------
+    # CALC Command
+    if message.content.startswith('&calc')
+        args   = message.content.split(" ")
+        no1    = int(args[1])
+        action = args[2]
+        no2    = int(args[3])
+        if action == '*':
+            awns = no1 * no2
+        elif action == '/':
+            awns = no1 / no2
+        elif action == '+':
+            awns = no1 + no2
+        elif action == '-':
+            awns = no1 - no2
+        else:
+            msg = ':warning_sign: ERROR: ``Value \'action\' needs to have an valid id from (* / + -)!``'
+            await client.send_message(message.channel, msg)
+        
+    
     #------------------
     # FUN COMMANDS
     #------------------
