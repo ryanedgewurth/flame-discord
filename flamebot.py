@@ -98,7 +98,7 @@ async def on_message(message):
             args = message.content.split(" ")
             username = args[1]
             reason = args[2]
-            msg = 'Warned ' + discord.User.name + ' for ' + str(reason)
+            msg = 'Warned ' + str(discord.User.name) + ' for ' + str(reason)
             pmsg = 'You have been warned!\n**Reason: ' + reason
             await client.send_message(message.channel, msg)
             await client.send_message(discord.User(username).dm_channel, pmsg)
