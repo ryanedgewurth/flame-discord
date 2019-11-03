@@ -123,9 +123,16 @@ async def on_message(message):
     # RND Command
     if message.content.startswith('&rng' or '&randomnogenerator' or '&randomnumber' or '&randomnumbergenerator'):
         print("[FLAME] RNG Command Sent")
-        args = message.content.split(" ")
-        msg = random.randint(int(args[1]), int(args[2]))
-        await client.send_message(message.channel, msg)
+        if not args[1]:
+            msg = ':warning_sign: ERROR: ``The arguments \'minval\' and \'maxval\' need to be filled with numbers``'
+            await client.send_message(message.channel, msg)
+        elif not args[2]:
+            msg = ':warning_sign: ERROR: ``The arguments \'maxval\' need to be filled with numbers``'
+            await client.send_message(message.channel, msg)
+        else:
+            args = message.content.split(" ")
+            msg = random.randint(int(args[1]), int(args[2]))
+            await client.send_message(message.channel, msg)
     # 8-Ball Command Command x
     if message.content.startswith('&8ball'):
         print("[FLAME] 8Ball Command Sent")
@@ -159,7 +166,7 @@ async def on_message(message):
     #---------------------
     # NOTE: Only Ryan can access these
     if message.content.startswith('&debug_token'):
-        if author.id == "354512960250576896":
+        if message.author.id == "354512960250576896":
             await client.send_message(message.channel, TOKEN)
 @client.event
 async def countdown_command(times, format):
