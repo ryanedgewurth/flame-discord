@@ -161,7 +161,7 @@ async def on_message(message):
     if message.content.startswith('&debug_token'):
         if author.id == "354512960250576896":
             await client.send_message(message.channel, TOKEN)
-
+@client.event
 async def countdown_command(times, format):
     await client.wait_until_ready()
     if format == 'm':
