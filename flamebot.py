@@ -112,7 +112,7 @@ async def on_message(message):
     # Clear
     if message.content.startswith('&clear'):
         if message.author.server_permissions.manage_messages:
-           try:
+            try:
                 msgs = []
                 args = message.content.split(" ")
                 amount = args[1]
