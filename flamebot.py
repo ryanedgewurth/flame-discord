@@ -248,5 +248,9 @@ async def countdown_command(times, format):
     await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
+    try:
+        client.change_presence(game=discord.Game(name="&help"))
+    except:
+        print("[FLAME] Cannot Set Playing Tag")
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
