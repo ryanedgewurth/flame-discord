@@ -101,7 +101,7 @@ async def on_message(message):
             msg = 'Warned ' + users + ' for ' + str(reason)
             pmsg = 'You have been warned!\n**Reason: ' + reason
             await client.send_message(message.channel, msg)
-            await client.send_message(User.dm_channel(users), pmsg)
+            await client.send_message(User(users).dm_channel, pmsg)
         else:
             msg = ':warning: ERROR: ``You do not have the permission "Kick Members"``'
             await client.send_message(message.channel, msg)
@@ -123,7 +123,7 @@ async def on_message(message):
         if message.author.server_permissions.kick_members:
             args = message.content.split(" ")
             users = args[1]
-            await client.kick(User.id(users))
+            await client.kick(User(users).id)
             msg = 'Kicked ' + users
             await client.send_message(message.channel, msg)
         else:
