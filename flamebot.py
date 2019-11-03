@@ -109,7 +109,7 @@ async def on_message(message):
         if message.author.server_permissions.manage_messages:
             args = message.content.split(" ")
             amount = args[1]
-            async for message in client.logs_from(channel, limit=int(amount)):
+            async for message in client.logs_from(message.channel, limit=int(amount)):
                 messages.append(message)
             await client.delete_messages(messages)
             await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
