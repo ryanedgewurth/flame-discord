@@ -110,7 +110,7 @@ async def on_message(message):
             msg = ':warning: ERROR: ``You do not have the permission "Kick Members"``'
             await client.send_message(message.channel, msg)
     # Clear
-    if message.content.startswith('&clear'):
+    if message.content.startswith('&clearx'):
         if message.author.server_permissions.manage_messages:
             msgs = []
             args = message.content.split(" ")
@@ -123,7 +123,7 @@ async def on_message(message):
             msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
             await client.send_message(message.channel, msg)
     #EMERGENCY        
-    if message.content.startswith('&clearx'):
+    if message.content.startswith('&clear'):
         if message.author.server_permissions.manage_messages:
             try:
                 msgs = []
