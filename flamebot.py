@@ -215,7 +215,7 @@ async def on_message(message):
     if message.content.startswith('&debug_getuserid'):
         args   = message.content.split(" ")
         userId = args[1]
-        username = self.get_user_info(userId)
+        username = client.get_user_info(userId)
         msg = 'An name is ' + username
         await client.send_message(message.channel, msg)
 @client.event
