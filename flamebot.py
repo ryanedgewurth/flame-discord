@@ -146,7 +146,7 @@ async def on_message(message):
             msg = ':warning: ERROR: ``Values \'minval\' and \'maxval\' needs to be filled!``\nIf you think this is a bug, contact the developers.'
             await client.send_message(message.channel, msg)
         except:
-            msg = ':warning: ERROR: ``Unknown Error``\nIf you think this is a bug, contact the developers.'
+            msg = ':warning: ERROR: ``Unknown Error``'
             await client.send_message(message.channel, msg)
     # 8-Ball Command Command x
     if message.content.startswith('&8ball'):
