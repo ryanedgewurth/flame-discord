@@ -96,15 +96,17 @@ async def on_message(message):
         if message.author.server_permissions.kick_members:
             args = message.content.split(" ")
             user = args[1]
-            reason = args[<2]
+            reason = args[2]
+            del args[1]
+            del args[0]
             if reason == None:
                 reason = 'No Reason Specified'
             if user == None:
                 msg = 'Please specifiy a User'
                 await client.send_message(message.channel, msg)
             else:
-                msg = 'Warned ' + user + ' for ' + reason
-                pmsg = 'You have been warned!\n**Reason: ' + reason
+                msg = 'Warned ' + user + ' for ' + args[]
+                pmsg = 'You have been warned!\n**Reason: ' + args[]
                 await client.send_message(message.channel, msg)
                 await client.send_message(user, pmsg)
         else:
