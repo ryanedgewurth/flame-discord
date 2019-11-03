@@ -97,20 +97,26 @@ async def on_message(message):
             args = message.content.split(" ")
             user = args[1]
             reason = args[2]
-            if reason == None:
-                reason = 'No Reason Specified'
-            if user == None:
-                msg = 'Please specifiy a User'
-                await client.send_message(message.channel, msg)
             else:
                 msg = 'Warned ' + user + ' for ' + str(reason)
                 pmsg = 'You have been warned!\n**Reason: ' + reason
                 await client.send_message(message.channel, msg)
                 await client.send_message(discord.User(user), pmsg)
         else:
+            msg = ':warning: ERROR: ``You do not have the permissions``'
+            await client.send_message(message.channel, msg)
+        #------------------ 
+    if message.content.startswith('&clear'):
+        if message.author.server_permissions.manage_messages:
+            args = message.content.split(" ")
+            amount = args[1]
+            async for message in client.logs_from(channel, limit=int(amount)):
+                messages.append(message)
+            await client.delete_messages(messages)
+            await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
+        else:
             msg = ':warning_sign: ERROR: ``You do not have the permissions``'
             await client.send_message(message.channel, msg)
-    
     #------------------
     # UTILITIES
     #------------------
