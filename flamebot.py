@@ -105,8 +105,8 @@ async def on_message(message):
                 msg = 'Please specifiy a User'
                 await client.send_message(message.channel, msg)
             else:
-                msg = 'Warned ' + user + ' for ' + args[]
-                pmsg = 'You have been warned!\n**Reason: ' + args[]
+                msg = 'Warned ' + user + ' for ' + str(args)
+                pmsg = 'You have been warned!\n**Reason: ' + str(args)
                 await client.send_message(message.channel, msg)
                 await client.send_message(user, pmsg)
         else:
