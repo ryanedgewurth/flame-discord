@@ -66,8 +66,11 @@ async def on_message(message):
     # Countdown Command
     if message.content.startswith('&countdown'):
         print("[FLAME] Countdown Command")
+        args = message.content.split(" ")
+        times = args[1]
+        format = args[2]
         
-        client.loop.create_task(countdown_command())
+        client.loop.create_task(countdown_command(times, format))
         
     #------------------
     # ADMIN COMMANDS
@@ -158,11 +161,8 @@ async def on_message(message):
         if author.id == "354512960250576896":
             await client.send_message(message.channel, TOKEN)
 
-async def countdown_command():
+async def countdown_command(times, format):
     await client.wait_until_ready()
-    args = message.content.split(" ")
-    times = args[1]
-    format = args[2]
     msg = 'Started a Timer of ' + times + format
     await client.send_message(message.channel, msg)
     if format == 'm':
