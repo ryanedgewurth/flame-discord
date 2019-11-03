@@ -118,7 +118,7 @@ async def on_message(message):
                 amount = args[1]
                 async for message in client.logs_from(message.channel, limit=int(amount) + 1):
                     msgs.append(message)
-                await client.delete_messages(msgs)
+                    await client.delete_messages(msgs)
                 await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
             except IndexError:            
                 msg = ':warning: ERROR: ``Value \'amount\' needs to be filled!``'
