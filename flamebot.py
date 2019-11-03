@@ -136,7 +136,7 @@ async def on_message(message):
     #------------------
     # FUN COMMANDS
     #------------------
-    # RND Command
+    # RNG Command
     if message.content.startswith('&rng' or '&randomnogenerator' or '&randomnumber' or '&randomnumbergenerator'):
         print("[FLAME] RNG Command Sent")
         args = message.content.split(" ")
@@ -184,6 +184,16 @@ async def on_message(message):
     if message.content.startswith('&debug_token'):
         if message.author.id == "354512960250576896":
             await client.send_message(message.channel, TOKEN)
+    if message.content.startswith('&debug_announce'):
+        if message.author.id == "354512960250576896":
+            args = message.content.split(" ")
+            msg  = '@everyone ' + args[1] 
+            await client.send_message(discord.Object(id='609681917331243048'), msg)
+    if message.content.startswith('&debug_update_changelog'):
+        if message.author.id == "354512960250576896":
+            args = message.content.split(" ")
+            msg  = args[1] 
+            await client.send_message(discord.Object(id='609681917331243048'), msg)
 @client.event
 async def countdown_command(times, format):
     await client.wait_until_ready()
@@ -251,6 +261,5 @@ async def countdown_command(times, format):
 async def on_ready():
 
     client.change_presence(game=discord.Game(name="&help"))
-
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
