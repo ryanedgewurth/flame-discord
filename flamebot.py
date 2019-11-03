@@ -65,73 +65,13 @@ async def on_message(message):
             
     # Countdown Command
     if message.content.startswith('&countdown'):
-        print("[FLAME] Countdown Command Sent")
+        print("[FLAME] Countdown Command")
         args = message.content.split(" ")
         times = args[1]
         format = args[2]
         msg = 'Started a Timer of ' + times + format
-        time.sleep(0.25)
         await client.send_message(message.channel, msg)
-        if format == 'm':
-            # Secs = Mins * 60
-            times = times * 60
-        elif format == 'h':
-            # Mins = H * 60
-            times = times * 60
-            # Secs = Mins * 60
-            times = times * 60
-        elif format == 'd':
-            # Day = H * 24
-            times = times * 24
-            # Mins = H * 60
-            times = times * 60
-            # Secs = Mins * 60
-            times = times * 60
-        elif format == 'mo':
-            # Month = D * 28
-            times = times * 28
-            # Day = H * 24
-            times = times * 24
-            # Mins = H * 60
-            times = times * 60
-            # Secs = Mins * 60
-            times = times * 60
-        times = int(times)
-        while times >= 0:
-            if times == 7200:
-                msg = '2 Hours Left'
-                await client.send_message(message.channel, msg)
-            elif times == 3600:
-                msg = '1 Hour Left'
-                await client.send_message(message.channel, msg)
-            elif times == 2700:
-                msg = '45 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 1800:
-                msg = '30 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 900:
-                msg = '15 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 600:
-                msg = '10 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 300:
-                msg = '5 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 120:
-                msg = '2 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 60:
-                msg = '1 Minute Left'
-                await client.send_message(message.channel, msg)
-            elif times == 30:
-                msg = '30 Seconds Left'
-                await client.send_message(message.channel, msg)
-            sleep(1)
-            times = times - 1
-        msg = 'TIME\'S UP {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
+        client.loop.create_task(countdown_command())
         
     #------------------
     # ADMIN COMMANDS
@@ -221,6 +161,69 @@ async def on_message(message):
     if message.content.startswith('&debug_token'):
         if author.id == "354512960250576896":
             await client.send_message(message.channel, TOKEN)
+
+async def countdown_command():
+    await client.wait_until_ready()
+    if format == 'm':
+            # Secs = Mins * 60
+            times = times * 60
+        elif format == 'h':
+            # Mins = H * 60
+            times = times * 60
+            # Secs = Mins * 60
+            times = times * 60
+        elif format == 'd':
+            # Day = H * 24
+            times = times * 24
+            # Mins = H * 60
+            times = times * 60
+            # Secs = Mins * 60
+            times = times * 60
+        elif format == 'mo':
+            # Month = D * 28
+            times = times * 28
+            # Day = H * 24
+            times = times * 24
+            # Mins = H * 60
+            times = times * 60
+            # Secs = Mins * 60
+            times = times * 60
+        times = int(times)
+        while times >= 0:
+            if times == 7200:
+                msg = '2 Hours Left'
+                await client.send_message(message.channel, msg)
+            elif times == 3600:
+                msg = '1 Hour Left'
+                await client.send_message(message.channel, msg)
+            elif times == 2700:
+                msg = '45 Minutes Left'
+                await client.send_message(message.channel, msg)
+            elif times == 1800:
+                msg = '30 Minutes Left'
+                await client.send_message(message.channel, msg)
+            elif times == 900:
+                msg = '15 Minutes Left'
+                await client.send_message(message.channel, msg)
+            elif times == 600:
+                msg = '10 Minutes Left'
+                await client.send_message(message.channel, msg)
+            elif times == 300:
+                msg = '5 Minutes Left'
+                await client.send_message(message.channel, msg)
+            elif times == 120:
+                msg = '2 Minutes Left'
+                await client.send_message(message.channel, msg)
+            elif times == 60:
+                msg = '1 Minute Left'
+                await client.send_message(message.channel, msg)
+            elif times == 30:
+                msg = '30 Seconds Left'
+                await client.send_message(message.channel, msg)
+            sleep(1)
+            times = times - 1
+        msg = '{0.author.mention}\'s Alarm is Rinning!'.format(message)
+        await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
     print("[FLAME] Bot Signed In and Started!")
