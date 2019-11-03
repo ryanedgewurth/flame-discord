@@ -7,7 +7,7 @@ import string
 import time
 from time import sleep
 import datetime
-version = 'v193'
+version = 'v203'
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
@@ -97,8 +97,6 @@ async def on_message(message):
             args = message.content.split(" ")
             user = args[1].format
             reason = args[2]
-            del args[1]
-            del args[0]
             if reason == None:
                 reason = 'No Reason Specified'
             if user == None:
@@ -106,9 +104,9 @@ async def on_message(message):
                 await client.send_message(message.channel, msg)
             else:
                 msg = 'Warned ' + user + ' for ' + str(args)
-                pmsg = 'You have been warned!\n**Reason: ' + str(args)
+                pmsg = 'You have been warned!\n**Reason: ' + reason
                 await client.send_message(message.channel, msg)
-                await client.send_message(user.format(user), pmsg)
+                await client.send_message(member(user), pmsg)
         else:
             msg = ':warning_sign: ERROR: ``You do not have the permissions``'
             await client.send_message(message.channel, msg)
