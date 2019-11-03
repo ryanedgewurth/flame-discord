@@ -165,30 +165,30 @@ async def on_message(message):
 async def countdown_command():
     await client.wait_until_ready()
     if format == 'm':
-            # Secs = Mins * 60
-            times = times * 60
-        elif format == 'h':
-            # Mins = H * 60
-            times = times * 60
-            # Secs = Mins * 60
-            times = times * 60
-        elif format == 'd':
-            # Day = H * 24
-            times = times * 24
-            # Mins = H * 60
-            times = times * 60
-            # Secs = Mins * 60
-            times = times * 60
-        elif format == 'mo':
-            # Month = D * 28
-            times = times * 28
-            # Day = H * 24
-            times = times * 24
-            # Mins = H * 60
-            times = times * 60
-            # Secs = Mins * 60
-            times = times * 60
-        times = int(times)
+        # Secs = Mins * 60
+        times = times * 60
+    elif format == 'h':
+        # Mins = H * 60
+        times = times * 60
+        # Secs = Mins * 60
+        times = times * 60
+    elif format == 'd':
+        # Day = H * 24
+        times = times * 24
+        # Mins = H * 60
+        times = times * 60
+        # Secs = Mins * 60
+        times = times * 60
+    elif format == 'mo':
+        # Month = D * 28
+        times = times * 28
+        # Day = H * 24
+        times = times * 24
+        # Mins = H * 60
+        times = times * 60
+        # Secs = Mins * 60
+        times = times * 60
+    times = int(times)
         while times >= 0:
             if times == 7200:
                 msg = '2 Hours Left'
@@ -222,8 +222,8 @@ async def countdown_command():
                 await client.send_message(message.channel, msg)
             sleep(1)
             times = times - 1
-        msg = '{0.author.mention}\'s Alarm is Rinning!'.format(message)
-        await client.send_message(message.channel, msg)
+    msg = '{0.author.mention}\'s Alarm is Rinning!'.format(message)
+    await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
     print("[FLAME] Bot Signed In and Started!")
