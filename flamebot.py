@@ -112,6 +112,19 @@ async def on_message(message):
     # Clear
     if message.content.startswith('&clear'):
         if message.author.server_permissions.manage_messages:
+            msgs = []
+            args = message.content.split(" ")
+            amount = args[1]
+            async for message in client.logs_from(message.channel, limit=int(amount) + 1):
+                msgs.append(message)
+            await client.delete_messages(msgs)
+            await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
+        else:
+            msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
+            await client.send_message(message.channel, msg)
+    #EMERGENCY        
+    if message.content.startswith('&clearx'):
+        if message.author.server_permissions.manage_messages:
             try:
                 msgs = []
                 args = message.content.split(" ")
@@ -129,7 +142,6 @@ async def on_message(message):
         else:
             msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
             await client.send_message(message.channel, msg)
-        
     # Kick
     if message.content.startswith('&kick'):
         if message.author.server_permissions.kick_members:
@@ -167,7 +179,7 @@ async def on_message(message):
     #------------------
     # FUN COMMANDS
     #------------------
-    # RNG Commandx
+    # RNG Command
     if message.content.startswith('&rng' or '&randomnogenerator' or '&randomnumber' or '&randomnumbergenerator'):
         print("[FLAME] RNG Command Sent")
         args = message.content.split(" ")
