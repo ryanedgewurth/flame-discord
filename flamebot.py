@@ -7,7 +7,7 @@ import string
 import time
 from time import sleep
 import datetime
-version = 'v203'
+version = 'v204'
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
@@ -103,7 +103,7 @@ async def on_message(message):
                 msg = 'Please specifiy a User'
                 await client.send_message(message.channel, msg)
             else:
-                msg = 'Warned ' + user + ' for ' + str(args)
+                msg = 'Warned ' + user + ' for ' + reason
                 pmsg = 'You have been warned!\n**Reason: ' + reason
                 await client.send_message(message.channel, msg)
                 await client.send_message(member(user), pmsg)
