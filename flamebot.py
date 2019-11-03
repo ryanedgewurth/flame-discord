@@ -143,7 +143,7 @@ async def on_message(message):
             msg = random.randint(int(args[1]), int(args[2]))
             await client.send_message(message.channel, msg)
         except IndexError:
-            msg = ':warning: ERROR: ``Values \'minval\' and \'maxval\' needs to be filled!``\nIf you think this is a bug, contact the developers.'
+            msg = ':warning: ERROR: ``Values \'minval\' and \'maxval\' needs to be filled!``'
             await client.send_message(message.channel, msg)
         except:
             msg = ':warning: ERROR: ``Unknown Error``'
