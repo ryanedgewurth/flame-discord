@@ -112,7 +112,7 @@ async def on_message(message):
             amount = args[1]
             async for message in client.logs_from(message.channel, limit=int(amount)):
                 msgs.append(message)
-            await client.delete_messages(messages)
+            await client.delete_messages(msgs)
             await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
         else:
             msg = ':warning_sign: ERROR: ``You do not have the permissions``'
