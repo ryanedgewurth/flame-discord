@@ -123,6 +123,7 @@ async def on_message(message):
     # RND Command
     if message.content.startswith('&rng' or '&randomnogenerator' or '&randomnumber' or '&randomnumbergenerator'):
         print("[FLAME] RNG Command Sent")
+        args = message.content.split(" ")
         if not args[1]:
             msg = ':warning_sign: ERROR: ``The arguments \'minval\' and \'maxval\' need to be filled with numbers``'
             await client.send_message(message.channel, msg)
@@ -130,7 +131,6 @@ async def on_message(message):
             msg = ':warning_sign: ERROR: ``The arguments \'maxval\' need to be filled with numbers``'
             await client.send_message(message.channel, msg)
         else:
-            args = message.content.split(" ")
             msg = random.randint(int(args[1]), int(args[2]))
             await client.send_message(message.channel, msg)
     # 8-Ball Command Command x
