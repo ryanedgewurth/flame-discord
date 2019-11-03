@@ -167,7 +167,7 @@ async def on_message(message):
     #------------------
     # FUN COMMANDS
     #------------------
-    # RNG Command
+    # RNG Commandx
     if message.content.startswith('&rng' or '&randomnogenerator' or '&randomnumber' or '&randomnumbergenerator'):
         print("[FLAME] RNG Command Sent")
         args = message.content.split(" ")
