@@ -69,7 +69,8 @@ async def on_message(message):
         args = message.content.split(" ")
         times = args[1]
         format = args[2]
-        
+        msg = 'Started a Timer of ' + times + format
+        await client.send_message(message.channel, msg)
         client.loop.create_task(countdown_command(times, format))
         
     #------------------
@@ -163,8 +164,6 @@ async def on_message(message):
 
 async def countdown_command(times, format):
     await client.wait_until_ready()
-    msg = 'Started a Timer of ' + times + format
-    await client.send_message(message.channel, msg)
     if format == 'm':
         # Secs = Mins * 60
         times = times * 60
