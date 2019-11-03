@@ -189,39 +189,39 @@ async def countdown_command():
         # Secs = Mins * 60
         times = times * 60
     times = int(times)
-        while times >= 0:
-            if times == 7200:
-                msg = '2 Hours Left'
-                await client.send_message(message.channel, msg)
-            elif times == 3600:
-                msg = '1 Hour Left'
-                await client.send_message(message.channel, msg)
-            elif times == 2700:
-                msg = '45 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 1800:
-                msg = '30 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 900:
-                msg = '15 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 600:
-                msg = '10 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 300:
-                msg = '5 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 120:
-                msg = '2 Minutes Left'
-                await client.send_message(message.channel, msg)
-            elif times == 60:
-                msg = '1 Minute Left'
-                await client.send_message(message.channel, msg)
-            elif times == 30:
-                msg = '30 Seconds Left'
-                await client.send_message(message.channel, msg)
-            sleep(1)
-            times = times - 1
+    while times >= 0:
+        if times == 7200:
+            msg = '2 Hours Left'
+            await client.send_message(message.channel, msg)
+        elif times == 3600:
+            msg = '1 Hour Left'
+            await client.send_message(message.channel, msg)
+        elif times == 2700:
+             msg = '45 Minutes Left'
+            await client.send_message(message.channel, msg)
+        elif times == 1800:
+            msg = '30 Minutes Left'
+            await client.send_message(message.channel, msg)
+        elif times == 900:
+            msg = '15 Minutes Left'
+            await client.send_message(message.channel, msg)
+        elif times == 600:
+            msg = '10 Minutes Left'
+            await client.send_message(message.channel, msg)
+        elif times == 300:
+            msg = '5 Minutes Left'
+            await client.send_message(message.channel, msg)
+        elif times == 120:
+            msg = '2 Minutes Left'
+            await client.send_message(message.channel, msg)
+        elif times == 60:
+            msg = '1 Minute Left'
+            await client.send_message(message.channel, msg)
+        elif times == 30:
+            msg = '30 Seconds Left'
+            await client.send_message(message.channel, msg)
+        sleep(1)
+        times = times - 1
     msg = '{0.author.mention}\'s Alarm is Rinning!'.format(message)
     await client.send_message(message.channel, msg)
 @client.event
