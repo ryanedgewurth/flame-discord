@@ -92,6 +92,7 @@ async def on_message(message):
     #------------------
     # ADMIN COMMANDS
     #------------------ 
+    # Warn
     if message.content.startswith('&warn'):
         if message.author.server_permissions.kick_members:
             args = message.content.split(" ")
@@ -104,7 +105,7 @@ async def on_message(message):
         else:
             msg = ':warning: ERROR: ``You do not have the permission "Kick Members"``'
             await client.send_message(message.channel, msg)
-        #------------------ 
+    # Clear
     if message.content.startswith('&clear'):
         if message.author.server_permissions.manage_messages:
             msgs = []
@@ -116,6 +117,17 @@ async def on_message(message):
             await client.send_message(message.channel, 'Deleted ' + amount + ' messages')
         else:
             msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
+            await client.send_message(message.channel, msg)
+    # Kick
+    if message.content.startswith('&kick'):
+        if message.author.server_permissions.kick_members:
+            msg = 'Kicked ' + user + ' for ' + str(reason)
+            for user in message.mentions:
+                target = user.id
+            await client.kick(target)
+            await client.send_message(message.channel, msg)
+        else:
+            msg = ':warning: ERROR: ``You do not have the permission "Kick Members"``'
             await client.send_message(message.channel, msg)
     #------------------
     # UTILITIES
