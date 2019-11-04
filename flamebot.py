@@ -62,7 +62,7 @@ async def on_message(message):
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-            pmsg = 'This is the list of people who have helped with the development of **Flame** in history or to the present.\n__Lead Developer__\nEdgewurth\n__Developers__\niycchan\nnicochulo2001\nRedDog2904\__Tools Used__\nPython Language\nDiscord.PY\nHeroku\n__Special Thanks__\nCekko for setting up the discord support server\nAnd You for the Usage of this Bot!'
+            pmsg = 'This is the list of people who have helped with the development of **Flame** in history or to the present.\n__Lead Developer__\nEdgewurth\n__Developers__\niycchan\nnicochulo2001\nRedDog2904\n__Tools Used__\nPython Language\nDiscord.PY\nHeroku\n__Special Thanks__\nCekko for setting up the discord support server\nAnd You for the Usage of this Bot!'
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
