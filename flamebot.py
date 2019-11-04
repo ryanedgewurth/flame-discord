@@ -7,7 +7,7 @@ import string
 import time
 from time import sleep
 import datetime
-version = 'v204'
+version = '2xx'
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
@@ -56,7 +56,19 @@ async def on_message(message):
             await client.send_message(message.channel, msg)
             
             
-        
+    # Credits Commands
+    if message.content.startswith('&credits'):
+        print("[FLAME] Credits Command Sent")
+        try:
+            args = message.content.split(" ")
+            msg = ':incoming_envelope: I have sent an message with the commands to help you.'
+            pmsg = 'This is the list of people who have helped with the development of **Flame** in history or to the present.\n__Lead Developer__\nEdgewurth\n__Developers__\niycchan\nnicochulo2001\nRedDog2904\__Tools Used__\nPython Language\nDiscord.PY\nHeroku\n__Special Thanks__\nCekko for setting up the discord support server\nAnd You for the Usage of this Bot!'
+            await client.send_message(message.author, pmsg)
+            await client.send_message(message.channel, msg)
+        except:
+            msg = ':warning: ERROR: ``Unable to DM you the credits list.``'
+            await client.send_message(message.channel, msg)
+                
         
     # Ping Command
     if message.content.startswith('&ping'):
@@ -70,7 +82,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
-        msg = '__***FLAME***___\nVersion ' + version + '\nRunning Python 3.6.8 with Discord.PY\nHosted on Heroku'
+        msg = '__***FLAME***___\nVersion Siries: ' + version + '\nRunning Python: 3.6.8 with Discord.py as framework\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     
     
@@ -111,6 +123,7 @@ async def on_message(message):
             await client.send_message(message.channel, msg)
     # Clear
     if message.content.startswith('&clear'):
+        print("[FLAME] Clear Command")
         if message.author.server_permissions.manage_messages:
             msgs = []
             args = message.content.split(" ")
