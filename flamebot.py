@@ -9,7 +9,7 @@ from time import sleep
 import datetime
 version = '2xx'
 # Bot Setup
-TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
+TOKEN = 'X'
 client = discord.Client()
 # bot = commands.Bot(command_prefix='!')
 
@@ -186,6 +186,14 @@ async def on_message(message):
             awns = no1 - no2
         else:
             msg = ':warning: ERROR: ``Value \'action\' needs to have an valid id from (* / + -)!``'
+            await client.send_message(message.channel, msg)
+	if message.content.startswith('&ticket'):
+        args   = message.content.split(" ")
+        action = args[1]
+		if action == 'new':
+			 await client.create_text_channel('ticket' & message.author.name, *, overwrites=None)
+        else:
+            msg = ':warning: ERROR: ``Value \'action\' needs to have an valid id from (new, close)!``'
             await client.send_message(message.channel, msg)
         
     
