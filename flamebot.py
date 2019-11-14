@@ -9,7 +9,7 @@ from time import sleep
 import datetime
 version = '2xx'
 # Bot Setup
-TOKEN = 'X'
+TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
 # bot = commands.Bot(command_prefix='!')
 
@@ -48,10 +48,8 @@ async def on_message(message):
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&perms`` - Get Permissions for commands which require permissions.\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
-			if message.author.server_permissions.manage_messages:
-				pmsg = pmsg + '\n__***:hammer: Moderation :hammer:***__\n``&clear [value]`` - Clears an specified amount of messages.'
-			await client.send_message(message.author, pmsg)
+            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:hammer: Moderation :hammer:***__\n``&clear [value]`` - Clears an specified amount of messages.\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&perms`` - Get Permissions for commands which require permissions.\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
+            await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
             msg = ':warning: ERROR: ``Unable to DM you the command list.``'
