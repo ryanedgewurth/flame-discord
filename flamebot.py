@@ -84,8 +84,6 @@ async def on_message(message):
     if message.content.startswith('&version'):
         msg = '__***FLAME***___\nVersion Siries: ' + version + '\nRunning Python: 3.6.8 with Discord.py as framework\nHosted on Heroku'
         await client.send_message(message.channel, msg)
-    
-    
     #------------------
     # TIME COMMANDS
     #------------------
@@ -193,7 +191,7 @@ async def on_message(message):
     # FUN COMMANDS
     #------------------
     # RNG Command
-    if message.content.startswith('&rng' or '&randomnogenerator' or '&randomnumber' or '&randomnumbergenerator'):
+    if message.content.startswith('&rng'):
         print("[FLAME] RNG Command Sent")
         args = message.content.split(" ")
         try:
@@ -201,6 +199,20 @@ async def on_message(message):
             await client.send_message(message.channel, msg)
         except IndexError:
             msg = ':warning: ERROR: ``Values \'minval\' and \'maxval\' needs to be filled!``'
+            await client.send_message(message.channel, msg)
+        except:
+            msg = ':warning: ERROR: ``Unknown Error``'
+            await client.send_message(message.channel, msg)
+    # Kiss Command
+    if message.content.startswith('&kiss'):
+        print("[FLAME] RNG Command Sent")
+        args = message.content.split(" ")
+		kissing = args[1]
+        try:
+            msg = ':kiss: {0.author.mention} kisses ' + kissing
+            await client.send_message(message.channel, msg)
+        except IndexError:
+            msg = ':warning: ERROR: ``Value \'user\'``'
             await client.send_message(message.channel, msg)
         except:
             msg = ':warning: ERROR: ``Unknown Error``'
