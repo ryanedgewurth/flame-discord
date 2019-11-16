@@ -48,9 +48,9 @@ async def on_message(message):
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:hammer_and_wrench: Utilites :hammer_and_wrench:***__``&calc [no1] [method] [no2]`` - Clears an specified amount of messages.\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&perms`` - Get Permissions for commands which require permissions.\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
+            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:hammer_and_wrench: Utilites :hammer_and_wrench:***__\n``&calc [no1] [method] [no2]`` - Clears an specified amount of messages.\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&perms`` - Get Permissions for commands which require permissions.\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
             if message.author.server_permissions.manage_messages:
-                pmsg = pmsg + '***:speech_balloon: Message Management :speech_balloon:***__\n``&clear [value]`` - Clears an specified amount of messages.'
+                pmsg = pmsg + '\n***:speech_balloon: Message Management :speech_balloon:***__\n``&clear [value]`` - Clears an specified amount of messages.'
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
