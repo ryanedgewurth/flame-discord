@@ -32,7 +32,7 @@ async def on_message(message):
     # Perms Command
     if message.content.startswith('&perms'):
         print("[FLAME] About Command Sent")
-        msg = ':incoming_envelope: I have sent an message with the commands to help you.'
+        msg = ':incoming_envelope: I have sent an message with the permissions list.'
         pmsg = 'List of **Flame** permissions\n__``&clear``__\nThis Command Requires Manage Messages for the User and Bot.'
         try:
             args = message.content.split(" ")
@@ -48,7 +48,9 @@ async def on_message(message):
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:hammer: Moderation :hammer:***__\n``&clear [value]`` - Clears an specified amount of messages.\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&perms`` - Get Permissions for commands which require permissions.\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
+            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:hammer_and_wrench: Utilites :hammer_and_wrench:***__``&calc [no1] [method] [no2]`` - Clears an specified amount of messages.\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&perms`` - Get Permissions for commands which require permissions.\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
+            if message.author.server_permissions.manage_messages:
+                pmsg = pmsg + '***:speech_balloon: Message Management :speech_balloon:***__\n``&clear [value]`` - Clears an specified amount of messages.'
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
@@ -61,7 +63,7 @@ async def on_message(message):
         print("[FLAME] Credits Command Sent")
         try:
             args = message.content.split(" ")
-            msg = ':incoming_envelope: I have sent an message with the commands to help you.'
+            msg = ':incoming_envelope: I have sent an message with the credits.'
             pmsg = 'This is the list of people who have helped with the development of **Flame** in history or to the present.\n__Lead Developer__\nEdgewurth\n__Developers__\niycchan\nnicochulo2001\nRedDog2904\n__Tools Used__\nPython Language\nDiscord.PY\nHeroku\n__Special Thanks__\nCekko for setting up the discord support server\nAnd You for the Usage of this Bot!'
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
