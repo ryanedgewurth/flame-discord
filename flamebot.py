@@ -176,14 +176,20 @@ async def on_message(message):
         no2    = int(args[3])
         if action == '*':
             awns = no1 * no2
+            msg = str(no1) + ' ' + str(action) + ' ' + str(no2) + ' = ' + str(awns) 
+            await client.send_message(message.channel, msg)
         elif action == '/':
             awns = no1 / no2
+            msg = str(no1) + ' ' + str(action) + ' ' + str(no2) + ' = ' + str(awns) 
+            await client.send_message(message.channel, msg)
         elif action == '+':
             awns = no1 + no2
+            msg = str(no1) + ' ' + str(action) + ' ' + str(no2) + ' = ' + str(awns) 
+            await client.send_message(message.channel, msg)
         elif action == '-':
             awns = no1 - no2
-        msg = str(no1) + ' ' action + ' ' + str(no2) + ' = ' + str(awns) 
-        await client.send_message(message.channel, msg)
+            msg = str(no1) + ' ' + str(action) + ' ' + str(no2) + ' = ' + str(awns) 
+            await client.send_message(message.channel, msg)
         else:
             msg = ':warning: ERROR: ``Value \'action\' needs to have an valid id from (* / + -)!``'
             await client.send_message(message.channel, msg)
