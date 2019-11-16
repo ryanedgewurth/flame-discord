@@ -182,7 +182,7 @@ async def on_message(message):
             awns = no1 + no2
         elif action == '-':
             awns = no1 - no2
-        msg = '``' + str(no1) + ' ' action + ' ' + str(no2) + ' = ' + str(awns) 
+        msg = str(no1) + ' ' action + ' ' + str(no2) + ' = ' + str(awns) 
         await client.send_message(message.channel, msg)
         else:
             msg = ':warning: ERROR: ``Value \'action\' needs to have an valid id from (* / + -)!``'
