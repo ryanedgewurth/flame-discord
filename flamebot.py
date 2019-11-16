@@ -182,6 +182,8 @@ async def on_message(message):
             awns = no1 + no2
         elif action == '-':
             awns = no1 - no2
+        msg = '``' + str(no1) + ' ' action + ' ' + str(no2) + ' = ' + str(awns) 
+        await client.send_message(message.channel, msg)
         else:
             msg = ':warning: ERROR: ``Value \'action\' needs to have an valid id from (* / + -)!``'
             await client.send_message(message.channel, msg)
@@ -199,19 +201,6 @@ async def on_message(message):
             await client.send_message(message.channel, msg)
         except IndexError:
             msg = ':warning: ERROR: ``Values \'minval\' and \'maxval\' needs to be filled!``'
-            await client.send_message(message.channel, msg)
-        except:
-            msg = ':warning: ERROR: ``Unknown Error``'
-            await client.send_message(message.channel, msg)
-    # Kiss Command
-    if message.content.startswith('&kiss'):
-		args = message.content.split(" ")
-		kissing = args[1]
-        try:
-            msg = ':kiss: {0.author.mention} kisses ' + kissing
-            await client.send_message(message.channel, msg)
-        except IndexError:
-            msg = ':warning: ERROR: ``Value \'user\'``'
             await client.send_message(message.channel, msg)
         except:
             msg = ':warning: ERROR: ``Unknown Error``'
