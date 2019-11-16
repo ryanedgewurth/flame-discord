@@ -205,7 +205,6 @@ async def on_message(message):
             await client.send_message(message.channel, msg)
     # Kiss Command
     if message.content.startswith('&kiss'):
-		print("[FLAME] RNG Command Sent")
 		args = message.content.split(" ")
 		kissing = args[1]
         try:
