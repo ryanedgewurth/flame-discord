@@ -24,17 +24,19 @@ async def on_message(message):
     # 2020 Help Command
     if message.content.startswith('&nhelp'):
         print("[FLAME] Help Command Sent by" + str(message.author))
-        pmsg = '__**COMMAND LIST**__\n**Support Server:** https://discord.gg/zRFpys7 \n**Website:** http://flamebot.rf.gd/'
+        pmsg = '__**COMMAND LIST**__\n**Support Server:** https://discord.gg/zRFpys7 \n**Website:** http://flamebot.rf.gd/ \n**Command Prefix:** ``&``'
         pmsg = pmsg +  '\n__:alarm_clock: Time :alarm_clock:__\n``&clock``'
-        pmsg = pmsg +  '\n__:alarm_clock: Time :alarm_clock:__\n``&clock``'
-        pmsg = pmsg +  '\n__:game_die: Fun :game_die:__\n``&8ball``'
+        pmsg = pmsg +  '\n__:game_die: Fun :game_die:__\n``8ball``, ``rng``'
+        pmsg = pmsg +  '\n__:hammer_and_wrench: Utilities :hammer_and_wrench:__\n``calc``'
+        pmsg = pmsg +  '\n__:info: Information :info:__\n``about``, ``help``, ``ping``'
+        pmsg = pmsg +  '\n__:hammer: Information :hammer:__\n``clear``'
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
-            print("Temp")
+            await client.send_message(message.channel, pmsg)
     #------------------------
     #    BOT INFO COMMANDS
     #------------------------
