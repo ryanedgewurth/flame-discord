@@ -84,7 +84,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     # Version Command
     if message.content.startswith('&version'):
-        msg = '__***:FlameBot: FLAME :FlameBot:***___\nVersion Siries: ' + version + '\nRunning Python: 3.6.8 with Discord.py as framework\nHosted on Heroku'
+        msg = '__***FLAME***___\nVersion Siries: ' + version + '\nRunning Python: 3.6.8 with Discord.py as framework\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     #------------------
     # MUSIC COMMANDS
@@ -121,7 +121,13 @@ async def on_message(message):
         msg = 'Started a Timer of ' + times + format
         await client.send_message(message.channel, msg)
         client.loop.create_task(countdown_command(times, format))
-        
+    # TEST COMMAND
+    if message.content.startswith('&xtest'):
+        args = message.content.split(" ")
+        args.remove[0]
+        msg = str(args)
+        await client.send_message(message.channel, msg)
+        client.loop.create_task(countdown_command(times, format))
     #------------------
     # ADMIN COMMANDS
     #------------------ 
