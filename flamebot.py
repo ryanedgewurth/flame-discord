@@ -101,8 +101,8 @@ async def on_message(message):
     if message.content.startswith('&disconnect'):
         print("[FLAME] Disconnect Command Sent")
         server = message.server
-        voiceclient = client.voice_client_in(server)
-        await voiceclient.disconnect()
+        voice_client = client.voice_client_in(server)
+        await voice_client.disconnect()
     #------------------
     # TIME COMMANDS
     #------------------
