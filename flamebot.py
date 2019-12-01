@@ -33,7 +33,7 @@ async def on_message(message):
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
-            
+            print("Temp")
     #------------------------
     #    BOT INFO COMMANDS
     #------------------------
