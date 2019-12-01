@@ -33,10 +33,40 @@ async def on_message(message):
         args = message.content.split(" ")
         cmd = args[1]
         if cmd == 'clock':
-            pmsg = '>>>__**Clock**__\n'
+            pmsg = '>>> __**Clock**__\n'
             pmsg = pmsg + '**Category:** :alarm_clock: Time :alarm_clock:\n'
             pmsg = pmsg + '**Command Usage:** ``&clock``\n**Permission:** ``time.clock``\n'
             pmsg = pmsg + '*Gives you the time and date in GMT*'
+        if cmd == '8ball':
+            pmsg = '>>> __**Magic 8-Ball**__\n'
+            pmsg = pmsg + '**Category:** :game_die: Fun :game_die:\n'
+            pmsg = pmsg + '**Command Usage:** ``&8ball [question]``\n**Permission:** ``fun.8ball``\n'
+            pmsg = pmsg + '*Ask the Magic 8-Ball a Question*'
+        if cmd == 'rng':
+            pmsg = '>>> __**Random Number Generator**__\n'
+            pmsg = pmsg + '**Category:** :game_die: Fun :game_die:\n'
+            pmsg = pmsg + '**Command Usage:** ``&rng [minimum no] [maximum no]``\n**Permission:** ``fun.rng``\n'
+            pmsg = pmsg + '*Generates a number between 2 values*'
+        if cmd == 'calc':
+            pmsg = '>>> __**Calculator**__\n'
+            pmsg = pmsg + '**Category:** :hammer_and_wrench: Utilities :hammer_and_wrench:\n'
+            pmsg = pmsg + '**Command Usage:** ``&calc [number] [operator] [number]``\n**Permission:** ``utilities.calc``\n'
+            pmsg = pmsg + '*A simple calculator, for basic equations like 1 + 1*'
+        if cmd == 'about':
+            pmsg = '>>> __**About The Bot**__\n'
+            pmsg = pmsg + '**Category:** :information_source: Information :information_source:\n'
+            pmsg = pmsg + '**Command Usage:** ``&about``\n**Permission:** ``info.about``\n'
+            pmsg = pmsg + '*Get information about the bot*'
+        if cmd == 'help':
+            pmsg = '>>> __**Help**__\n'
+            pmsg = pmsg + '**Category:** :information_source: Information :information_source:\n'
+            pmsg = pmsg + '**Command Usage:** ``&help <command>``\n**Permission:** ``info.help``\n'
+            pmsg = pmsg + '*Recieve the command list or view information on a command*'
+        if cmd == 'ping':
+            pmsg = '>>> __**Ping**__\n'
+            pmsg = pmsg + '**Category:** :information_source: Information :information_source:\n'
+            pmsg = pmsg + '**Command Usage:** ``&ping``\n**Permission:** ``info.ping``\n'
+            pmsg = pmsg + '*Get the ping of the bot in milliseconds (ms)*'
         try:
             msg = ':incoming_envelope: Check your DMs.'
             await client.send_message(message.author, pmsg)
