@@ -94,7 +94,7 @@ async def on_message(message):
         print("[FLAME] Connect Command Sent")
         author = message.author
         channel = author.voice_channel
-        await bot.join_voice_channel(channel)
+        await client.join_voice_channel(channel)
     #------------------
     # TIME COMMANDS
     #------------------
