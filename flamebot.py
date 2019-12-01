@@ -102,7 +102,7 @@ async def on_message(message):
         print("[FLAME] Disconnect Command Sent")
         author = message.author
         channel = author.voice_channel
-        await client.join_voice_channel(channel).disconnect()
+        await discord.VoiceClient.disconnect(*, force=False)
         msg = ':speaker: I have left the voice channel you\'re in!'
         await client.send_message(message.channel, msg)
     #------------------
