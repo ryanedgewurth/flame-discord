@@ -18,7 +18,22 @@ async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
-    
+    #------------------------#
+    #    NEW COMMAND STYLE   #
+    #------------------------#
+    # 2020 Help Command
+    if message.content.startswith('&nhelp'):
+        print("[FLAME] Help Command Sent by" + message.author)
+        pmsg = ':FlameBot:'
+        try:
+            args = message.content.split(" ")
+            msg = ':incoming_envelope: I have sent an message with the commands to help you.'
+            if message.author.server_permissions.manage_messages:
+                pmsg = pmsg + '\n***:speech_balloon: Message Management :speech_balloon:***__\n``&clear [value]`` - Clears an specified amount of messages.'
+            await client.send_message(message.author, pmsg)
+            await client.send_message(message.channel, msg)
+        except:
+            
     #------------------------
     #    BOT INFO COMMANDS
     #------------------------
@@ -127,7 +142,6 @@ async def on_message(message):
         args.remove[0]
         msg = str(args)
         await client.send_message(message.channel, msg)
-        client.loop.create_task(countdown_command(times, format))
     #------------------
     # ADMIN COMMANDS
     #------------------ 
