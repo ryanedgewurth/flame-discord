@@ -87,6 +87,15 @@ async def on_message(message):
         msg = '__***FLAME***___\nVersion Siries: ' + version + '\nRunning Python: 3.6.8 with Discord.py as framework\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     #------------------
+    # MUSIC COMMANDS
+    #------------------
+    # Connect to Channel Command
+    if message.content.startswith('&connect'):
+        print("[FLAME] Connect Command Sent")
+        author = ctx.message.author
+        channel = author.voice_channel
+        await bot.join_voice_channel(channel)
+    #------------------
     # TIME COMMANDS
     #------------------
     # Current Time Command
@@ -131,7 +140,7 @@ async def on_message(message):
             async for message in client.logs_from(message.channel, limit=int(amount) + 1):
                 msgs.append(message)
             await client.delete_messages(msgs)
-            await client.send_message(message.channel, ':wastebasket: Deleted ``' + amount + '`` messages')
+            await client.send_message(message.channel, ':wastebasket: Deleted ' + amount + ' messages')
         else:
             msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
             await client.send_message(message.channel, msg)
