@@ -95,6 +95,16 @@ async def on_message(message):
         author = message.author
         channel = author.voice_channel
         await client.join_voice_channel(channel)
+        msg = ':speaker: I have joined the voice channel you\'re in!'
+        await client.send_message(message.channel, msg)
+    # Disconnect to Channel Command
+    if message.content.startswith('&disconnect'):
+        print("[FLAME] Disconnect Command Sent")
+        author = message.author
+        channel = author.voice_channel
+        await client.leave_voice_channel(channel)
+        msg = ':speaker: I have left the voice channel you\'re in!'
+        await client.send_message(message.channel, msg)
     #------------------
     # TIME COMMANDS
     #------------------
