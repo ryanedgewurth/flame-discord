@@ -92,7 +92,7 @@ async def on_message(message):
     # Connect to Channel Command
     if message.content.startswith('&connect'):
         print("[FLAME] Connect Command Sent")
-        author = ctx.message.author
+        author = message.author
         channel = author.voice_channel
         await bot.join_voice_channel(channel)
     #------------------
