@@ -28,7 +28,7 @@ async def on_message(message):
         pmsg = pmsg +  '\n__:alarm_clock: Time :alarm_clock:__\n``&clock``'
         pmsg = pmsg +  '\n__:game_die: Fun :game_die:__\n``8ball``, ``rng``'
         pmsg = pmsg +  '\n__:hammer_and_wrench: Utilities :hammer_and_wrench:__\n``calc``'
-        pmsg = pmsg +  '\n__:info: Information :info:__\n``about``, ``help``, ``ping``'
+        pmsg = pmsg +  '\n__:information_source: Information :information_source:__\n``about``, ``help``, ``ping``'
         pmsg = pmsg +  '\n__:hammer: Information :hammer:__\n``clear``'
         try:
             args = message.content.split(" ")
