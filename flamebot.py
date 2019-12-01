@@ -23,7 +23,7 @@ async def on_message(message):
     #------------------------#
     # 2020 Help Command
     if message.content.startswith('&nhelp'):
-        print("[FLAME] Help Command Sent by" + message.author)
+        print("[FLAME] Help Command Sent by" + str(message.author))
         pmsg = ':FlameBot:'
         try:
             args = message.content.split(" ")
