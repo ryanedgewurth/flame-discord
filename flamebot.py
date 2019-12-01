@@ -30,9 +30,15 @@ async def on_message(message):
         pmsg = pmsg +  '\n**:hammer_and_wrench: Utilities :hammer_and_wrench:**\n``calc``'
         pmsg = pmsg +  '\n**:information_source: Information :information_source:**\n``about``, ``help``, ``ping``'
         pmsg = pmsg +  '\n**:hammer: Information :hammer:**\n``clear``'
+        args = message.content.split(" ")
+        cmd = args[1]
+        if cmd == 'clock':
+            pmsg = '>>>__**Clock**__\n'
+            pmsg = pmsg + '**Category:** :alarm_clock: Time :alarm_clock:\n'
+            pmsg = pmsg + '**Command Usage:** ``&clock``\n**Permission:** ``time.clock``\n'
+            pmsg = pmsg + '*Gives you the time and date in GMT*'
         try:
-            args = message.content.split(" ")
-            msg = ':incoming_envelope: I have sent an message with the commands to help you.'
+            msg = ':incoming_envelope: Check your DMs.'
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
