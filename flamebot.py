@@ -24,12 +24,13 @@ async def on_message(message):
     # 2020 Help Command
     if message.content.startswith('&nhelp'):
         print("[FLAME] Help Command Sent by" + str(message.author))
-        pmsg = ':FlameBot:'
+        pmsg = '__**COMMAND LIST**__\n**Support Server:** https://discord.gg/zRFpys7 \n**Website:** http://flamebot.rf.gd/'
+        pmsg = pmsg +  '\n__:alarm_clock: Time :alarm_clock:__\n``&clock``'
+        pmsg = pmsg +  '\n__:alarm_clock: Time :alarm_clock:__\n``&clock``'
+        pmsg = pmsg +  '\n__:game_die: Fun :game_die:__\n``&8ball``'
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-            if message.author.server_permissions.manage_messages:
-                pmsg = pmsg + '\n***:speech_balloon: Message Management :speech_balloon:***__\n``&clear [value]`` - Clears an specified amount of messages.'
             await client.send_message(message.author, pmsg)
             await client.send_message(message.channel, msg)
         except:
