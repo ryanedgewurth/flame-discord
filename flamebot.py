@@ -44,7 +44,7 @@ async def on_message(message):
     # About Command
     if message.content.startswith('&about'):
         print("[FLAME] About Command Sent")
-        msg = 'Hello. My bot name is **Flame** and I am created by ``Edgewurth#1827``. I am in' + str(len(client.servers)) + 'servers.\nDevelopment begun on the 1st September 2019.\nMy support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
+        msg = 'Hello. My bot name is **Flame** and I am created by ``Edgewurth#1827``.\n I am in ' + str(len(client.servers)) + 'servers.\nDevelopment begun on the 1st September 2019.\nMy support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
         await client.send_message(message.channel, msg)
     
     # Perms Command
