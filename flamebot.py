@@ -7,7 +7,7 @@ import string
 import time
 from time import sleep
 import datetime
-version = '2xx'
+version = '3'
 # Bot Setup
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
 client = discord.Client()
@@ -44,7 +44,7 @@ async def on_message(message):
     # About Command
     if message.content.startswith('&about'):
         print("[FLAME] About Command Sent")
-        msg = 'Hello. My bot name is **Flame** and I am created by ``Edgewurth#1827``.\n I am in ' + str(len(client.servers)) + 'servers.\nDevelopment begun on the 1st September 2019.\nMy support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
+        msg = 'Hello. My bot name is **Flame** and I am created by ``Edgewurth#1827``.\n I am in ' + str(len(client.servers)) + ' servers.\nDevelopment begun on the 1st September 2019.\nMy support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
         await client.send_message(message.channel, msg)
     
     # Perms Command
