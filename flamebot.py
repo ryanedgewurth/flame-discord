@@ -44,7 +44,7 @@ async def on_message(message):
     # About Command
     if message.content.startswith('&about'):
         print("[FLAME] About Command Sent")
-        msg = 'Hello. My bot name is **Flame** and I am created by ``Edgewurth#1827``. Development begun on the 1st September 2019.\nMy support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
+        msg = 'Hello. My bot name is **Flame** and I am created by ``Edgewurth#1827``. I am in' + str(len(client.servers)) + 'servers.\nDevelopment begun on the 1st September 2019.\nMy support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
         await client.send_message(message.channel, msg)
     
     # Perms Command
@@ -356,5 +356,4 @@ async def countdown_command(times, format):
 async def on_ready():
     await client.change_status(game=discord.Game(name='&help'))
     print("[FLAME] Bot Signed In and Started!")
-    await client.send_message(discord.Object(id='609681917331243048'), '[FLAME] Bot Started')
 client.run(TOKEN)
