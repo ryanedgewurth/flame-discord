@@ -354,6 +354,7 @@ async def countdown_command(times, format):
     await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
-    print("[FLAME] Bot Signed In and Started!")
     await client.change_status(game=discord.Game(name='&help'))
+    print("[FLAME] Bot Signed In and Started!")
+    await client.send_message(discord.Object(id='609681917331243048'), '[FLAME] Bot Started')
 client.run(TOKEN)
