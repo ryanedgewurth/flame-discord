@@ -22,7 +22,7 @@ async def on_message(message):
     #    NEW COMMAND STYLE   #
     #------------------------#
     # 2020 Help Command
-    if message.content.startswith('&nhelp'):
+    if message.content.startswith('&help'):
         print("[FLAME] Help Command Sent by" + str(message.author))
         pmsg = '>>> __**COMMAND LIST**__\n**Support Server:** https://discord.gg/zRFpys7 \n**Website:** http://flamebot.rf.gd/ \n**Command Prefix:** ``&``'
         pmsg = pmsg +  '\n**:alarm_clock: Time :alarm_clock:**\n``&clock``'
@@ -58,21 +58,6 @@ async def on_message(message):
             await client.send_message(message.channel, msg)
         except:
             msg = ':warning: ERROR: ``Unable to DM you the permissions list.``'
-            await client.send_message(message.channel, msg)
-        
-    # Help Commands
-    if message.content.startswith('&help'):
-        print("[FLAME] Help Command Sent")
-        try:
-            args = message.content.split(" ")
-            msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-            pmsg = 'List of **Flame** commands\n__***:alarm_clock: Time :alarm_clock: ***__\n``&clock`` - Gives you the Current Time\n__***:game_die: Fun :game_die:***__\n``&8ball [question]`` - Ask the Magic 8-Ball an Question\n``&rng [minvalue] [maxvalue]`` - Random Number Generator\n__***:hammer_and_wrench: Utilites :hammer_and_wrench:***__\n``&calc [no1] [method] [no2]`` - Clears an specified amount of messages.\n__***:question: Bot Information :question:***__\n``&ping`` - Responds with Latency\n``&perms`` - Get Permissions for commands which require permissions.\n``&about`` - Sends you how to contact the developer, the bot name and an support server invite.\n``&version`` - Get Bot Version\n``&help`` - Show this Command List'
-            if message.author.server_permissions.manage_messages:
-                pmsg = pmsg + '\n***:speech_balloon: Message Management :speech_balloon:***__\n``&clear [value]`` - Clears an specified amount of messages.'
-            await client.send_message(message.author, pmsg)
-            await client.send_message(message.channel, msg)
-        except:
-            msg = ':warning: ERROR: ``Unable to DM you the command list.``'
             await client.send_message(message.channel, msg)
             
             
@@ -369,7 +354,6 @@ async def countdown_command(times, format):
     await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
-
-    client.change_presence(game=discord.Game(name="&help"))
+    await client.change_presence(activity=discord.Game(name='&help'))
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
