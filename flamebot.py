@@ -28,8 +28,8 @@ async def on_message(message):
         pmsg = pmsg +  '\n**:alarm_clock: Time :alarm_clock:**\n``&clock``'
         pmsg = pmsg +  '\n**:game_die: Fun :game_die:**\n``8ball``, ``rng``'
         pmsg = pmsg +  '\n**:hammer_and_wrench: Utilities :hammer_and_wrench:**\n``calc``'
-        pmsg = pmsg +  '\n**:information_source: Information :information_source:**\n``about``, ``help``, ``ping``'
-        pmsg = pmsg +  '\n**:hammer: Information :hammer:**\n``clear``'
+        pmsg = pmsg +  '\n**:information_source: Information :information_source:**\n``about``, ``help``, ``ping``, ``&avatar``'
+        pmsg = pmsg +  '\n**:hammer: Moderation :hammer:**\n``clear``'
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
