@@ -226,9 +226,9 @@ async def on_message(message):
     #------------------
     # Avatar CMD
     if message.content.startswith('&avatar'):
-    if (message.mentions.__len__()>0):
-        for user in message.mentions:
-            await client.send_message(message.channel, user.avatar_url)
+        if (message.mentions.__len__()>0):
+            for user in message.mentions:
+                await client.send_message(message.channel, user.avatar_url)
     # User Info CMD
     
     #------------------
