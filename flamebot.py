@@ -221,6 +221,15 @@ async def on_message(message):
             msg = ':warning: ERROR: ``Value \'action\' needs to have an valid id from (* / + -)!``'
             await client.send_message(message.channel, msg)
         
+    #------------------
+    # USER COMMANDS
+    #------------------
+    # Avatar CMD
+    if message.content.startswith('&avatar'):
+    if (message.mentions.__len__()>0):
+        for user in message.mentions:
+            await client.send_message(message.channel, user.avatar_url)
+    # User Info CMD
     
     #------------------
     # FUN COMMANDS
