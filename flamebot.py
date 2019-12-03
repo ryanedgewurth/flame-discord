@@ -106,6 +106,15 @@ async def on_message(message):
         server = message.server
         voice_client = client.voice_client_in(server)
         await voice_client.disconnect()
+    # Play Command
+    if message.content.startswith('&play'):
+        args = message.content.split(" ")
+        url = args[1]
+        server = message.server
+        voice_client = client.voice_client_in(server)
+        player = await voice_client.create_ytdl_player(url)
+        players[server.id] = player
+        player.start()
     #------------------
     # TIME COMMANDS
     #------------------
