@@ -9,7 +9,7 @@ from time import sleep
 import datetime
 version = '3'
 # Bot Setup
-TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XWxESw.VBm5-xbJwwWd3haj6hhmxb9aG9I'
+TOKEN = 'TOKEN PLACEHOLDER'
 client = discord.Client()
 # bot = commands.Bot(command_prefix='!')
 
