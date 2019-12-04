@@ -235,9 +235,12 @@ async def on_message(message):
     #------------------
     # Avatar CMD
     if message.content.startswith('&avatar'):
-        if (message.mentions.__len__()>0):
-            for user in message.mentions:
-                await client.send_message(message.channel, '>>> ' + user.avatar_url)
+        try:
+            if (message.mentions.__len__()>0):
+                for user in message.mentions:
+                    await client.send_message(message.channel, '>>> ' + user.avatar_url)
+        except:
+            await client.send_message(message.channel, '>>> ' + message.author.avatar_url)
     # User Info CMD
     
     #------------------
@@ -299,7 +302,7 @@ async def on_message(message):
     if message.content.startswith('&debug_update_changelog'):
         if message.author.id == "354512960250576896":
             args = message.content.split(" ")
-            msg  = args[1] 
+            msg  = str(args)
             await client.send_message(discord.Object(id='609681917331243048'), msg)
     if message.content.startswith('&debug_getuserid'):
         args   = message.content.split(" ")
