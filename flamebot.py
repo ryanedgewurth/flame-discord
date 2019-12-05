@@ -1,4 +1,6 @@
-# Imports
+#----------------------
+# IMPORTING COMMANDS
+#----------------------
 import discord
 from discord.ext import commands
 import random
@@ -7,12 +9,18 @@ import string
 import time
 from time import sleep
 import datetime
-version = '3'
-# Bot Setup
-TOKEN = 'TOKEN PLACEHOLDER'
-client = discord.Client()
-# bot = commands.Bot(command_prefix='!')
 
+#---------------------
+# BOT SETUP
+#---------------------
+TOKEN = 'TOKEN PLACEHOLDER' # Sets the Bot token
+client = discord.Client() # DO NOT CHANGE
+prefix = '&' # Sets the Bot's Prefix
+version = '3'
+
+#---------------------
+# CHECK FOR COMMANDS
+#---------------------
 @client.event
 async def on_message(message):
     # we do not want the bot to reply to itself
@@ -22,7 +30,7 @@ async def on_message(message):
     #    NEW COMMAND STYLE   #
     #------------------------#
     # 2020 Help Command
-    if message.content.startswith('&help'):
+    if message.content.startswith(prefix + 'help'):
         print("[FLAME] Help Command Sent by" + str(message.author))
         pmsg = '>>> __**COMMAND LIST**__\n**Support Server:** https://discord.gg/zRFpys7 \n**Website:** http://flamebot.rf.gd/ \n**Command Prefix:** ``&``'
         pmsg = pmsg +  '\n**:alarm_clock: Time :alarm_clock:**\n``&clock``'
@@ -42,13 +50,13 @@ async def on_message(message):
     #------------------------
     
     # About Command
-    if message.content.startswith('&about'):
+    if message.content.startswith(prefix + 'about'):
         print("[FLAME] About Command Sent")
         msg = 'Hello. My bot name is **Flame** and I am created by ``Edgewurth#1827``.\n I am in ' + str(len(client.servers)) + ' servers.\nDevelopment begun on the 1st September 2019.\nMy support discord is at https://discord.gg/Xb5asjm - join it if you need help.'
         await client.send_message(message.channel, msg)
     
     # Perms Command
-    if message.content.startswith('&perms'):
+    if message.content.startswith(prefix + 'perms'):
         print("[FLAME] About Command Sent")
         msg = ':incoming_envelope: I have sent an message with the permissions list.'
         pmsg = 'List of **Flame** permissions\n__``&clear``__\nThis Command Requires Manage Messages for the User and Bot.'
@@ -62,7 +70,7 @@ async def on_message(message):
             
             
     # Credits Commands
-    if message.content.startswith('&credits'):
+    if message.content.startswith(prefix + 'credits'):
         print("[FLAME] Credits Command Sent")
         try:
             args = message.content.split(" ")
@@ -76,7 +84,7 @@ async def on_message(message):
                 
         
     # Ping Command
-    if message.content.startswith('&ping'):
+    if message.content.startswith(prefix + 'ping'):
         timestampbef = datetime.datetime.now().timestamp()
         print("[FLAME] Ping Command Sent by ", message.author)
         msg = 'Pinging... Please Wait...'
@@ -86,28 +94,28 @@ async def on_message(message):
         msg = 'Pong! The latency is ' + str(round(latency, 3)) + 'ms'
         await client.send_message(message.channel, msg)
     # Version Command
-    if message.content.startswith('&version'):
+    if message.content.startswith(prefix + 'version'):
         msg = '__***FLAME***___\nVersion Siries: ' + version + '\nRunning Python: 3.6.8 with Discord.py as framework\nHosted on Heroku'
         await client.send_message(message.channel, msg)
     #------------------
     # MUSIC COMMANDS
     #------------------
     # Connect to Channel Command
-    if message.content.startswith('&connect'):
+    if message.content.startswith(prefix + 'connect'):
         print("[FLAME] Connect Command Sent")
         author = message.author
         channel = author.voice_channel
         await client.join_voice_channel(channel)
         msg = ':speaker: I have joined the voice channel you\'re in!'
         await client.send_message(message.channel, msg)
-    # Disconnect to Channel Command
-    if message.content.startswith('&disconnect'):
+    # Disconnect to Channel Command - DISFUNCTIONAL
+    if message.content.startswith(prefix + 'disconnect'):
         print("[FLAME] Disconnect Command Sent")
         server = message.server
         voice_client = client.voice_client_in(server)
         await voice_client.disconnect()
-    # Play Command
-    if message.content.startswith('&play'):
+    # Play Command - DISFUNCTIONAL
+    if message.content.startswith(prefix + 'play'):
         args = message.content.split(" ")
         url = args[1]
         server = message.server
@@ -119,13 +127,13 @@ async def on_message(message):
     # TIME COMMANDS
     #------------------
     # Current Time Command
-    if message.content.startswith('&clock'):
+    if message.content.startswith(prefix + 'clock'):
         print("[FLAME] Clock Command Sent")
         msg = datetime.datetime.now()
         await client.send_message(message.channel, msg)
             
     # Countdown Command
-    if message.content.startswith('&countdown'):
+    if message.content.startswith(prefix + 'countdown'):
         print("[FLAME] Countdown Command")
         args = message.content.split(" ")
         times = args[1]
@@ -134,7 +142,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
         client.loop.create_task(countdown_command(times, format))
     # TEST COMMAND
-    if message.content.startswith('&xtest'):
+    if message.content.startswith(prefix + 'xtest'):
         args = message.content.split(" ")
         args.remove[0]
         msg = str(args)
@@ -143,7 +151,7 @@ async def on_message(message):
     # ADMIN COMMANDS
     #------------------ 
     # Warn
-    if message.content.startswith('&warn'):
+    if message.content.startswith(prefix + 'warn'):
         if message.author.server_permissions.kick_members:
             args = message.content.split(" ")
             username = args[1]
@@ -156,7 +164,7 @@ async def on_message(message):
             msg = ':warning: ERROR: ``You do not have the permission "Kick Members"``'
             await client.send_message(message.channel, msg)
     # Clear
-    if message.content.startswith('&clear'):
+    if message.content.startswith(prefix + 'clear'):
         print("[FLAME] Clear Command")
         if message.author.server_permissions.manage_messages:
             msgs = []
@@ -170,7 +178,7 @@ async def on_message(message):
             msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
             await client.send_message(message.channel, msg)
     #EMERGENCY        
-    if message.content.startswith('&clearx'):
+    if message.content.startswith(prefix + 'clearx'):
         if message.author.server_permissions.manage_messages:
             try:
                 msgs = []
@@ -190,7 +198,7 @@ async def on_message(message):
             msg = ':warning: ERROR: ``You do not have the permission "Manage Messages"``'
             await client.send_message(message.channel, msg)
     # Kick
-    if message.content.startswith('&kick'):
+    if message.content.startswith(prefix + 'kick'):
         if message.author.server_permissions.kick_members:
             args   = message.content.split(" ")
             userId = args[1]
@@ -205,7 +213,7 @@ async def on_message(message):
     # UTILITIES
     #------------------
     # CALC Command
-    if message.content.startswith('&calc'):
+    if message.content.startswith(prefix + 'calc'):
         args   = message.content.split(" ")
         no1    = int(args[1])
         action = args[2]
@@ -234,17 +242,20 @@ async def on_message(message):
     # USER COMMANDS
     #------------------
     # Avatar CMD
-    if message.content.startswith('&avatar'):
-        if (message.mentions.__len__()>0):
-            for user in message.mentions:
-                await client.send_message(message.channel, '>>> ' + user.avatar_url)
+    if message.content.startswith(prefix + 'avatar'):
+        try:
+            if (message.mentions.__len__()>0):
+                for user in message.mentions:
+                    await client.send_message(message.channel, '>>> ' + user.avatar_url)
+        except:
+            await client.send_message(message.channel, '>>> ' + message.author.avatar_url)
     # User Info CMD
     
     #------------------
     # FUN COMMANDS
     #------------------
-    # RNG Command
-    if message.content.startswith('&rng'):
+    # - RNG Command -
+    if message.content.startswith(prefix + 'rng'):
         print("[FLAME] RNG Command Sent")
         args = message.content.split(" ")
         try:
@@ -257,7 +268,7 @@ async def on_message(message):
             msg = ':warning: ERROR: ``Unknown Error``'
             await client.send_message(message.channel, msg)
     # 8-Ball Command Command x
-    if message.content.startswith('&8ball'):
+    if message.content.startswith(prefix + '8ball'):
         print("[FLAME] 8Ball Command Sent")
         possible_responses = [
         'It is certain.',
@@ -288,20 +299,20 @@ async def on_message(message):
     # HIDDEN DEBUG CMDS
     #---------------------
     # NOTE: Only Ryan can access these
-    if message.content.startswith('&debug_token'):
+    if message.content.startswith(prefix + 'debug_token'):
         if message.author.id == "354512960250576896":
             await client.send_message(message.channel, TOKEN)
-    if message.content.startswith('&debug_announce'):
+    if message.content.startswith(prefix + 'debug_announce'):
         if message.author.id == "354512960250576896":
             args = message.content.split(" ")
             msg  = '@everyone ' + args[1] 
             await client.send_message(discord.Object(id='609681917331243048'), msg)
-    if message.content.startswith('&debug_update_changelog'):
+    if message.content.startswith(prefix + 'debug_update_changelog'):
         if message.author.id == "354512960250576896":
             args = message.content.split(" ")
-            msg  = args[1] 
+            msg  = str(args)
             await client.send_message(discord.Object(id='609681917331243048'), msg)
-    if message.content.startswith('&debug_getuserid'):
+    if message.content.startswith(prefix + 'debug_getuserid'):
         args   = message.content.split(" ")
         userId = args[1]
         username = client.get_user_info(userId)
@@ -372,6 +383,6 @@ async def countdown_command(times, format):
     await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
-    await client.change_status(game=discord.Game(name='&help'))
+    await client.change_status(game=discord.Game(name=prefix + 'help'))
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
