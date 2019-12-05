@@ -9,13 +9,14 @@ import string
 import time
 from time import sleep
 import datetime
-version = '3'
+
 #---------------------
 # BOT SETUP
 #---------------------
-TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XebY6w.2ziI5NwskJy5BbuGSsE3y1ghkpo'
-client = discord.Client()
-prefix = '&' # not added yet
+TOKEN = '' # Sets the Bot token
+client = discord.Client() # DO NOT CHANGE
+prefix = '&' # Sets the Bot's Prefix
+version = '3'
 
 #---------------------
 # CHECK FOR COMMANDS
