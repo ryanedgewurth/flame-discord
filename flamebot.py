@@ -1,4 +1,6 @@
-# Imports
+#----------------------
+# IMPORTING COMMANDS
+#----------------------
 import discord
 from discord.ext import commands
 import random
@@ -8,11 +10,16 @@ import time
 from time import sleep
 import datetime
 version = '3'
-# Bot Setup
+#---------------------
+# BOT SETUP
+#---------------------
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XebY6w.2ziI5NwskJy5BbuGSsE3y1ghkpo'
 client = discord.Client()
-# bot = commands.Bot(command_prefix='!')
+prefix = '&' # not added yet
 
+#---------------------
+# CHECK FOR COMMANDS
+#---------------------
 @client.event
 async def on_message(message):
     # we do not want the bot to reply to itself
@@ -22,7 +29,7 @@ async def on_message(message):
     #    NEW COMMAND STYLE   #
     #------------------------#
     # 2020 Help Command
-    if message.content.startswith('&help'):
+    if message.content.startswith(prefix + 'help'):
         print("[FLAME] Help Command Sent by" + str(message.author))
         pmsg = '>>> __**COMMAND LIST**__\n**Support Server:** https://discord.gg/zRFpys7 \n**Website:** http://flamebot.rf.gd/ \n**Command Prefix:** ``&``'
         pmsg = pmsg +  '\n**:alarm_clock: Time :alarm_clock:**\n``&clock``'
@@ -100,13 +107,13 @@ async def on_message(message):
         await client.join_voice_channel(channel)
         msg = ':speaker: I have joined the voice channel you\'re in!'
         await client.send_message(message.channel, msg)
-    # Disconnect to Channel Command
+    # Disconnect to Channel Command - DISFUNCTIONAL
     if message.content.startswith('&disconnect'):
         print("[FLAME] Disconnect Command Sent")
         server = message.server
         voice_client = client.voice_client_in(server)
         await voice_client.disconnect()
-    # Play Command
+    # Play Command - DISFUNCTIONAL
     if message.content.startswith('&play'):
         args = message.content.split(" ")
         url = args[1]
@@ -246,7 +253,7 @@ async def on_message(message):
     #------------------
     # FUN COMMANDS
     #------------------
-    # RNG Command
+    # - RNG Command -
     if message.content.startswith('&rng'):
         print("[FLAME] RNG Command Sent")
         args = message.content.split(" ")
