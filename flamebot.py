@@ -27,7 +27,7 @@ import datetime
 
 #---------------------
 # BOT SETUP
-TOKEN = 'USE UR OWN' # Sets the Bot token
+TOKEN = 'NOTOKENHERE :)' # Sets the Bot token
 client = discord.Client() # DO NOT CHANGE
 prefix = '&' # Sets the Bot's Prefix
 version = '3'
@@ -513,6 +513,5 @@ async def countdown_command(times, format):
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix + 'help'))
-    await client.change_status(game=discord.Game(name=prefix + 'help'))
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
