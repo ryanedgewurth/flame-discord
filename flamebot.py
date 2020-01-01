@@ -46,7 +46,7 @@ async def on_message(message):
         args = message.content.split(" ")
         if args[1] == "include-ea": # These are commands for the Early Preview Users
             if message.channel.id == "640258775684612166":
-                embed.add_field(name=':warning: Moderation :warning:',value='``connect``,``disconnect``,``help``',inline=False)
+                embed.add_field(name=':warning: Early-Access Users Only :warning:',value='``connect``,``disconnect``,``help``',inline=False)
         try:
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
             await client.send_message(message.author, embed=embed)
