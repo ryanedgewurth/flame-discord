@@ -32,6 +32,15 @@ async def on_message(message):
     # 2020 Help Command
     if message.content.startswith(prefix + 'help'):
         print("[FLAME] Help Command Sent by" + str(message.author))
+        args = message.content.split(" ")
+        if args[1] == "clock":
+            embed = discord.Embed(
+                title = 'Clock Command',
+                description = 'Shows you the current time.',
+                color = discord.Color.red()
+            )
+            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+            embed.add_field(name='Usage',value='``clock``',inline=False)
         embed = discord.Embed(
             title = 'Flame Command List',
             description = 'Command Prefix: ``&``',
@@ -43,7 +52,7 @@ async def on_message(message):
         embed.add_field(name=':hammer_and_wrench: Utilities :hammer_and_wrench:',value='``calc``',inline=False)
         embed.add_field(name=':information_source: Information :information_source:',value='``about``, ``help``, ``ping``, ``avatar``',inline=False)
         embed.add_field(name=':hammer: Moderation :hammer:',value='``clear``',inline=False)
-        args = message.content.split(" ")
+        
         if args[1] == "include-ea": # These are commands for the Early Preview Users
             if message.channel.id == "640258775684612166":
                 embed.add_field(name=':warning: Early-Access Users Only :warning:',value='``connect``,``disconnect``,``help``',inline=False)
@@ -394,6 +403,6 @@ async def countdown_command(times, format):
     await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
-    await client.change_status(game=discord.Game(name=prefix + 'help'))
+    await client.change_presence(game=discord.Game(name=prefix + 'help'))
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
