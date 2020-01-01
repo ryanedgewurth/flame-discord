@@ -41,21 +41,22 @@ async def on_message(message):
             )
             embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
             embed.add_field(name='Usage',value='``clock``',inline=False)
-        embed = discord.Embed(
-            title = 'Flame Command List',
-            description = 'Command Prefix: ``&``',
-            color = discord.Color.red()
-        )
-        embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-        embed.add_field(name=':alarm_clock: Time :alarm_clock:',value='``clock``',inline=False)
-        embed.add_field(name=':game_die: Fun :game_die:',value='``8ball``, ``rng``',inline=False)
-        embed.add_field(name=':hammer_and_wrench: Utilities :hammer_and_wrench:',value='``calc``',inline=False)
-        embed.add_field(name=':information_source: Information :information_source:',value='``about``, ``help``, ``ping``, ``avatar``',inline=False)
-        embed.add_field(name=':hammer: Moderation :hammer:',value='``clear``',inline=False)
-        
-        if args[1] == "include-ea": # These are commands for the Early Preview Users
-            if message.channel.id == "640258775684612166":
-                embed.add_field(name=':warning: Early-Access Users Only :warning:',value='``connect``,``disconnect``,``help``',inline=False)
+        else:
+            embed = discord.Embed(
+                title = 'Flame Command List',
+                description = 'Command Prefix: ``&``',
+                color = discord.Color.red()
+            )
+            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+            embed.add_field(name=':alarm_clock: Time :alarm_clock:',value='``clock``',inline=False)
+            embed.add_field(name=':game_die: Fun :game_die:',value='``8ball``, ``rng``',inline=False)
+            embed.add_field(name=':hammer_and_wrench: Utilities :hammer_and_wrench:',value='``calc``',inline=False)
+            embed.add_field(name=':information_source: Information :information_source:',value='``about``, ``help``, ``ping``, ``avatar``',inline=False)
+            embed.add_field(name=':hammer: Moderation :hammer:',value='``clear``',inline=False)
+            
+            if args[1] == "include-ea": # These are commands for the Early Preview Users
+                if message.channel.id == "640258775684612166":
+                    embed.add_field(name=':warning: Early-Access Users Only :warning:',value='``connect``,``disconnect``,``help``',inline=False)
         try:
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
             await client.send_message(message.author, embed=embed)
