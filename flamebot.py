@@ -339,20 +339,9 @@ async def on_message(message):
         try:
             if (message.mentions.__len__()>0):
                 for user in message.mentions:
-                    embed = discord.Embed(
-                        title = user.name
-                    )
-                    urlimg = user.avatar_url
-                    embed.set_image(url=urlimg)
-                    await client.send_message(message.channel, embed)
+                    await client.send_message(message.channel, '>>> ' + user.avatar_url)
         except:
             await client.send_message(message.channel, '>>> ' + message.author.avatar_url)
-            embed = discord.Embed(
-                title = message.author.name
-            )
-            urlimg = message.author.avatar_url
-            embed.set_image(url=urlimg)
-            await client.send_message(message.channel, embed)
     # User Info CMD
     
     #------------------
