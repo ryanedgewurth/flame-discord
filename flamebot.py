@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+=======
+#    <one line to give the program's name and a brief idea of what it does.>
+#    Copyright (C) 2019  Edgewurth
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+#   You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+>>>>>>> de5d12321280f1b39436259712418d987f7cd586
 #----------------------
 # IMPORTING COMMANDS
 #----------------------
@@ -13,7 +31,11 @@ import datetime
 #---------------------
 # BOT SETUP
 #---------------------
+<<<<<<< HEAD
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XebY6w.2ziI5NwskJy5BbuGSsE3y1ghkpo' # Sets the Bot token
+=======
+TOKEN = 'TOKEN PLACEHOLDER' # Sets the Bot token
+>>>>>>> de5d12321280f1b39436259712418d987f7cd586
 client = discord.Client() # DO NOT CHANGE
 prefix = '&' # Sets the Bot's Prefix
 version = '3'
@@ -192,6 +214,7 @@ async def on_message(message):
     #------------------
     # Connect to Channel Command
     if message.content.startswith(prefix + 'connect'):
+<<<<<<< HEAD
         if message.channel.id == "640258775684612166":
             print("[FLAME] Connect Command Sent")
             author = message.author
@@ -216,6 +239,29 @@ async def on_message(message):
             player = await voice_client.create_ytdl_player(url)
             players[server.id] = player
             player.start()
+=======
+        print("[FLAME] Connect Command Sent")
+        author = message.author
+        channel = author.voice_channel
+        await client.join_voice_channel(channel)
+        msg = ':speaker: I have joined the voice channel you\'re in!'
+        await client.send_message(message.channel, msg)
+    # Disconnect to Channel Command - DISFUNCTIONAL
+    if message.content.startswith(prefix + 'disconnect'):
+        print("[FLAME] Disconnect Command Sent")
+        server = message.server
+        voice_client = client.voice_client_in(server)
+        await voice_client.disconnect()
+    # Play Command - DISFUNCTIONAL
+    if message.content.startswith(prefix + 'play'):
+        args = message.content.split(" ")
+        url = args[1]
+        server = message.server
+        voice_client = client.voice_client_in(server)
+        player = await voice_client.create_ytdl_player(url)
+        players[server.id] = player
+        player.start()
+>>>>>>> de5d12321280f1b39436259712418d987f7cd586
     #------------------
     # TIME COMMANDS
     #------------------
@@ -476,6 +522,10 @@ async def countdown_command(times, format):
     await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
+<<<<<<< HEAD
     await client.change_presence(game=discord.Game(name=prefix + 'help'))
+=======
+    await client.change_status(game=discord.Game(name=prefix + 'help'))
+>>>>>>> de5d12321280f1b39436259712418d987f7cd586
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
