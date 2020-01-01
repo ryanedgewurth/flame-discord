@@ -27,7 +27,7 @@ import datetime
 
 #---------------------
 # BOT SETUP
-TOKEN = 'NOTOKENHERE :)' # Sets the Bot token
+TOKEN = 'X' # Sets the Bot token
 client = discord.Client() # DO NOT CHANGE
 prefix = '&' # Sets the Bot's Prefix
 version = '3'
@@ -47,87 +47,90 @@ async def on_message(message):
     if message.content.startswith(prefix + 'help'):
         print("[FLAME] Help Command Sent by" + str(message.author))
         args = message.content.split(" ")
-        if args[1] == "clock":
-            embed = discord.Embed(
-                title = 'Clock Command',
-                description = 'Shows you the current time.',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&clock``',inline=False)
-        elif args[1] == "8ball":
-            embed = discord.Embed(
-                title = 'Magic 8-Ball Command',
-                description = 'A fortune teller. Ask it a question and it will awnser it.',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&8ball <question>``',inline=False)
-        elif args[1] == "rng":
-            embed = discord.Embed(
-                title = 'Random Number Generator Command',
-                description = 'Generates a Number between X value and Y value.',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&rng <min-val> <max-val>``',inline=False)
-        elif args[1] == "calc":
-            embed = discord.Embed(
-                title = 'Basic Calculator Command',
-                description = 'Basic Calculator. Calculates something',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&calc <val> [method] <val>``',inline=False)
-        elif args[1] == "calc":
-            embed = discord.Embed(
-                title = 'Basic Calculator Command',
-                description = 'Basic Calculator. It calculates using addition (+), subtraction (-), division (/) or multiplication (*)',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&calc <val> [method] <val>``',inline=False)
-        elif args[1] == "about":
-            embed = discord.Embed(
-                title = 'About Command',
-                description = 'Gives you information on the bot.',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&about``',inline=False)
-        elif args[1] == "help":
-            embed = discord.Embed(
-                title = 'Help Command',
-                description = 'Sends an command list',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&help [optional command]``',inline=False)
-        elif args[1] == "ping":
-            embed = discord.Embed(
-                title = 'Ping Command',
-                description = 'Responds with the ping in milliseconds (ms).',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&about``',inline=False)
-        elif args[1] == "avatar":
-            embed = discord.Embed(
-                title = 'Avatar Command',
-                description = 'Sends an avatar of a specified user',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&avatar <user>``',inline=False)
-        elif args[1] == "clear":
-            embed = discord.Embed(
-                title = 'Clear Command',
-                description = 'Clears a set amount of messages',
-                color = discord.Color.red()
-            )
-            embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            embed.add_field(name='Usage',value='``&clear <amount>``',inline=False)
-        else:
+        try:
+            if args[1] == "clock":
+                embed = discord.Embed(
+                    title = 'Clock Command',
+                    description = 'Shows you the current time.',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&clock``',inline=False)
+            elif args[1] == "8ball":
+                embed = discord.Embed(
+                    title = 'Magic 8-Ball Command',
+                    description = 'A fortune teller. Ask it a question and it will awnser it.',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&8ball <question>``',inline=False)
+            elif args[1] == "rng":
+                embed = discord.Embed(
+                    title = 'Random Number Generator Command',
+                    description = 'Generates a Number between X value and Y value.',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&rng <min-val> <max-val>``',inline=False)
+            elif args[1] == "calc":
+                embed = discord.Embed(
+                    title = 'Basic Calculator Command',
+                    description = 'Basic Calculator. Calculates something',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&calc <val> [method] <val>``',inline=False)
+            elif args[1] == "calc":
+                embed = discord.Embed(
+                    title = 'Basic Calculator Command',
+                    description = 'Basic Calculator. It calculates using addition (+), subtraction (-), division (/) or multiplication (*)',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&calc <val> [method] <val>``',inline=False)
+            elif args[1] == "about":
+                embed = discord.Embed(
+                    title = 'About Command',
+                    description = 'Gives you information on the bot.',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&about``',inline=False)
+            elif args[1] == "help":
+                embed = discord.Embed(
+                    title = 'Help Command',
+                    description = 'Sends an command list',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&help [optional command]``',inline=False)
+            elif args[1] == "ping":
+                embed = discord.Embed(
+                    title = 'Ping Command',
+                    description = 'Responds with the ping in milliseconds (ms).',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&about``',inline=False)
+            elif args[1] == "avatar":
+                embed = discord.Embed(
+                    title = 'Avatar Command',
+                    description = 'Sends an avatar of a specified user',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&avatar <user>``',inline=False)
+            elif args[1] == "clear":
+                embed = discord.Embed(
+                    title = 'Clear Command',
+                    description = 'Clears a set amount of messages',
+                    color = discord.Color.red()
+                )
+                embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+                embed.add_field(name='Usage',value='``&clear <amount>``',inline=False)
+            else:
+                raise IndexError
+        except IndexError:
             embed = discord.Embed(
                 title = 'Flame Command List',
                 description = 'Command Prefix: ``&``',
@@ -513,5 +516,6 @@ async def countdown_command(times, format):
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix + 'help'))
+    await client.change_status(game=discord.Game(name=prefix + 'help'))
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
