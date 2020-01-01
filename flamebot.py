@@ -13,7 +13,7 @@ import datetime
 #---------------------
 # BOT SETUP
 #---------------------
-TOKEN = '' # Sets the Bot token
+TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XebY6w.2ziI5NwskJy5BbuGSsE3y1ghkpo' # Sets the Bot token
 client = discord.Client() # DO NOT CHANGE
 prefix = '&' # Sets the Bot's Prefix
 version = '3'
@@ -32,16 +32,21 @@ async def on_message(message):
     # 2020 Help Command
     if message.content.startswith(prefix + 'help'):
         print("[FLAME] Help Command Sent by" + str(message.author))
-        pmsg = '>>> __**COMMAND LIST**__\n**Support Server:** https://discord.gg/zRFpys7 \n**Website:** http://flamebot.rf.gd/ \n**Command Prefix:** ``&``'
-        pmsg = pmsg +  '\n**:alarm_clock: Time :alarm_clock:**\n``&clock``'
-        pmsg = pmsg +  '\n**:game_die: Fun :game_die:**\n``8ball``, ``rng``'
-        pmsg = pmsg +  '\n**:hammer_and_wrench: Utilities :hammer_and_wrench:**\n``calc``'
-        pmsg = pmsg +  '\n**:information_source: Information :information_source:**\n``about``, ``help``, ``ping``, ``&avatar``'
-        pmsg = pmsg +  '\n**:hammer: Moderation :hammer:**\n``clear``'
+        embed = discord.Embed(
+            title = 'Flame Command List',
+            description = 'Command Prefix: ``&``',
+            color = discord.Color.red()
+        )
+        embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+        embed.add_field(name=':alarm_clock: Time :alarm_clock:',value='``clock``',inline=False)
+        embed.add_field(name=':game_die: Fun :game_die:',value='``8ball``, ``rng``',inline=False)
+        embed.add_field(name=':hammer_and_wrench: Utilities :hammer_and_wrench:',value='``calc``',inline=False)
+        embed.add_field(name=':information_source: Information :information_source:',value='``about``, ``help``, ``ping``, ``avatar``',inline=False)
+        embed.add_field(name=':hammer: Moderation :hammer:',value='``clear``',inline=False)
         try:
             args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
-            await client.send_message(message.author, pmsg)
+            await client.send_message(message.author, embed=embed)
             await client.send_message(message.channel, msg)
         except:
             await client.send_message(message.channel, pmsg)
