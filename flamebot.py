@@ -206,7 +206,6 @@ async def on_message(message):
     #------------------
     # Connect to Channel Command
     if message.content.startswith(prefix + 'connect'):
-<<<<<<< HEAD
         if message.channel.id == "640258775684612166":
             print("[FLAME] Connect Command Sent")
             author = message.author
@@ -231,7 +230,6 @@ async def on_message(message):
             player = await voice_client.create_ytdl_player(url)
             players[server.id] = player
             player.start()
-=======
         print("[FLAME] Connect Command Sent")
         author = message.author
         channel = author.voice_channel
@@ -253,7 +251,7 @@ async def on_message(message):
         player = await voice_client.create_ytdl_player(url)
         players[server.id] = player
         player.start()
->>>>>>> de5d12321280f1b39436259712418d987f7cd586
+        player.start()
     #------------------
     # TIME COMMANDS
     #------------------
