@@ -27,7 +27,7 @@ import datetime
 
 #---------------------
 # BOT SETUP
-TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XebY6w.2ziI5NwskJy5BbuGSsE3y1ghkpo' # Sets the Bot token
+TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XgzwJw.UmrSDiTuXAgpslX1ofyh0CmftBY' # Sets the Bot token
 client = discord.Client() # DO NOT CHANGE
 prefix = '&' # Sets the Bot's Prefix
 version = '3'
