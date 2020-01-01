@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-=======
-#    <one line to give the program's name and a brief idea of what it does.>
-#    Copyright (C) 2019  Edgewurth
+#    Flame Discord Bot
+#    Copyright (C) 2019-2020  Edgewurth
 
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -15,7 +13,6 @@
 
 #   You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
->>>>>>> de5d12321280f1b39436259712418d987f7cd586
 #----------------------
 # IMPORTING COMMANDS
 #----------------------
@@ -30,12 +27,7 @@ import datetime
 
 #---------------------
 # BOT SETUP
-#---------------------
-<<<<<<< HEAD
 TOKEN = 'NjE3ODQ2MTkyMDYzMzgxNTQ2.XebY6w.2ziI5NwskJy5BbuGSsE3y1ghkpo' # Sets the Bot token
-=======
-TOKEN = 'TOKEN PLACEHOLDER' # Sets the Bot token
->>>>>>> de5d12321280f1b39436259712418d987f7cd586
 client = discord.Client() # DO NOT CHANGE
 prefix = '&' # Sets the Bot's Prefix
 version = '3'
@@ -522,10 +514,7 @@ async def countdown_command(times, format):
     await client.send_message(message.channel, msg)
 @client.event
 async def on_ready():
-<<<<<<< HEAD
     await client.change_presence(game=discord.Game(name=prefix + 'help'))
-=======
     await client.change_status(game=discord.Game(name=prefix + 'help'))
->>>>>>> de5d12321280f1b39436259712418d987f7cd586
     print("[FLAME] Bot Signed In and Started!")
 client.run(TOKEN)
