@@ -43,8 +43,11 @@ async def on_message(message):
         embed.add_field(name=':hammer_and_wrench: Utilities :hammer_and_wrench:',value='``calc``',inline=False)
         embed.add_field(name=':information_source: Information :information_source:',value='``about``, ``help``, ``ping``, ``avatar``',inline=False)
         embed.add_field(name=':hammer: Moderation :hammer:',value='``clear``',inline=False)
+        args = message.content.split(" ")
+        if args[1] == "include-ea": # These are commands for the Early Preview Users
+            if message.channel.id == "640258775684612166":
+                embed.add_field(name=':warning: Moderation :warning:',value='``connect``,``disconnect``,``help``',inline=False)
         try:
-            args = message.content.split(" ")
             msg = ':incoming_envelope: I have sent an message with the commands to help you.'
             await client.send_message(message.author, embed=embed)
             await client.send_message(message.channel, msg)
@@ -107,27 +110,30 @@ async def on_message(message):
     #------------------
     # Connect to Channel Command
     if message.content.startswith(prefix + 'connect'):
-        print("[FLAME] Connect Command Sent")
-        author = message.author
-        channel = author.voice_channel
-        await client.join_voice_channel(channel)
-        msg = ':speaker: I have joined the voice channel you\'re in!'
-        await client.send_message(message.channel, msg)
+        if message.channel.id == "640258775684612166":
+            print("[FLAME] Connect Command Sent")
+            author = message.author
+            channel = author.voice_channel
+            await client.join_voice_channel(channel)
+            msg = ':speaker: I have joined the voice channel you\'re in!'
+            await client.send_message(message.channel, msg)
     # Disconnect to Channel Command - DISFUNCTIONAL
     if message.content.startswith(prefix + 'disconnect'):
-        print("[FLAME] Disconnect Command Sent")
-        server = message.server
-        voice_client = client.voice_client_in(server)
-        await voice_client.disconnect()
+        if message.channel.id == "640258775684612166":
+            print("[FLAME] Disconnect Command Sent")
+            server = message.server
+            voice_client = client.voice_client_in(server)
+            await voice_client.disconnect()
     # Play Command - DISFUNCTIONAL
     if message.content.startswith(prefix + 'play'):
-        args = message.content.split(" ")
-        url = args[1]
-        server = message.server
-        voice_client = client.voice_client_in(server)
-        player = await voice_client.create_ytdl_player(url)
-        players[server.id] = player
-        player.start()
+        if message.channel.id == "640258775684612166":
+            args = message.content.split(" ")
+            url = args[1]
+            server = message.server
+            voice_client = client.voice_client_in(server)
+            player = await voice_client.create_ytdl_player(url)
+            players[server.id] = player
+            player.start()
     #------------------
     # TIME COMMANDS
     #------------------
