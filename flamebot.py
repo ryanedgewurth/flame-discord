@@ -464,66 +464,105 @@ async def on_message(message):
 @client.event
 async def countdown_command(times, format):
     await client.wait_until_ready()
-    if format == 'm':
-        # Secs = Mins * 60
-        times = times * 60
-    elif format == 'h':
-        # Mins = H * 60
-        times = times * 60
-        # Secs = Mins * 60
-        times = times * 60
-    elif format == 'd':
-        # Day = H * 24
-        times = times * 24
-        # Mins = H * 60
-        times = times * 60
-        # Secs = Mins * 60
-        times = times * 60
-    elif format == 'mo':
-        # Month = D * 28
-        times = times * 28
-        # Day = H * 24
-        times = times * 24
-        # Mins = H * 60
-        times = times * 60
-        # Secs = Mins * 60
-        times = times * 60
-    times = int(times)
-    while times >= 0:
-        if times == 7200:
-            msg = '2 Hours Left'
-            await client.send_message(message.channel, msg)
-        elif times == 3600:
-            msg = '1 Hour Left'
-            await client.send_message(message.channel, msg)
-        elif times == 2700:
-            msg = '45 Minutes Left'
-            await client.send_message(message.channel, msg)
-        elif times == 1800:
-            msg = '30 Minutes Left'
-            await client.send_message(message.channel, msg)
-        elif times == 900:
-            msg = '15 Minutes Left'
-            await client.send_message(message.channel, msg)
-        elif times == 600:
-            msg = '10 Minutes Left'
-            await client.send_message(message.channel, msg)
-        elif times == 300:
-            msg = '5 Minutes Left'
-            await client.send_message(message.channel, msg)
-        elif times == 120:
-            msg = '2 Minutes Left'
-            await client.send_message(message.channel, msg)
-        elif times == 60:
-            msg = '1 Minute Left'
-            await client.send_message(message.channel, msg)
-        elif times == 30:
-            msg = '30 Seconds Left'
-            await client.send_message(message.channel, msg)
-        sleep(1)
-        times = times - 1
-    msg = '{0.author.mention}\'s Alarm is Rinning!'.format(message)
-    await client.send_message(message.channel, msg)
+ # Lets define our interval multipliers to start with (assuming 'tick' is in ms intervals).
+    m = 60*1000     # 60 seconds to a minute
+    h = int(m)*60   # 60 minutes to an hour
+    d = int(h)*24   # 24 hours to a day
+    w = int(d)*7    # 7 days to a week
+    mo = int(w)*4    # 4 weeks to a 28 day month (for now - need some special handling for calendar months
+   
+    # Let's just set a zero duration value here for now. Will throw exception for incorrect time format later
+    duration = 0
+    if timeFormat == 'm':
+            duration = int(m)*int(numberOfIntervals) # I'm playing safe by typecasting here
+    if timeFormat == 'h':
+            duration =  int(m)*int(numberOfIntervals)
+    if timeFormat == 'd':
+            duration = int(m)*int(numberOfIntervals)
+    if timeFormat == 'w':
+            duration = int(w)*int(numberOfIntervals)
+    if timeFormat == 'mo':
+            duration =  int(mo)*int(numberOfIntervals)
+          
+    
+    
+    
+    ################################################################################
+    # Deprecated Code
+    ################################################################################
+    #if format == 'm':
+        ## Secs = Mins * 60
+        #times = times * 60
+    #elif format == 'h':
+        ## Mins = H * 60
+        #times = times * 60
+        ## Secs = Mins * 60
+        #times = times * 60
+    #elif format == 'd':
+        ## Day = H * 24
+        #times = times * 24
+        ## Mins = H * 60
+        #times = times * 60
+        ## Secs = Mins * 60
+        #times = times * 60
+    #elif format == 'mo':
+        ## Month = D * 28
+        #times = times * 28
+        ## Day = H * 24
+        #times = times * 24
+        ## Mins = H * 60
+        #times = times * 60
+        ## Secs = Mins * 60
+        #times = times * 60
+    #times = int(times)
+    
+    
+    
+    
+    ################################################################################
+    # Give periodic reminders....disable for now
+    # Also a lot of 'magic' numbers here.....need to remove to make code clearer
+    ################################################################################
+    #while times >= 0:
+        #if times == 7200:
+            #msg = '2 Hours Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 3600:
+            #msg = '1 Hour Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 2700:
+            #msg = '45 Minutes Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 1800:
+            #msg = '30 Minutes Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 900:
+            #msg = '15 Minutes Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 600:
+            #msg = '10 Minutes Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 300:
+            #msg = '5 Minutes Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 120:
+            #msg = '2 Minutes Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 60:
+            #msg = '1 Minute Left'
+            #await client.send_message(message.channel, msg)
+        #elif times == 30:
+            #msg = '30 Seconds Left'
+            #await client.send_message(message.channel, msg)
+        #sleep(1)
+        #times = times - 1
+    #msg = '{0.author.mention}\'s Alarm is Rinning!'.format(message)
+    #await client.send_message(message.channel, msg)
+    
+    #########################################################################################
+    # End of mods take 1
+    #########################################################################################
+    
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix + 'help'))
