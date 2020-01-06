@@ -10,7 +10,7 @@ sys.path.append("../")
 # Unit under test
 from countDown import countDown
 
-# We're going to use a test-driven development methodolgy, so our tests should reflect what we want the program to do.
+# We're going to use a test-driven development methodology, so our tests should reflect what we want the program to do.
 
 # We want to be able to assign a set number of time-period (of a given unit [m h d w mo]) after which the countdown will trigger an alarm....
 units = 'm' # lets start with something simple - minutes (we can hard-code the 6000 'ticks' initially)
@@ -28,7 +28,11 @@ if timer.getTotalTime() <> 0: # Anything multiplied by zero is always zero
 timer=countDown(-5,units)
 if timer.getTotalTime() <> 0: # As per above - set to zero to ignore
     print("Failed handling a negative amount of minutes")
-    
+# OK Let's try a duration of 1 hour (should be 60*60*1000 = 3600000 'ticks'
+units = 'h'
+timer=countDown(1,units)
+if (timer.getTotalTime()) <> 3600000:
+    print("Failed setting 'ticks' to one hour")
     
     
     

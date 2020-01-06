@@ -14,7 +14,13 @@ class countDown(object):
                 self.numUnits = numbUnits
                 self.unitType = unit
                 self.description = "This timer is un-named" # Probably for future expansion
-                self.timerUser = "Username not set" # We wil need to capture this in the production release
+                self.timerUser = "Username not set" # We will need to capture this in the production release
+                                                    # Particularly important with multiple users wishing to 
+                                                    # use. We don't want to fork n! processes, one or more per user
+                                                    # I suspect some form of file holding 'active' countdowns
+                                                    # will be needed that can then be 'polled' by means of a 
+                                                    # cron job or similar. If so, an entry point will be needed
+                                                    # to the class to run.
 
         ####################################################################################################
         # Getter for total number of 'clicks' (normally 1/1000 of a second)
