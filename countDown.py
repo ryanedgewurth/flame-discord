@@ -9,6 +9,8 @@ class countDown(object):
         # Initialise object with passed parameters (Number of Units, Units)
         ####################################################################################################        
         def __init__(self, numbUnits, unit):
+                if numbUnits < 0:
+                        numbUnits = 0
                 self.numUnits = numbUnits
                 self.unitType = unit
                 self.description = "This timer is un-named" # Probably for future expansion
@@ -18,7 +20,7 @@ class countDown(object):
         # Getter for total number of 'clicks' (normally 1/1000 of a second)
         ####################################################################################################        
         def getTotalTime(self):
-                return self.numUnits * self.numTicks() * 1000 # Hard coded to minutes for now. (See ./tests/countDownTest.py)
+                return self.numUnits * self.numTicks() * 1000 
       
         ####################################################################################################
         # Getter and setter for timer description....not yet fully implemented
@@ -41,16 +43,16 @@ class countDown(object):
         # Handle various unit types - not yet implemented
         ####################################################################################################                
         def numTicks(self):
-                if self._timeFormat == 'm':
-                        return int(m) # I'm playing safe by typecasting here
-                if self._timeFormat == 'h':
-                        return int(h)
-                if self._timeFormat == 'd':
-                        return int(d)
-                if self._timeFormat == 'w':
-                        return int(w)
-                if self._timeFormat == 'mo':
-                        return int(mo)
+                if self.unitType == 'm':
+                        return int(self.m) # I'm playing safe by typecasting here
+                if self.unitType == 'h':
+                        return int(self.h)
+                if self.unitType == 'd':
+                        return int(self.d)
+                if self.unitType == 'w':
+                        return int(self.w)
+                if self.unitType == 'mo':
+                        return int(self.mo)
                 return 0          
                         
 

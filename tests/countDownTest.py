@@ -23,7 +23,7 @@ if timer.getTotalTime() <> 300000: # 60 * 5 * 1000 = 300000
 timer = countDown(0,units)
 if timer.getTotalTime() <> 0: # Anything multiplied by zero is always zero
     print("Failed in asserting zero units will always give a zero time")
-    
+  
 # What about a negative value - should we raise an exception? How else should we deal? Assume -ve = zero for our purposes
 timer=countDown(-5,units)
 if timer.getTotalTime() <> 0: # As per above - set to zero to ignore
