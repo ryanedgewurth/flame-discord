@@ -1,3 +1,7 @@
+# Dependencies:
+import json
+import time
+
 class countDown(object):
         # Define various interval units
         m = 60
@@ -5,12 +9,12 @@ class countDown(object):
         d = h * 24
         w = d * 7
         mo = w *4 #Assume 4 week months = 28 days/4 weeks
-        
+        countDownFile = 'countdown.json'
         ####################################################################################################
         # Initialise object with passed parameters (Number of Units, Units)
         # Some 'sensible' defaults added into constructor
         ####################################################################################################        
-        def __init__(self, numbUnits = 1, unit = 'm',user = 'Username not set', name = 'Un-named timer'): 
+        def __init__(self, numbUnits = 1, unit = 'm',user = 'Username not set', name = 'Un-named timer',reminder = 0): 
                 # We'll typecast the units just to be safe. Possibly use type hinting later on
                 if numbUnits == None:
                         numbUnits = 0
@@ -26,13 +30,22 @@ class countDown(object):
                 self.timerUser = user
                 if self.timerUser == None:
                         self.timerUser='Username not set'
-
+                self.reminder = int(reminder)
+                if self.reminder == None: # Catch 'None/Null' setting
+                        self.reminder = 0
         ####################################################################################################
-        # Getter for total number of 'clicks' (normally 1/1000 of a second)
+        # Getter for total number of 'clicks' (clock is floating point representation of seconds, so don't
+        # need the 1,000 multiplier). Need to re-factor tests to take into account or most will fail
         ####################################################################################################        
         def getTotalTime(self):
-                return self.numUnits * self.numTicks() * 1000 
-      
+                self.totalTicks = self.numUnits * self.numTicks() 
+                return self.totalTicks
+        ####################################################################################################
+        # Getter for reminder status
+        ####################################################################################################        
+        def getReminder(self):
+                return self.reminder
+        
         ####################################################################################################
         # Getter and setter for timer name....not yet fully implemented
         ####################################################################################################        
@@ -66,4 +79,12 @@ class countDown(object):
                         return int(self.mo)
                 return 0          
                         
-
+        ####################################################################################################
+        # Write out this instance to json - testing of dump only at present
+        ####################################################################################################
+        def jsonOut(self,filename='timer.txt'):
+                self.timerStartTime =  time.time()  
+                self.timerEndTime = self.timerStartTime                     
+                self.timerEndTime += self.getTotalTime()
+                return json.dumps(self, default=lambda o: o.__dict__, 
+                          sort_keys=True, indent=4)               

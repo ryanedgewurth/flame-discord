@@ -16,9 +16,9 @@ from countDown import countDown
 # We want to be able to assign a set number of time-period (of a given unit [m h d w mo]) after which the countdown will trigger an alarm....
 units = 'm' # lets start with something simple - minutes (we can hard-code the 6000 'ticks' initially)
 timer = countDown(5,units)
-if timer.getTotalTime() <> 300000: # 60 * 5 * 1000 = 300000
+if timer.getTotalTime() <> 300: # 60 * 5  = 300
     print(timer.getTotalTime())
-    print("Failed in asserting 6000 minutes == 300000 'ticks'")
+    print("Failed in asserting 60 minutes == 300 'ticks'")
 
 # Let's stick to minutes, so we can test for example a zero input in terms of units (should return 0 - simple multiplication)
 timer = countDown(0,units)
@@ -30,28 +30,28 @@ timer=countDown(-5,units)
 if timer.getTotalTime() <> 0: # As per above - set to zero to ignore
     print("Failed handling a negative amount of minutes")
 
-# OK Let's try a duration of 1 hour (should be 60*60*1000 = 3600000 'ticks'
+# OK Let's try a duration of 1 hour (should be 60*60 = 3600 'ticks'
 units = 'h'
 timer=countDown(1,units)
-if timer.getTotalTime() <> 3600000:
+if timer.getTotalTime() <> 3600:
     print("Failed setting 'ticks' to one hour")
 
-# Same test for days = 3600000 * 24 =  86400000
+# Same test for days = 3600 * 24 =  86400
 units = 'd'
 timer=countDown(1,units)
-if timer.getTotalTime() <> 86400000:
+if timer.getTotalTime() <> 86400:
     print("Failed setting 'ticks' to one day")
 
-# And weeks (7 * 86400000) = 604800000
+# And weeks (7 * 86400) = 604800
 units = 'w'
 timer=countDown(1,units)
-if timer.getTotalTime() <> 604800000:
+if timer.getTotalTime() <> 604800:
     print("Failed setting 'ticks' to one week")
     
-# Finally months (4 * 604800000) = 2419200000
+# Finally months (4 * 604800) = 2419200
 units = 'mo'
 timer=countDown(1,units)
-if timer.getTotalTime() <> 2419200000:
+if timer.getTotalTime() <> 2419200:
     print("Failed setting 'ticks' to one month")
 
 # Test for nonsensical unit string (should return 0)
@@ -94,15 +94,20 @@ timer=countDown(1,'d',None,timername)
 if timer.getUserName() <> 'Username not set':  
     print("Failed test for 'null' (None) passed as parameter for username")
  
-    
-# Test 'reminder' flag in constructor - commented out for now...need to have a think about this
-#timer=countDown(1,units,username,timername,1)
-#if timer.getReminder() <> 1:
-    #print("Failed setting reminder flag in constructor")
+# Test setting timer name to None
+timer=countDown(1,'d','Username',None)
+if timer.getName() <> 'Un-named timer':
+    print("Failed test for timer name set to None")
+   
+# Test 'reminder' flag in constructor 
+timer=countDown(1,units,username,timername,1)
+if timer.getReminder() <> 1:
+    print("Failed setting reminder flag in constructor")
 
+# Test writing timer out to disk - needed for multiple users - just dumping output to stdout for now.
+timer = countDown(1,'d','Test User','My perfect Timer',1)
+print(timer.jsonOut())
 
-
-# Next test should be for excessive numbers of parameters and also no parameters passed to constructor - make sure we fail gracefully
-
+#
 
 print("All Tests completed")
