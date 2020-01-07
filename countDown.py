@@ -5,22 +5,19 @@ class countDown(object):
         d = h * 24
         w = d * 7
         mo = w *4 #Assume 4 week months = 28 days/4 weeks
+        
         ####################################################################################################
         # Initialise object with passed parameters (Number of Units, Units)
+        # Some 'sensible' defaults added into constructor
         ####################################################################################################        
-        def __init__(self, numbUnits, unit):
-                if numbUnits < 0:
+        def __init__(self, numbUnits = 1, unit = 'm',user = 'Username not set', name = 'Un-named timer'): 
+                # We'll typecast the units just to be safe. Possibly use type hinting later on
+                if int(numbUnits) < 0:
                         numbUnits = 0
-                self.numUnits = numbUnits
+                self.numUnits = int(numbUnits)
                 self.unitType = unit
-                self.description = "This timer is un-named" # Probably for future expansion
-                self.timerUser = "Username not set" # We will need to capture this in the production release
-                                                    # Particularly important with multiple users wishing to 
-                                                    # use. We don't want to fork n! processes, one or more per user
-                                                    # I suspect some form of file holding 'active' countdowns
-                                                    # will be needed that can then be 'polled' by means of a 
-                                                    # cron job or similar. If so, an entry point will be needed
-                                                    # to the class to run.
+                self.name = name # Probably for future expansion
+                self.timerUser = user
 
         ####################################################################################################
         # Getter for total number of 'clicks' (normally 1/1000 of a second)
@@ -29,13 +26,13 @@ class countDown(object):
                 return self.numUnits * self.numTicks() * 1000 
       
         ####################################################################################################
-        # Getter and setter for timer description....not yet fully implemented
+        # Getter and setter for timer name....not yet fully implemented
         ####################################################################################################        
-        def setDescription(self, text):
-                self.description = text
+        def setName(self, text):
+                self.name = text
 
-        def getDescription(self, text):
-                return self.description
+        def getName(self):
+                return self.name
   
         ####################################################################################################
         # Getter and setter for username (implement as we approach prod)
@@ -46,7 +43,7 @@ class countDown(object):
                 return self.timerUser
        
         ####################################################################################################
-        # Handle various unit types - not yet implemented
+        # Handle various unit types 
         ####################################################################################################                
         def numTicks(self):
                 if self.unitType == 'm':
