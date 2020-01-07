@@ -12,12 +12,20 @@ class countDown(object):
         ####################################################################################################        
         def __init__(self, numbUnits = 1, unit = 'm',user = 'Username not set', name = 'Un-named timer'): 
                 # We'll typecast the units just to be safe. Possibly use type hinting later on
+                if numbUnits == None:
+                        numbUnits = 0
                 if int(numbUnits) < 0:
                         numbUnits = 0
                 self.numUnits = int(numbUnits)
                 self.unitType = unit
+                if self.unitType == None:
+                        self.unitType = 'm'
                 self.name = name # Probably for future expansion
+                if self.name == None:
+                        self.name='Un-named timer'
                 self.timerUser = user
+                if self.timerUser == None:
+                        self.timerUser='Username not set'
 
         ####################################################################################################
         # Getter for total number of 'clicks' (normally 1/1000 of a second)
