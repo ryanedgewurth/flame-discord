@@ -89,13 +89,16 @@ timer.setName('Joe')
 if timer.getName() <> 'Joe':
     print("Failed setting timer name in setter")
 
+# Test setting username to None
 timer=countDown(1,'d',None,timername)
-print(timer.getUserName())
-
-# Test 'reminder' flag in constructor
-timer=countDown(1,units,username,timername,1)
-if timer.getReminder() <> 1:
-    print("Failed setting reminder flag in constructor")
+if timer.getUserName() <> 'Username not set':  
+    print("Failed test for 'null' (None) passed as parameter for username")
+ 
+    
+# Test 'reminder' flag in constructor - commented out for now...need to have a think about this
+#timer=countDown(1,units,username,timername,1)
+#if timer.getReminder() <> 1:
+    #print("Failed setting reminder flag in constructor")
 
 
 
