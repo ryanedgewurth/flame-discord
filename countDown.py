@@ -2,6 +2,9 @@
 import json
 import time
 
+####################################################################################################
+# Individual countDown Timer class
+####################################################################################################
 class countDown(object):
         # Define various interval units
         m = 60
@@ -83,8 +86,35 @@ class countDown(object):
         # Write out this instance to json - testing of dump only at present
         ####################################################################################################
         def jsonOut(self,filename='timer.txt'):
-                self.timerStartTime =  time.time()  
+                self.timerStartTime =  int(time.time() ) # We're only needed to be accurate to the second.
                 self.timerEndTime = self.timerStartTime                     
                 self.timerEndTime += self.getTotalTime()
                 return json.dumps(self, default=lambda o: o.__dict__, 
-                          sort_keys=True, indent=4)               
+                          sort_keys=True, indent=4)              
+
+
+####################################################################################################
+# Wrapper for 'countDown' timers - could refactor this into generically named class/file
+####################################################################################################
+class flamebotTimers:
+
+        ####################################################################################################
+        # We need an array - so initialise it here
+        ####################################################################################################        
+        def __init__(self):
+                self.timers = [] 
+                               
+        ####################################################################################################
+        # Simple method to show how many timers
+        ####################################################################################################        
+        def numTimers(self):
+               return len(self.timers)
+        
+        ####################################################################################################
+        # Push timer onto 'stack'
+        ####################################################################################################        
+        def addTimer(self,timer):
+                self.timers.append(timer)
+                return self
+        
+        

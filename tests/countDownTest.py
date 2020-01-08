@@ -9,7 +9,7 @@ sys.path.append("../")
 
 
 # Unit under test
-from countDown import countDown
+from countDown import countDown, flamebotTimers
 
 # We're going to use a test-driven development methodology, so our tests should reflect what we want the program to do.
 
@@ -93,21 +93,45 @@ if timer.getName() <> 'Joe':
 timer=countDown(1,'d',None,timername)
 if timer.getUserName() <> 'Username not set':  
     print("Failed test for 'null' (None) passed as parameter for username")
- 
+
+    
 # Test setting timer name to None
 timer=countDown(1,'d','Username',None)
 if timer.getName() <> 'Un-named timer':
     print("Failed test for timer name set to None")
+
    
 # Test 'reminder' flag in constructor 
 timer=countDown(1,units,username,timername,1)
 if timer.getReminder() <> 1:
     print("Failed setting reminder flag in constructor")
 
+    
 # Test writing timer out to disk - needed for multiple users - just dumping output to stdout for now.
-timer = countDown(1,'d','Test User','My perfect Timer',1)
-print(timer.jsonOut())
+timer = countDown(1,'d','Test User','My perfect Timer',1)#
+#print(timer.jsonOut()) # Commented out as 'eyeball'check ok - put back in for full test output
 
-#
+# The below test may seem out of order, but needed to check that we could instantiate countDown with no parameters passed to constructor
+#Test with absolutely no parameters passed to check setting of all defaults
+timer=countDown()
+#print(timer.jsonOut()) # Passes 'eyeball' check
+
+#############################################################################
+# Tests for timer 'stack' or array
+#############################################################################
+
+# Test initialisation of timer array - should initially have a length of zero
+timers = flamebotTimers()
+
+if timers.numTimers() <> 0:
+    print("Unable to initialise array of timers")
+    
+# Test adding timer to stack
+timers = flamebotTimers() # re-initialise to prevent 'pollution' from previous tests
+timer=countDown()
+timers.addTimer(timer)
+if timers.numTimers() <> 1:
+    print("Unable to add timer to stack")
+
 
 print("All Tests completed")
