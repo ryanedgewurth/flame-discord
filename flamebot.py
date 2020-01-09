@@ -277,13 +277,14 @@ async def on_message(message):
             
     # Countdown Command
     if message.content.startswith(prefix + 'countdown'):
-        print("[FLAME] Countdown Command")
+#        print("[FLAME] Countdown Command")
         args = message.content.split(" ")
         times = args[1]
         format = args[2]
-        msg = 'Started a Timer of ' + times + format
+ #      msg = 'Started a Timer of ' + times + format
+        msg = 'Currently disabled'
         await client.send_message(message.channel, msg)
-        client.loop.create_task(countdown_command(times, format))
+  #      client.loop.create_task(countdown_command(times, format))
     # TEST COMMAND
     if message.content.startswith(prefix + 'xtest'):
         args = message.content.split(" ")
