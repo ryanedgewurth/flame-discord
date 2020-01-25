@@ -40,7 +40,7 @@ version = '3'
 @client.event
 async def on_message(message):
     # Call to countdown timer to see if we need to trigger any alerts
-    flamebotTimers.poll()
+    #flamebotTimers.poll()
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
