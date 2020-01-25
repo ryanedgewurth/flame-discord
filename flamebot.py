@@ -24,6 +24,8 @@ import string
 import time
 from time import sleep
 import datetime
+from countDown import countDown
+from countDown import flamebotTimers
 
 #---------------------
 # BOT SETUP
@@ -37,6 +39,8 @@ version = '3'
 #---------------------
 @client.event
 async def on_message(message):
+    # Call to countdown timer to see if we need to trigger any alerts
+    flamebotTimers.poll()
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return

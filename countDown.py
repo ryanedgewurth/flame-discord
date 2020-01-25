@@ -117,4 +117,8 @@ class flamebotTimers:
                 self.timers.append(timer)
                 return self
         
-        
+        ####################################################################################################
+        # Check to see if any timers need to be triggered
+        ####################################################################################################
+        def poll(self):
+                return # we don't actually want to return anything just handle the polling here
