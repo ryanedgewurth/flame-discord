@@ -11,49 +11,46 @@ sys.path.append("./modules/")
 from eightBall import eightBall
 
 
-description = "FlameBot"
+description = "FlameBot - the new speedy version"
 
+bot = commands.Bot(command_prefix='^', description=description)
 
+@bot.event
+async def on_ready():
+    print('Logged in as')
+    print(bot.user.name)
+    print(bot.user.id)
+    print('------')
 
-
-
-
-class FlameClient(discord.Client):
-    def __init__(self, * args, ** kwargs):
-        super().__init__(*args, ** kwargs)
+@bot.command()
+async def add(ctx, left: int, right: int):
+    """Adds two numbers together."""
+    await ctx.send(left + right)
     
-    async def on_message(self, message):
-        # we do not want the bot to reply to itself
-        if message.author == client.user:
-            return
-        # This will be further re-factored
-        if message.content.startswith("^24ball"):
-            msg = eightBall.runCmd() + " "+ eightBall.runCmd() + " "+eightBall.runCmd()
-            # Note new syntax for message
-            await message.channel.send(msg)
+@bot.command()
+async def eightball(ctx):
+    await ctx.send(eightBall.runCmd())
+
+
 
    
-        @tasks.loop(seconds=30.0, count=2)
-        async def slow_count():
-            # This may seem trivial for now but is critical for the countdown timer.......
-            if slow_count.current_loop == 1:
-                await message.channel.send("Reminder Alert Message")
-
-
-        if message.content.startswith("^Remind me later"):
-            msg="Reminder set for 60 seconds"
-            slow_count.start()
-            await message.channel.send(msg)
-
-
-        bot = commands.Bot(command_prefix='?', description=description)
+@tasks.loop(seconds=3.0, count=2)
+async def slow_count(ctx):
+# This may seem trivial for now but is critical for the countdown timer.......
+    if slow_count.current_loop == 1:
         
-            
+        await ctx.send("Reminder Alert Message")
+
+@bot.command()
+async def reminder(ctx):
+    
+    slow_count.start(ctx)
+  
 
     # Cheap and easy functionality
-    async def on_message_edit(self, before, after):
-        fmt = '**{0.author}** edited their message:\n{0.content} -> {1.content}'
-        await before.channel.send(fmt.format(before, after))
-    
-client = FlameClient()
-client.run(Config.token)
+async def on_message_edit(self, before, after):
+    fmt = '**{0.author}** edited their message:\n{0.content} -> {1.content}'
+    await before.channel.send(fmt.format(before, after))
+
+
+bot.run(Config.token)

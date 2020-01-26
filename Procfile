@@ -1,1 +1,1 @@
-worker: python flamebot.py
+worker: python3 Flamebot.py
