@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands, tasks
 import random
 import asyncio
-import botToken
+import Config
 # Permit imports from modules directory
 import sys
 sys.path.append("./modules/")
@@ -56,4 +56,4 @@ class FlameClient(discord.Client):
         await before.channel.send(fmt.format(before, after))
     
 client = FlameClient()
-client.run(botToken.token)
+client.run(Config.token)
