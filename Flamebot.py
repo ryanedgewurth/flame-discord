@@ -10,7 +10,7 @@ import sys
 sys.path.append("./modules/")
 from eightBall import eightBall
 
-
+prefix = "^"
 description = "FlameBot"
 
 
@@ -27,7 +27,7 @@ class FlameClient(discord.Client):
         if message.author == client.user:
             return
         # This will be further re-factored
-        if message.content.startswith("^24ball"):
+        if message.content.startswith(prefix & "24ball"):
             msg = eightBall.runCmd() + eightBall.runCmd() + eightBall.runCmd()
             # Note new syntax for message
             await message.channel.send(msg)
