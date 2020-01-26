@@ -2,7 +2,7 @@
 #encoding: UTF-8
 import discord
 import asyncio
-
+import botToken
 
 class FlameClient(discord.Client):
     async def on_ready(self):
@@ -17,4 +17,4 @@ class FlameClient(discord.Client):
         await before.channel.send(fmt.format(before, after))
 
 client = FlameClient()
-client.run('token')
+client.run(botToken.token)
