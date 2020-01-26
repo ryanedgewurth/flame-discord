@@ -28,29 +28,22 @@ class FlameClient(discord.Client):
             return
         # This will be further re-factored
         if message.content.startswith("^24ball"):
-            msg = eightBall.runCmd() + eightBall.runCmd() + eightBall.runCmd()
+            msg = eightBall.runCmd() + " "+ eightBall.runCmd() + " "+eightBall.runCmd()
             # Note new syntax for message
             await message.channel.send(msg)
 
    
-    
         @tasks.loop(seconds=30.0, count=2)
         async def slow_count():
             # This may seem trivial for now but is critical for the countdown timer.......
             if slow_count.current_loop == 1:
                 await message.channel.send("Reminder Alert Message")
 
-        
 
-   
         if message.content.startswith("^Remind me later"):
             msg="Reminder set for 60 seconds"
             slow_count.start()
             await message.channel.send(msg)
-
-        
-
-        
 
 
         bot = commands.Bot(command_prefix='?', description=description)
