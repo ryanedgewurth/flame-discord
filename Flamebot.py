@@ -38,13 +38,13 @@ class FlameClient(discord.Client):
         async def slow_count():
             # This may seem trivial for now but is critical for the countdown timer.......
             if slow_count.current_loop == 1:
-                await message.channel.send("BOO!...........................did I get ya?")
+                await message.channel.send("Reminder Alert Message")
 
         
 
    
-        if message.content.startswith("^boo"):
-            msg="That was scary"
+        if message.content.startswith("^Remind me later"):
+            msg="Reminder set for 60 seconds"
             slow_count.start()
             await message.channel.send(msg)
 
