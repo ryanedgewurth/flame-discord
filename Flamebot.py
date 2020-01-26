@@ -67,7 +67,7 @@ async def eightball(ctx):
     await ctx.send(eightBall.runCmd())
 
 @bot.command()
-async def eightball(ctx, lowval: int, bigval: int):
+async def rnd(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
     await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
    
