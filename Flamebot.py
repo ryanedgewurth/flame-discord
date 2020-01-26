@@ -9,6 +9,7 @@ import Config
 import sys
 sys.path.append("./modules/")
 from eightBall import eightBall
+from cmdRNG import cmdRNG
 
 
 description = "FlameBot - the new speedy version"
@@ -31,7 +32,9 @@ async def add(ctx, left: int, right: int):
 async def eightball(ctx):
     await ctx.send(eightBall.runCmd())
 
-
+@bot.command()
+async def eightball(ctx, lowval: int, bigval: int):
+    await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
    
 @tasks.loop(seconds=3.0, count=2)
