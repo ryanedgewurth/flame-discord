@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 #encoding: UTF-8
+#      FLAMEBOT
+#      Copyright (C) 2019-2020  Edgewurth/RPCS
+
+#      This program is free software: you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation, either version 3 of the License, or
+#      (at your option) any later version.
+
+#      This program is distributed in the hope that it will be useful,
+#      but WITHOUT ANY WARRANTY; without even the implied warranty of
+#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#      GNU General Public License for more details.
+
+#     You should have received a copy of the GNU General Public License
+#
 import discord
 from discord.ext import commands, tasks
 import random
@@ -9,7 +24,7 @@ import Config
 import sys
 sys.path.append("./modules/")
 from eightBall import eightBall
-
+from pingCmd import pingCmd
 
 description = "FlameBot - the new speedy version"
 
@@ -22,6 +37,21 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
+
+# About command - prints what is stored in description variable
+@bot.command()
+async def about(ctx):
+    await ctx.send(description)
+
+# Ping
+@bot.command()
+async def ping(ctx):
+    startTime = pingCmd.startPing(ctx)
+    await ctx.send("Pinging")
+    endTime = pingCmd.endPing(ctx)
+    latency = endTime - startTime
+    msg = 'Pong! The latency is ' + str(round(latency, 3)) + 'ms'
+    await ctx.send(msg)
 
 # Simple addition of two numbers showing type-checking on input
 @bot.command()
