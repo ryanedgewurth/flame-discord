@@ -24,6 +24,8 @@ import Config
 import sys
 sys.path.append("./modules/")
 from eightBall import eightBall
+from cmdRNG import cmdRNG
+
 from pingCmd import pingCmd
 
 description = "FlameBot - the new speedy version"
@@ -64,8 +66,11 @@ async def add(ctx, left: int, right: int):
 async def eightball(ctx):
     await ctx.send(eightBall.runCmd())
 
-# Loop that can be triggered outside of events but respond to events
-# Will expand on this later for the reminder programming
+@bot.command()
+async def eightball(ctx, lowval: int, bigval: int):
+    await ctx.send(cmdRNG.runCmd(lowval, bigval))
+
+   
 @tasks.loop(seconds=3.0, count=2)
 async def slow_count(ctx):
 # This may seem trivial for now but is critical for the countdown timer.......
