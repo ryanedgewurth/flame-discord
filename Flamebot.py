@@ -46,51 +46,52 @@ async def on_ready():
     async def loop(ctx):
         # Do something    print('------')
         print ("Loop 'tick'")
+try:
+    # About command - prints what is stored in description variable
+    @bot.command()
+    async def about(ctx):
+        await ctx.send(description)
 
-# About command - prints what is stored in description variable
-@bot.command()
-async def about(ctx):
-    await ctx.send(description)
+    # Ping
+    @bot.command()
+    async def ping(ctx):
+        startTime = pingCmd.startPing(ctx)
+        await ctx.send("Pinging")
+        endTime = pingCmd.endPing(ctx)
+        latency = endTime - startTime
+        msg = 'Pong! The latency is ' + str(round(latency, 3)) + 'ms'
+        await ctx.send(msg)
 
-# Ping
-@bot.command()
-async def ping(ctx):
-    startTime = pingCmd.startPing(ctx)
-    await ctx.send("Pinging")
-    endTime = pingCmd.endPing(ctx)
-    latency = endTime - startTime
-    msg = 'Pong! The latency is ' + str(round(latency, 3)) + 'ms'
-    await ctx.send(msg)
+    # Simple addition of two numbers showing type-checking on input
+    @bot.command()
+    async def add(ctx, left: int, right: int):
+        """Adds two numbers together."""
+        await ctx.send(left + right)
 
-# Simple addition of two numbers showing type-checking on input
-@bot.command()
-async def add(ctx, left: int, right: int):
-    """Adds two numbers together."""
-    await ctx.send(left + right)
-    
-# Infamous 8ball - note renamed to fit with Python's naming rules    
-@bot.command()
-async def eightball(ctx):
-    await ctx.send(eightBall.runCmd())
+    # Infamous 8ball - note renamed to fit with Python's naming rules    
+    @bot.command()
+    async def eightball(ctx):
+        await ctx.send(eightBall.runCmd())
 
-@bot.command()
-async def rnd(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
-    await ctx.send(cmdRNG.runCmd(lowval, bigval))
+    @bot.command()
+    async def rnd(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
+        await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
 
-    
-@tasks.loop(seconds=3.0, count=2)
-async def slow_count(ctx):
-# This may seem trivial for now but is critical for the countdown timer.......
-    if slow_count.current_loop == 1:
-        
-        await ctx.send("Reminder Alert Message")
-        
-# The bot command 'Reminder' to trigger reminder message for now
-@bot.command()
-async def reminder(ctx):
-    slow_count.start(ctx)
 
+    @tasks.loop(seconds=3.0, count=2)
+    async def slow_count(ctx):
+    # This may seem trivial for now but is critical for the countdown timer.......
+        if slow_count.current_loop == 1:
+
+            await ctx.send("Reminder Alert Message")
+
+    # The bot command 'Reminder' to trigger reminder message for now
+    @bot.command()
+    async def reminder(ctx):
+        slow_count.start(ctx)
+except:
+    print("Unknown command")
 # Cheap and easy functionality to flag up edited messages - could be used to 'hook' other event
 @bot.event
 async def on_message_edit(before, after):
