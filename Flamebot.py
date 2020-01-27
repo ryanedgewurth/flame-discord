@@ -97,5 +97,7 @@ async def on_message_edit(before, after):
     fmt = '**{0.author}** edited their message:\n{0.content} -> {1.content}'
     await before.channel.send(fmt.format(before, after))
 
-
-bot.run(Config.token)
+try:
+    bot.run(Config.token)
+except:
+    print("Could not connect client to Discord - Incorrect token?")
