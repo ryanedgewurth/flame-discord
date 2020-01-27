@@ -78,6 +78,10 @@ try:
     async def rnd(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
         await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
+    @bot.command()
+    async def kill(ctx):
+        await ctx.send("Shutting Down bot")
+        exit(0)
 
 
     @tasks.loop(seconds=3.0, count=2)
