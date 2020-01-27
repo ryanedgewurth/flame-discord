@@ -25,9 +25,8 @@ import sys
 sys.path.append("./modules/")
 from eightBall import eightBall
 from cmdRNG import cmdRNG
-
 from pingCmd import pingCmd
-
+from countDown import countDown,flameBotTimers
 
 
 bot = commands.Bot(command_prefix='^', description=Config.description)
@@ -46,7 +45,7 @@ async def on_ready():
     async def timer(ctx):
         # Do something    print('------')
         print ("Loop 'tick'")
-    timer.start()
+    #timer.start() # Causing an error on exit - remove for now
 try:
     # About command - prints what is stored in description variable
     @bot.command()
@@ -81,6 +80,7 @@ try:
     @bot.command()
     async def kill(ctx):
         await ctx.send("Shutting Down bot")
+        #timer.stop()
         exit(0)
 
 
