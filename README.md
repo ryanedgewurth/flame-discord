@@ -3,4 +3,4 @@ Flame Discord Bot is a Discord Bot with a general purpose. This bot was designed
 
 The bot needs a configuration file to be placed in the root directory where bot is installed.
 
-This should be called Config.py. A sample file is available as Config.distpy - rename this file and edit to suit.
+This should be called Config.py. A sample file is available as Config.dist.py - rename this file and edit to suit.
