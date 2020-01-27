@@ -18,6 +18,8 @@
 token='!!!Put your token in here!!!'
 
 # Don't edit below this line
-description = "FlameBot - the new speedy version"
+
 version = '3.0'
+
+description = "FlameBot - the new speedy version: "+version
 
