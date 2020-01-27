@@ -71,7 +71,7 @@ try:
     # Infamous 8ball - note renamed to fit with Python's naming rules    
     @bot.command()
     async def eightball(ctx):
-         """Gives random '8 ball' answer."""
+        """Gives random '8 ball' answer."""
         await ctx.send(eightBall.runCmd())
 
     @bot.command()
@@ -81,7 +81,7 @@ try:
 
     @bot.command()
     async def kill(ctx):
-         """Shutdown bot."""
+        """Shutdown bot."""
         await ctx.send("Shutting Down bot")
         #timer.stop()
         exit(0)
