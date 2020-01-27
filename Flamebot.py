@@ -38,7 +38,14 @@ async def on_ready():
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
-    print('------')
+    ####################################################################################
+    # Trigger loop to run in background. May need some form of semaphore to indicate
+    # client is running to prevent multiple 'ticks' being flagged
+    ####################################################################################
+    @tasks.loop(seconds=5, minutes=0, hours=0, count=None, reconnect=True, loop=None)
+    async def loop(ctx):
+        # Do something    print('------')
+        print ("Loop 'tick'")
 
 # About command - prints what is stored in description variable
 @bot.command()
@@ -70,7 +77,8 @@ async def eightball(ctx):
 async def rnd(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
     await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
-   
+
+    
 @tasks.loop(seconds=3.0, count=2)
 async def slow_count(ctx):
 # This may seem trivial for now but is critical for the countdown timer.......
