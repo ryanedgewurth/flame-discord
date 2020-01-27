@@ -71,14 +71,17 @@ try:
     # Infamous 8ball - note renamed to fit with Python's naming rules    
     @bot.command()
     async def eightball(ctx):
+         """Gives random '8 ball' answer."""
         await ctx.send(eightBall.runCmd())
 
     @bot.command()
     async def rnd(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
+        """Gives a random number between input range."""
         await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
     @bot.command()
     async def kill(ctx):
+         """Shutdown bot."""
         await ctx.send("Shutting Down bot")
         #timer.stop()
         exit(0)
