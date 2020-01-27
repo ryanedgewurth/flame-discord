@@ -64,6 +64,8 @@ class countDown(object):
         ####################################################################################################        
         def getReminder(self):
                 return self.reminder
+        def setReminder(self,reminder):
+            self.reminder = reminder
         
         ####################################################################################################
         # Getter and setter for timer name....not yet fully implemented
