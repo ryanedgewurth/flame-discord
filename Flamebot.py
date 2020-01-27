@@ -28,9 +28,9 @@ from cmdRNG import cmdRNG
 
 from pingCmd import pingCmd
 
-description = "FlameBot - the new speedy version"
 
-bot = commands.Bot(command_prefix='^', description=description)
+
+bot = commands.Bot(command_prefix='^', description=Config.description)
 
 # Log to console that bot is logged in
 @bot.event
@@ -43,14 +43,15 @@ async def on_ready():
     # client is running to prevent multiple 'ticks' being flagged
     ####################################################################################
     @tasks.loop(seconds=5, minutes=0, hours=0, count=None, reconnect=True, loop=None)
-    async def loop(ctx):
+    async def timer(ctx):
         # Do something    print('------')
         print ("Loop 'tick'")
+    timer.start()
 try:
     # About command - prints what is stored in description variable
     @bot.command()
     async def about(ctx):
-        await ctx.send(description)
+        await ctx.send(Config.description)
 
     # Ping
     @bot.command()
