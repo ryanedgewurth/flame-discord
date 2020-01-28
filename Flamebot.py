@@ -75,7 +75,7 @@ try:
         await ctx.send(eightBall.runCmd())
 
     @bot.command()
-    async def rnd(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
+    async def rng(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
         """Gives a random number between input range."""
         await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
