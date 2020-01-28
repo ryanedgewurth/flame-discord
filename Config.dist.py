@@ -19,7 +19,7 @@ token='!!!Put your token in here!!!'
 
 # Don't edit below this line
 
-version = '3.0'
+version = '4.0'
 
-description = "FlameBot - the new speedy version: "+version
+description = "Flame Discord Bot: "+version
 
