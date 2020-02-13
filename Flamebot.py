@@ -75,7 +75,7 @@ try:
         await ctx.send(eightBall.runCmd())
 
     @bot.command()
-    async def rng(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rnd not eightball
+    async def rng(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rng not eightball
         """Gives a random number between input range."""
         await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
@@ -108,5 +108,6 @@ async def on_message_edit(before, after):
 
 try:
     bot.run(Config.token)
+    print("[Flame] Bot has connected client to Discord")
 except:
-    print("Could not connect client to Discord - Incorrect token?")
+    print("[Flame] Could not connect client to Discord - Incorrect token?")
