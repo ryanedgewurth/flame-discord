@@ -47,7 +47,7 @@ async def on_ready():
 async def called_once_a_minute(ctx):
     timerRunning = 1
     msg = "Tick Tock"
-    await ctx.send(msg)
+#    await ctx.send(msg)
 
 #    await message_channel.send("Your message")
 
