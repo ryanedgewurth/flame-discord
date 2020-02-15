@@ -26,10 +26,12 @@ sys.path.append("./modules/")
 from eightBall import eightBall
 from cmdRNG import cmdRNG
 from pingCmd import pingCmd
-from countDown import countDown,flameBotTimers
+from countDown import countDown, flameBotTimers
 
 
 bot = commands.Bot(command_prefix='^', description=Config.description)
+
+timerRunning = 0
 
 # Log to console that bot is logged in
 @bot.event
@@ -37,19 +39,34 @@ async def on_ready():
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
-    ####################################################################################
-    # Trigger loop to run in background. May need some form of semaphore to indicate
-    # client is running to prevent multiple 'ticks' being flagged
-    ####################################################################################
-    @tasks.loop(seconds=5, minutes=0, hours=0, count=None, reconnect=True, loop=None)
-    async def timer(ctx):
-        # Do something    print('------')
-        print ("Loop 'tick'")
-    #timer.start() # Causing an error on exit - remove for now
+
+
+
+
+@tasks.loop(minutes=1)
+async def called_once_a_minute(ctx):
+    timerRunning = 1
+    msg = "Tick Tock"
+    await ctx.send(msg)
+
+#    await message_channel.send("Your message")
+
+@called_once_a_minute.before_loop
+async def before():
+    await bot.wait_until_ready()
+    msg = "Ready"
+    print(msg)
+
+
+
+
 try:
     # About command - prints what is stored in description variable
     @bot.command()
     async def about(ctx):
+        print (timerRunning)
+        if timerRunning == 0:
+            called_once_a_minute.start(ctx)
         await ctx.send(Config.description)
 
     # Ping
@@ -66,9 +83,10 @@ try:
     @bot.command()
     async def add(ctx, left: int, right: int):
         """Adds two numbers together."""
+
         await ctx.send(left + right)
 
-    # Infamous 8ball - note renamed to fit with Python's naming rules    
+    # Infamous 8ball - note renamed to fit with Python's naming rules
     @bot.command()
     async def eightball(ctx):
         """Gives random '8 ball' answer."""
@@ -79,10 +97,15 @@ try:
         """Gives a random number between input range."""
         await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
+
+
     @bot.command()
     async def kill(ctx):
         """Shutdown bot."""
         await ctx.send("Shutting Down bot")
+        if timerRunning == 1:
+            print("Shutting down ticker")
+            called_once_a_minute.stop(ctx)
         #timer.stop()
         exit(0)
 
