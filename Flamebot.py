@@ -27,7 +27,9 @@ from eightBall import eightBall
 from cmdRNG import cmdRNG
 from pingCmd import pingCmd
 from countDown import countDown, flameBotTimers
-
+# For debug only
+from inspect import getmembers
+from pprint import pprint
 
 bot = commands.Bot(command_prefix='^', description=Config.description)
 
@@ -65,6 +67,8 @@ try:
     @bot.command()
     async def about(ctx):
         print (timerRunning)
+        pprint(ctx.author) # ctx.author holds user id, name etc.
+        #<Member id=642074894762508312 name='musicmaestro360' discriminator='1575' bot=False nick=None guild=<Guild id=668830816952123395 name='RPDevServer' shard_id=None chunked=True member_count=3>>
         if timerRunning == 0:
             called_once_a_minute.start(ctx)
         await ctx.send(Config.description)
