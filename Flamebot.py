@@ -92,7 +92,7 @@ try:
     
     # Clear Command [No Refactor Needed Here due to rewrite requiring different syntax]
     @bot.command()
-    async def add(ctx, amount=5):
+    async def clear(ctx, amount=5):
         """Clears a set amount of messages"""
         await ctx.channel.purge(limit=amount)
         await ctx.send("Cleared " + amount + " messages.")
