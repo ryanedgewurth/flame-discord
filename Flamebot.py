@@ -89,7 +89,14 @@ try:
         """Adds two numbers together."""
 
         await ctx.send(left + right)
-
+    
+    # Clear Command [No Refactor Needed Here due to rewrite requiring different syntax]
+    @bot.command()
+    async def add(ctx, amount=5):
+        """Clears a set amount of messages"""
+        await ctx.channel.purge(limit=amount)
+        await ctx.send("Cleared " + amount + " messages.")
+        
     # Infamous 8ball - note renamed to fit with Python's naming rules
     @bot.command()
     async def eightball(ctx):
