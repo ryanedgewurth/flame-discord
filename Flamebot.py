@@ -19,6 +19,7 @@ import discord
 from discord.ext import commands, tasks
 import random
 import asyncio
+import datetime
 import Config
 # Permit imports from modules directory
 import sys
@@ -107,7 +108,11 @@ try:
     async def rng(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rng not eightball
         """Gives a random number between input range."""
         await ctx.send(cmdRNG.runCmd(lowval, bigval))
-
+    
+    @bot.command()
+    async def clock(ctx): # Clock Command
+        """Gives the current time."""
+        await ctx.send(datetime.datetime.now())
 
 
     @bot.command()
