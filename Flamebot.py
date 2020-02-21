@@ -115,7 +115,7 @@ try:
         await ctx.send(datetime.datetime.now())
     
     @bot.command()
-    async def avatar(ctx, member : discord.Member = ctx.message.author): # Avatar Command
+    async def avatar(ctx, member : discord.Member): # Avatar Command
         """Sends an User's Avatar"""
         embedavtar = discord.Embed()
         embed.set_image(url=member.avatar_url)
