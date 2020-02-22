@@ -1,4 +1,4 @@
-#  
+#
 #      Copyright (C) 2019-2020  Edgewurth/RCPS
 
 #      This program is free software: you can redistribute it and/or modify
@@ -15,11 +15,13 @@
 #      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-token='!!!Put your token in here!!!'
+token = '!!!Put your token in here!!!'
 
 # Don't edit below this line
 
 version = '4.0'
 
-description = "Flame Discord Bot: "+version
+description = "Flame Discord Bot: " + version
 
+prefix = '^'
+environment = 'Dev' # Change to prod in production

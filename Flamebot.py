@@ -29,19 +29,21 @@ from cmdRNG import cmdRNG
 from pingCmd import pingCmd
 from countDown import countDown, flameBotTimers
 # For debug only
-from inspect import getmembers
-from pprint import pprint
+import logging # Levels are DEBUG, INFO, WARNING, ERROR, and CRITICAL
+logging.basicConfig(filename='app.log', level=logging.INFO)
+if Config.environment == "Dev":
+    logging.basicConfig(filename='app.log', level=logging.DEBUG)
 
-bot = commands.Bot(command_prefix='^', description=Config.description)
+bot = commands.Bot(command_prefix=Config.prefix, description=Config.description)
 
 timerRunning = 0
 
 # Log to console that bot is logged in
 @bot.event
 async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
+    logging.info('Logged in as')
+    logging.info(bot.user.name)
+    logging.info(bot.user.id)
 
 
 
@@ -49,7 +51,7 @@ async def on_ready():
 @tasks.loop(minutes=1)
 async def called_once_a_minute(ctx):
     timerRunning = 1
-    msg = "Tick Tock"
+
 #    await ctx.send(msg)
 
 #    await message_channel.send("Your message")
@@ -57,8 +59,7 @@ async def called_once_a_minute(ctx):
 @called_once_a_minute.before_loop
 async def before():
     await bot.wait_until_ready()
-    msg = "Ready"
-    print(msg)
+    logging.debug('Bot in ready state')
 
 
 
@@ -68,7 +69,7 @@ try:
     @bot.command()
     async def about(ctx):
         print (timerRunning)
-        pprint(ctx.author) # ctx.author holds user id, name etc.
+    logging.debug(ctx.author) # ctx.author holds user id, name etc.
         #<Member id=642074894762508312 name='musicmaestro360' discriminator='1575' bot=False nick=None guild=<Guild id=668830816952123395 name='RPDevServer' shard_id=None chunked=True member_count=3>>
         if timerRunning == 0:
             called_once_a_minute.start(ctx)
@@ -90,14 +91,14 @@ try:
         """Adds two numbers together."""
 
         await ctx.send(left + right)
-    
+
     # Clear Command [No Refactor Needed Here due to rewrite requiring different syntax]
     @bot.command()
     async def clear(ctx, amount=5):
         """Clears a set amount of messages"""
         await ctx.channel.purge(limit=amount)
         await ctx.send("Cleared " + amount + " messages.")
-        
+
     # Infamous 8ball - note renamed to fit with Python's naming rules
     @bot.command()
     async def eightball(ctx):
@@ -108,25 +109,19 @@ try:
     async def rng(ctx, lowval: int, bigval: int): # Should be renamed to command we want i.e. rng not eightball
         """Gives a random number between input range."""
         await ctx.send(cmdRNG.runCmd(lowval, bigval))
-    
+
     @bot.command()
     async def clock(ctx): # Clock Command
         """Gives the current time."""
         await ctx.send(datetime.datetime.now())
-    
-    @bot.command()
-    async def avatar(ctx, member : discord.Member = ctx.message.author): # Avatar Command
-        """Sends an User's Avatar"""
-        embedavtar = discord.Embed()
-        embed.set_image(url=member.avatar_url)
-        await ctx.send(embed)
+
 
     @bot.command()
     async def kill(ctx):
         """Shutdown bot."""
         await ctx.send("Shutting Down bot")
         if timerRunning == 1:
-            print("Shutting down ticker")
+            logging.info("Shutting down bot")
             called_once_a_minute.stop(ctx)
         #timer.stop()
         exit(0)
@@ -144,7 +139,8 @@ try:
     async def reminder(ctx):
         slow_count.start(ctx)
 except:
-    print("Unknown command")
+    logging.info('Unknown Command')
+
 # Cheap and easy functionality to flag up edited messages - could be used to 'hook' other event
 @bot.event
 async def on_message_edit(before, after):
@@ -153,6 +149,7 @@ async def on_message_edit(before, after):
 
 try:
     bot.run(Config.token)
-    print("[Flame] Bot has connected client to Discord")
+    logging.info('[Flame] Bot has connected as a client to Discord')
+
 except:
-    print("[Flame] Could not connect client to Discord - Incorrect token?")
+    logging.critical('[Flame] Could not connect client to Discord - Incorrect token?')

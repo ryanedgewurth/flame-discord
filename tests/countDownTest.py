@@ -1,4 +1,4 @@
-#  
+#
 #      Copyright (C) 2019-2020  Edgewurth
 
 #      This program is free software: you can redistribute it and/or modify
@@ -14,77 +14,78 @@
 #     You should have received a copy of the GNU General Public License
 #      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import unittest
 import sys
+import unittest
 sys.path.append("../modules/")
-from countDown import countDown,flameBotTimers
+from countDown import countDown, flameBotTimers
+
 
 
 class  CountDownTestCase(unittest.TestCase):
 
     def test_countDownForFiveMinutes(self):
         units = 'm'
-        timer=countDown(5,units)
+        timer = countDown(5, units)
         assert timer.getTotalTime() == 300
-        
+
     def testZeroTime(self):
-        timer=countDown(0,'m')
+        timer = countDown(0, 'm')
         assert timer.getTotalTime() == 0
-    
+
     def testNegativeTime(self):
-        timer=countDown(-5,'m')
+        timer = countDown(-5, 'm')
         assert timer.getTotalTime() == 0
-        
+
     def testOneHour(self):
-        timer=countDown(1,'h')
+        timer = countDown(1, 'h')
         assert timer.getTotalTime() == 3600 # = 60s x 60 m
-        
+
     def testOneDay(self):
-        timer=countDown(1,'d')
+        timer = countDown(1, 'd')
         assert timer.getTotalTime() == 86400 # = h x 24
 
     def testOneWeek(self):
-        timer=countDown(1,'w')
+        timer = countDown(1, 'w')
         assert timer.getTotalTime() == 604800 # = d x 7
-        
+
     def testOneMonth(self):
-        timer=countDown(1,'mo') 
+        timer = countDown(1, 'mo')
         assert timer.getTotalTime() == 2419200 # = w x 4
 
     def testIncorrectUnitString(self):
-        timer=countDown(1,'zz')
+        timer = countDown(1, 'zz')
         assert timer.getTotalTime() == 0
-    
-    
+
+
     def testDefaultUserName(self):
-        timer=countDown(1,'w')
+        timer = countDown(1, 'w')
         username = 'Freddy'
         assert timer.getUserName() == 'Username not set'
         timer.setUserName(username)
         assert timer.getUserName() == username
-        
+
     def testTimerName(self):
-        timer=countDown(1,'mo')
+        timer = countDown(1, 'mo')
         assert timer.getName() == 'Un-named timer'
-        timername='My Timer'
+        timername = 'My Timer'
         timer.setName(timername)
         assert timer.getName() == timername
 
     def testNamingTimerInConstructor(self):
-        timer=countDown(1,'mo','Fred','Freds Timer')
+        timer = countDown(1, 'mo', 'Fred', 'Freds Timer')
         assert timer.getName() == 'Freds Timer'
         assert timer.getUserName() == 'Fred'
-        
+
     def testPassingNullsToNamesInConstructor(self):
-        timer=countDown(1,'mo',None,None)
+        timer = countDown(1, 'mo', None, None)
         assert timer.getUserName() == 'Username not set'
         assert timer.getName() == 'Un-named timer'
-        timer=countDown(1,'mo',None,'Fred')
+        timer = countDown(1, 'mo', None, 'Fred')
         assert timer.getUserName() == 'Username not set'
         assert timer.getName() == 'Fred'
-        
+
     def testReminderFlag(self):
-        timer=countDown(1,'m',None,None,1)
+        timer = countDown(1, 'm', None, None, 1)
         assert timer.getReminder() == 1
         timer.setReminder(0)
         assert timer.getReminder() == 0
