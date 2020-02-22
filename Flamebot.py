@@ -69,7 +69,7 @@ try:
     @bot.command()
     async def about(ctx):
         print (timerRunning)
-    logging.debug(ctx.author) # ctx.author holds user id, name etc.
+        logging.debug(ctx.author) # ctx.author holds user id, name etc.
         #<Member id=642074894762508312 name='musicmaestro360' discriminator='1575' bot=False nick=None guild=<Guild id=668830816952123395 name='RPDevServer' shard_id=None chunked=True member_count=3>>
         if timerRunning == 0:
             called_once_a_minute.start(ctx)
