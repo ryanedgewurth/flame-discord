@@ -118,8 +118,8 @@ try:
     @bot.command()
     async def avatar(ctx, member : discord.Member): # Avatar Command
         """Sends an User's Avatar"""
-        embedavtar = discord.Embed()
-        embed.set_image(url=member.avatar_url)
+        embedavatar = discord.Embed()
+        embedavatar.set_image(url=member.avatar_url)
         await ctx.send(embed)
 
 
