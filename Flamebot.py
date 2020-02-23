@@ -45,14 +45,12 @@ async def on_ready():
     logging.info(bot.user.name)
     logging.info(bot.user.id)
 
-
+# This function acts as the 'tick' for countdown module and will need to poll
+# countDown.flamebotTimers.poll() to alert any actions
 @tasks.loop(minutes=1)
 async def called_once_a_minute(ctx):
     timerRunning = 1
 
-#    await ctx.send(msg)
-
-#    await message_channel.send("Your message")
 
 @called_once_a_minute.before_loop
 async def before():
@@ -65,6 +63,7 @@ try:
     @bot.command()
     async def about(ctx):
         print (timerRunning)
+        #@Todo: Following code is 'dev' code and needs tidying
         logging.debug(ctx.author) # ctx.author holds user id, name etc.
         #<Member id=642074894762508312 name='musicmaestro360' discriminator='1575' bot=False nick=None guild=<Guild id=668830816952123395 name='RPDevServer' shard_id=None chunked=True member_count=3>>
         if timerRunning == 0:
@@ -87,7 +86,7 @@ try:
         """Adds two numbers together."""
 
         await ctx.send(left + right)
-
+    # @Todo: Refactor into module
     # Clear Command [No Refactor Needed Here due to rewrite requiring different syntax]
     @bot.command()
     async def clear(ctx, amount=5):
@@ -106,11 +105,13 @@ try:
         """Gives a random number between input range."""
         await ctx.send(cmdRNG.runCmd(lowval, bigval))
 
+    # @Todo: Refactor into module?
     @bot.command()
     async def clock(ctx): # Clock Command
         """Gives the current time."""
         await ctx.send(datetime.datetime.now())
 
+    # @Todo: Refactor into module
     @bot.command()
     async def avatar(ctx, member: discord.Member): # Avatar Command
         """Sends an User's Avatar"""
@@ -118,7 +119,7 @@ try:
         show_avatar.set_image(url='{}'.format(member.avatar_url)) # This returns the image url formatted for display.
         await ctx.send(embed=show_avatar)
 
-
+    # @Todo: Refactor into module
     @bot.command()
     async def kill(ctx):
         """Shutdown bot."""
