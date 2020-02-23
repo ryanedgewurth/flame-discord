@@ -15,6 +15,7 @@
 #      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # Dependencies:
+import logging
 import pickle
 import time
 ####################################################################################################
@@ -120,6 +121,13 @@ class flameBotTimers:
     ####################################################################################################
     def __init__(self):
         self.timers = []
+        try:
+            with open('timers.fl', 'wb') as timerDump:
+                self.timers = pickle.load(timerDump)
+        except:
+            self.timers = []
+        logging.info(self.timers)
+
 
     ####################################################################################################
     # Simple method to show how many timers
@@ -133,9 +141,8 @@ class flameBotTimers:
     def addTimer(self, timer):
         self.timers.append(timer)
         logging.debug(repr(self.timers))
-        with open('timers.fl', 'wb') as config_dictionary_file:
-            pickle.dump(self.timers, config_dictionary_file)
-            #pickle.dump("XXXXX", config_dictionary_file)
+        with open('timers.fl', 'wb') as timerDump:
+            pickle.dump(self.timers, timerDump)
         return self
 
     ####################################################################################################
