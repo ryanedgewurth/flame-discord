@@ -2,3 +2,5 @@
 botToken.py
 /__pycache__/
 /Config.py
+/nbproject/
+/tests/timers.fl
