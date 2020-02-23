@@ -46,8 +46,6 @@ async def on_ready():
     logging.info(bot.user.id)
 
 
-
-
 @tasks.loop(minutes=1)
 async def called_once_a_minute(ctx):
     timerRunning = 1
@@ -60,8 +58,6 @@ async def called_once_a_minute(ctx):
 async def before():
     await bot.wait_until_ready()
     logging.debug('Bot in ready state')
-
-
 
 
 try:
@@ -114,13 +110,13 @@ try:
     async def clock(ctx): # Clock Command
         """Gives the current time."""
         await ctx.send(datetime.datetime.now())
-    
+
     @bot.command()
-    async def avatar(ctx, member : discord.Member): # Avatar Command
+    async def avatar(ctx, member: discord.Member): # Avatar Command
         """Sends an User's Avatar"""
-        embedavatar = discord.Embed()
-        embedavatar.set_image(url=member.avatar_url)
-        await ctx.send(embed)
+        show_avatar = discord.Embed() # We need to instantiate this object
+        show_avatar.set_image(url='{}'.format(member.avatar_url)) # This returns the image url formatted for display.
+        await ctx.send(embed=show_avatar)
 
 
     @bot.command()
