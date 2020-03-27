@@ -144,7 +144,8 @@ try:
                                        description=cmdList.getDesc(cmd),
                                        color=discord.Color.red()
                                        )
-            help_embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
+            footerText = 'Support Server: ' + config.SupportServer + '\nWebsite: ' + config.Website
+            help_embed.set_footer(text=footerText)
             help_embed.add_field(name='Usage', value='``' + cmdList.getSyntax(cmd) + '``', inline=False)
 
         await ctx.send(embed=help_embed)
