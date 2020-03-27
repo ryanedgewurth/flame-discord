@@ -14,7 +14,8 @@
 #     You should have received a copy of the GNU General Public License
 #      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
+supportURL = '!!!Put the URL for your support server here!!!'
+Website = '!!!Put the URL for your website here!!!'
 token = '!!!Put your token in here!!!'
 
 # Don't edit below this line
@@ -22,6 +23,8 @@ token = '!!!Put your token in here!!!'
 version = '4.0'
 
 description = "Flame Discord Bot: " + version
+
+
 
 prefix = '^'
 environment = 'Dev' # Change to prod in production

@@ -28,7 +28,7 @@ from eightBall import eightBall
 from cmdRNG import cmdRNG
 from pingCmd import pingCmd
 from countDown import countDown, flameBotTimers
-from cmdHelp import cmdList,cmdHelp
+from cmdHelp import cmdList, cmdHelp
 # For debug only
 import logging # Levels are DEBUG, INFO, WARNING, ERROR, and CRITICAL
 logging.basicConfig(filename='app.log', level=logging.INFO)
@@ -104,7 +104,7 @@ try:
             await ctx.send(cmdList.getDesc(cmd))
         elif form == "syntax":
             await ctx.send(cmdList.getSyntax(cmd))
-    
+
     # Infamous 8ball - note renamed to fit with Python's naming rules
     @bot.command()
     async def eightball(ctx):
@@ -121,31 +121,32 @@ try:
     async def clock(ctx): # Clock Command
         """Gives the current time."""
         await ctx.send(datetime.datetime.now())
-    
+
     bot.remove_command("help")
     @bot.command()
-    async def help(ctx, cmd = "null"): # v4.0's Help Command - Todo: MUST REFACTOR -> MODULE
+    async def help(ctx, cmd="null"): # v4.0's Help Command - Todo: MUST REFACTOR -> MODULE
         if cmd == "null":
             help_embed = discord.Embed(
-                title = 'Flame Command List',
-                description = 'Command Prefix: ``' + Config.prefix + '``',
-                color = discord.Color.red()
-            )
-            help_embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            help_embed.add_field(name=':alarm_clock: Time :alarm_clock:',value='``clock``, ``reminder``',inline=False)
-            help_embed.add_field(name=':game_die: Fun :game_die:',value='``8ball``',inline=False)
-            help_embed.add_field(name=':1234: Maths :1234:',value='``add``, ``rng``',inline=False)
-            help_embed.add_field(name=':information_source: Information :information_source:',value='``about``, ``help``, ``ping``, ``avatar``',inline=False)
-            help_embed.add_field(name=':hammer: Moderation :hammer:',value='``clear``',inline=False)
+                                       title='Flame Command List',
+                                       description='Command Prefix: ``' + Config.prefix + '``',
+                                       color=discord.Color.red()
+                                       )
+            footertext = 'Support Server:' + Config.supportURL + '\nWebsite:' + Config.Website
+            help_embed.set_footer(text=footertext)
+            help_embed.add_field(name=':alarm_clock: Time :alarm_clock:', value='``clock``, ``reminder``', inline=False)
+            help_embed.add_field(name=':game_die: Fun :game_die:', value='``8ball``', inline=False)
+            help_embed.add_field(name=':1234: Maths :1234:', value='``add``, ``rng``', inline=False)
+            help_embed.add_field(name=':information_source: Information :information_source:', value='``about``, ``help``, ``ping``, ``avatar``', inline=False)
+            help_embed.add_field(name=':hammer: Moderation :hammer:', value='``clear``', inline=False)
         else:
             help_embed = discord.Embed(
-                title = cmdList.getName(cmd),
-                description = cmdList.getDesc(cmd),
-                color = discord.Color.red()
-            )
+                                       title=cmdList.getName(cmd),
+                                       description=cmdList.getDesc(cmd),
+                                       color=discord.Color.red()
+                                       )
             help_embed.set_footer(text='Support Server: https://discord.gg/zRFpys7 \nWebsite: http://flamebot.rf.gd/ ')
-            help_embed.add_field(name='Usage',value='``' + cmdList.getSyntax(cmd) + '``',inline=False)
-        
+            help_embed.add_field(name='Usage', value='``' + cmdList.getSyntax(cmd) + '``', inline=False)
+
         await ctx.send(embed=help_embed)
 
     # @Todo: Refactor into module
