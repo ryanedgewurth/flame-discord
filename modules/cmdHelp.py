@@ -40,6 +40,12 @@ class cmdList:
             return "Avatar"
         elif cmd == "reminder":
             return "Reminder Test"
+        elif cmd == "kick":
+            return "Kick"
+        elif cmd == "ban":
+            return "Ban"
+        elif cmd == "warn":
+            return "Warn"
         elif cmd == "kill":
             return "!BOT STAFF ONLY! Shutdown Bot"
         else:
@@ -68,6 +74,12 @@ class cmdList:
             return "Shutdown bot."
         elif cmd == "reminder":
             return "Sends the occassional reminder message"
+        elif cmd == "kick":
+            return "Kicks a user from your server"
+        elif cmd == "ban":
+            return "Bans a user from your server"
+        elif cmd == "warn":
+            return "Warns a user in your server"
         else:
             return "Dummy Descriptor Message"
     
@@ -90,6 +102,12 @@ class cmdList:
             return "clock"
         elif cmd == "avatar":
             return "avatar <member>"
+        elif cmd == "kick":
+            return "kick <member> [reason]"
+        elif cmd == "ban":
+            return "ban <member> [reason]"
+        elif cmd == "warn":
+            return "warn <member> [reason]"
         else:
             return cmd
 

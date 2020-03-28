@@ -124,27 +124,27 @@ try:
 
     bot.remove_command("help")
     @bot.command()
-    async def help(ctx, cmd="null"): # v4.0's Help Command - Todo: MUST REFACTOR -> MODULE
-        if cmd == "null":
+    async def help(ctx, *, cmd=None): # v4.0's Help Command - Todo: MUST REFACTOR -> MODULE
+        if cmd == None:
             help_embed = discord.Embed(
                                        title='Flame Command List',
                                        description='Command Prefix: ``' + Config.prefix + '``',
                                        color=discord.Color.red()
                                        )
-            footertext = 'Support Server:' + Config.supportURL + '\nWebsite:' + Config.Website
+            footertext = 'Support Server: ' + Config.supportURL + '\nWebsite: ' + Config.Website
             help_embed.set_footer(text=footertext)
             help_embed.add_field(name=':alarm_clock: Time :alarm_clock:', value='``clock``, ``reminder``', inline=False)
             help_embed.add_field(name=':game_die: Fun :game_die:', value='``8ball``', inline=False)
             help_embed.add_field(name=':1234: Maths :1234:', value='``add``, ``rng``', inline=False)
             help_embed.add_field(name=':information_source: Information :information_source:', value='``about``, ``help``, ``ping``, ``avatar``', inline=False)
-            help_embed.add_field(name=':hammer: Moderation :hammer:', value='``clear``', inline=False)
+            help_embed.add_field(name=':hammer: Moderation :hammer:', value='``clear``, ``warn``, ``kick``, ``ban``', inline=False)
         else:
             help_embed = discord.Embed(
                                        title=cmdList.getName(cmd),
                                        description=cmdList.getDesc(cmd),
                                        color=discord.Color.red()
                                        )
-            footerText = 'Support Server: ' + config.SupportServer + '\nWebsite: ' + config.Website
+            footerText = 'Support Server: ' + Config.supportURL + '\nWebsite: ' + Config.Website
             help_embed.set_footer(text=footerText)
             help_embed.add_field(name='Usage', value='``' + cmdList.getSyntax(cmd) + '``', inline=False)
 
@@ -157,7 +157,31 @@ try:
         show_avatar = discord.Embed() # We need to instantiate this object
         show_avatar.set_image(url='{}'.format(member.avatar_url)) # This returns the image url formatted for display.
         await ctx.send(embed=show_avatar)
+    
 
+    @bot.command()
+    @commands.has_permissions(kick_members=True)
+    async def kick(ctx, member: discord.Member, *, reason=None): # Kick Command (Commented till release-ready)
+        """Sends an User's Avatar"""
+        await ctx.send("Kicked " + member.display_name + " for " + reason)
+        await member.send("You have been kicked from " + member.guild.name + " for " + reason)
+        await member.kick(reason=reason)
+    
+    @bot.command()
+    @commands.has_permissions(kick_members=True)
+    async def warn(ctx, member: discord.Member, *, reason=None): # Warn Command (Commented till release-ready)
+        """Sends an User's Avatar"""
+        await ctx.send("Warned " + member.display_name + " for " + reason)
+        await member.send("You have been warned in " + member.guild.name + " for " + reason)
+        
+    @bot.command()
+    @commands.has_permissions(ban_members=True)
+    async def ban(ctx, member: discord.Member, *, reason=None): # ban Command (Commented till release-ready)
+        """Sends an User's Avatar"""
+        await ctx.send("Banned " + member.display_name + " for " + reason)
+        await member.send("You have been banned from " + member.guild.name + " for " + reason)
+        await member.ban(reason=reason)
+        
     # @Todo: Refactor into module
     @bot.command()
     async def kill(ctx):
