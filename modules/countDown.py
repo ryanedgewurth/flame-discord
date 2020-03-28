@@ -119,14 +119,16 @@ class flameBotTimers:
     ####################################################################################################
     # We need an array - so initialise it here and load file
     ####################################################################################################
-    def __init__(self):
+    def __init__(self, dbfname='timers.fl'):
         self.timers = []
+        self.dbFileName = dbfname
         try:
-            with open('timers.fl', 'wb') as timerDump:
+            with open(self.dbFileName, 'wb') as timerDump:
                 self.timers = pickle.load(timerDump)
         except:
             self.timers = []
         logging.info(self.timers)
+
 
 
     ####################################################################################################
@@ -141,7 +143,7 @@ class flameBotTimers:
     def addTimer(self, timer):
         self.timers.append(timer)
         logging.debug(repr(self.timers))
-        with open('timers.fl', 'wb') as timerDump:
+        with open(self.dbFileName, 'wb') as timerDump:
             pickle.dump(self.timers, timerDump)
         return self
 
