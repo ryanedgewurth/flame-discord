@@ -99,17 +99,11 @@ class countDown(object):
         if self.unitType == 'mo':
             return int(self.mo)
         return 0
-
-    ####################################################################################################
-    # Write out this instance to json - testing of dump only at present
-    ####################################################################################################
-    def jsonOut(self, filename='timer.txt'):
-        self.timerStartTime = int(time.time()) # We're only needed to be accurate to the second.
-        self.timerEndTime = self.timerStartTime
-        self.timerEndTime += self.getTotalTime()
-        return json.dumps(self, default=lambda o: o.__dict__,
-                          sort_keys=True, indent=4)
-
+    #################################################################################################
+    # Utility method to return current timer details
+    #################################################################################################
+    def print(self):
+        return "Timer " + self.name + " was set by " + self.timerUser + " as: " + str(self.numUnits) + " " + self.unitType
 
 ####################################################################################################
 # Wrapper for 'countDown' timers - could refactor this into generically named class/file
@@ -142,9 +136,11 @@ class flameBotTimers:
     ####################################################################################################
     def addTimer(self, timer):
         self.timers.append(timer)
+        print(timer.print())
         logging.debug(repr(self.timers))
-        with open(self.dbFileName, 'wb') as timerDump:
-            pickle.dump(self.timers, timerDump)
+
+        #with open(self.dbFileName, 'wb') as timerDump:
+            #pickle.dump(self.timers, timerDump)
         return self
 
     ####################################################################################################

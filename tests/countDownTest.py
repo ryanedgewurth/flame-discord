@@ -14,9 +14,9 @@
 #     You should have received a copy of the GNU General Public License
 #      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import logging
 import sys
 import unittest
+#import logging
 sys.path.append("../modules/")
 from countDown import countDown, flameBotTimers
 
@@ -106,14 +106,18 @@ class  CountDownTestCase(unittest.TestCase):
 ## Tests for timer 'stack' or array
 ##############################################################################
     def testTimerArray(self):
-        timers = flameBotTimers()
+        timers = flameBotTimers('timer.fl')
         assert timers.numTimers() == 0
 
     def testAddTimerToArray(self):
-        timers = flameBotTimers()
-        timer = countDown() # using defaults
-        timers.addTimer(timer)
+        timers = flameBotTimers('timer.fl')
+        timer = countDown(5, 'm', 'TestUser', 'TestTimer')
+        
+        timers.addTimer(timer) # This should also save the timer array
         assert timers.numTimers() == 1
+        newTimer = flameBotTimers('timer.fl')
+        assert newTimer.numTimers() == 1 # Check we can recall the single timer from file
+
 
 if __name__ == '__main__':
     unittest.main()
