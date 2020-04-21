@@ -14,6 +14,7 @@
 #     You should have received a copy of the GNU General Public License
 #      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+from mock import patch
 import sys
 import unittest
 #import logging
@@ -23,7 +24,7 @@ from countDown import countDown, flameBotTimers
 
 
 class  CountDownTestCase(unittest.TestCase):
-
+    filename = '../../timers.test'
     def test_countDownForFiveMinutes(self):
         units = 'm'
         timer = countDown(5, units)
@@ -105,18 +106,32 @@ class  CountDownTestCase(unittest.TestCase):
 ##############################################################################
 ## Tests for timer 'stack' or array
 ##############################################################################
+    @patch('flameBotTimers', timers)
     def testTimerArray(self):
-        timers = flameBotTimers('timer.fl')
+        timers = flameBotTimers(self.filename)
         assert timers.numTimers() == 0
 
     def testAddTimerToArray(self):
-        timers = flameBotTimers('timer.fl')
+        timers = flameBotTimers(self.filename)
         timer = countDown(5, 'm', 'TestUser', 'TestTimer')
-        
+
         timers.addTimer(timer) # This should also save the timer array
+
         assert timers.numTimers() == 1
-        newTimer = flameBotTimers('timer.fl')
-        assert newTimer.numTimers() == 1 # Check we can recall the single timer from file
+        timer = countDown(10, 'm', 'TestUser2', 'TestTimer2')
+        timers.addTimer(timer)
+        assert timers.numTimers() == 2
+
+
+        newTimer = flameBotTimers(self.filename)
+        assert newTimer.numTimers() == 2
+
+    # This test should 'explode' - member function not yet declared
+    #   a stub however will return an empty array
+    def testTimersExpired(self):
+        timers = flameBotTimers(self.filename)
+        alerts = timers.getExpiredTimers()
+        assert alerts == []
 
 
 if __name__ == '__main__':
